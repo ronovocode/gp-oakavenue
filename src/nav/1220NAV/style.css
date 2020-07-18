@@ -1,0 +1,43 @@
+nav.navbar {
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.nav-item {
+    text-transform: uppercase;
+}
+
+.logo {
+    margin-left: 40px;
+}
+
+a {
+    color: #eee;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+a:hover {
+    color: #D2CCA1;
+}
+
+.navbar-brand span {
+    font-weight: regular;
+}
+
+.navbar-right {
+    justify-content: flex-end;
+}
+
+.dropdown-item {
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+@media (max-width: 991px) {
+    .navbar-right {
+        justify-content: inherit;
+    }
+}
+

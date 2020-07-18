@@ -1,0 +1,12 @@
+.apartment-card{
+    flex-basis: 33.3333%;
+}
+
+.apartment-card p.muted {
+    font-weight: 300;
+}
+
+.apartment-card img {
+    width: 100%;
+    height: 300px;
+}

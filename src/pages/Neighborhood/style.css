@@ -1,0 +1,19 @@
+.hero {
+    width: 100vw;
+    background-color: var(--dark);
+    height: 100vh;
+}
+
+.hero .bg {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.hero h1 {
+    background-color: transparent;
+    margin: 0 auto;
+    z-index: 1;
+}

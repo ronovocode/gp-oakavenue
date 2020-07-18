@@ -1,0 +1,46 @@
+nav.navbar {
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.nav-item {
+    text-transform: uppercase;
+}
+
+.logo {
+    margin-left: 40px;
+}
+
+a {
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.navbar-brand span {
+    font-weight: regular;
+}
+
+.navbar-right {
+    justify-content: flex-end;
+}
+
+.dropdown-item {
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.dropdown-menu {
+    background-color: transparent;
+}
+
+.dropdown-item {
+    color: #fff;
+}
+
+@media (max-width: 991px) {
+    .navbar-right {
+        justify-content: inherit;
+    }
+}
+
