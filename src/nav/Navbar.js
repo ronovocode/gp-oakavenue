@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-import GreenpointLogo from "../../icons/GreenpointLogo.js"
-import Menu from "../../icons/Menu.js"
+import GreenpointLogo from "../icons/GreenpointLogo.js"
+import Menu from "../icons/Menu.js"
 
 import './style.css'
 

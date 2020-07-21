@@ -11,9 +11,14 @@ import Our_Homes from './pages/Our_Homes/Our_Homes';
 import Neighborhood from './pages/Neighborhood/Neighborhood';
 import Testimonials from './pages/Testimonials/Testimonials';
 
+/* Residents */
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Dashboard/Login';
 import ForgotPassword from './pages/Dashboard/ForgotPassword';
+
+import Admin from './pages/Admin/Admin';
+
+import Navbar from './nav';
 
 import Residence from './pages/Residence/Residence';
 import Landing from './pages/Landing/Landing';
@@ -44,12 +49,15 @@ function App() {
 
         <div className="App"></div>
 
+        <Navbar />
+        
         <Switch>
             <Route exact path="/homes" component={Our_Homes}></Route>
             <Route exact path="/neighborhood" component={Neighborhood}></Route>
             <Route exact path="/testimonials" component={Testimonials}></Route>
 
             <PrivateRoute exact path='/resident/dashboard' user={user} component={Dashboard} />
+            <PrivateRoute exact path='/admin' user={user} component={Admin} />
             
             {/* Pass handleLogin to Login page as prop */}
             <Route exact path='/resident/login' handleLogin={handleLogin} render={

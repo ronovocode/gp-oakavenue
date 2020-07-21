@@ -5,8 +5,6 @@ import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 import NewsCard from '../../components/NewsCard/NewsCard'
 
-import Navbar from '../../nav/301NAV';
-
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -105,82 +103,79 @@ class Investor extends Component {
 
     render() {
         return (
-            <div>
-                <Navbar />
-                <Wrapper className="container">
-                    <h2 className="mt-5" style={{color: "#D2CCA1"}}>Resident Dashboard</h2>
-                    <hr />
+            <Wrapper className="container">
+                <h2 className="mt-5" style={{color: "#D2CCA1"}}>Resident Dashboard</h2>
+                <hr />
 
-                    <div>
-                        <h4>Contact Information</h4>
-                        {this.state.toggleEdit ? (
-                            <div className="contact">
-                                <Input type="input" placeholder={this.state.firstName + " " + this.state.lastName} />
-                                <Input type="input" placeholder={this.state.cell} />
-                                <Input type="input" placeholder={this.state.email} />
-                            </div>
-                        ) : (
-                            <div className="contact">
-                                <p className="investor-name">
-                                    <UserIcon color="#fff" className="mr-3"/>
-                                    {this.state.firstName + " " + this.state.lastName}
-                                </p>
-                                <p className="investor-cell">
-                                    <UserIcon color="#fff" className="mr-3"/>
-                                    {this.state.cell}
-                                </p>
-                                <p className="investor-email">
-                                    <UserIcon color="#fff" className="mr-3"/>
-                                    {this.state.email}
-                                </p>
-                            </div>
-                        )}
-                    </div>
-
+                <div>
+                    <h4>Contact Information</h4>
                     {this.state.toggleEdit ? (
-                        <div className="d-flex">
-                            <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
-                                text="Cancel" 
-                                className="w-50 mr-2"/>
-                            <Button onClick={() => this.setState({ 
-                                toggleEdit: !this.state.toggleEdit
-                            })} 
-                                text="Save" 
-                                className="w-50"/>
+                        <div className="contact">
+                            <Input type="input" placeholder={this.state.firstName + " " + this.state.lastName} />
+                            <Input type="input" placeholder={this.state.cell} />
+                            <Input type="input" placeholder={this.state.email} />
                         </div>
                     ) : (
-                        <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
-                            text="Edit Contact Info" 
-                            className="w-50"/>
-                    )}
-
-                    <div className="row mt-5">
-                        <div className="col-md-6 documents">
-                            <h3 style={{color: "#D2CCA1"}}>Documents</h3>
-                            <hr />
-                            {this.state.documents.map((i) => {
-                                    return (
-                                        <a href={i.url}>
-                                            <h5>{i.title}</h5>
-                                        </a>
-                                    )
-                                })}
-
+                        <div className="contact">
+                            <p className="investor-name">
+                                <UserIcon color="#fff" className="mr-3"/>
+                                {this.state.firstName + " " + this.state.lastName}
+                            </p>
+                            <p className="investor-cell">
+                                <UserIcon color="#fff" className="mr-3"/>
+                                {this.state.cell}
+                            </p>
+                            <p className="investor-email">
+                                <UserIcon color="#fff" className="mr-3"/>
+                                {this.state.email}
+                            </p>
                         </div>
-                        <div className="col-md-6 newsletter">
-                            <h3 style={{color: "#D2CCA1"}}>Newsletter</h3>
-                            <hr />
-                            <div className="news-list">
-                                {this.state.news.map((i) => {
-                                    return (
-                                        <NewsCard title={i.title} body={i.description} source={i.source} date={i.date}/>
-                                    )
-                                })}
-                            </div>
+                    )}
+                </div>
+
+                {this.state.toggleEdit ? (
+                    <div className="d-flex">
+                        <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
+                            text="Cancel" 
+                            className="w-50 mr-2"/>
+                        <Button onClick={() => this.setState({ 
+                            toggleEdit: !this.state.toggleEdit
+                        })} 
+                            text="Save" 
+                            className="w-50"/>
+                    </div>
+                ) : (
+                    <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
+                        text="Edit Contact Info" 
+                        className="w-50"/>
+                )}
+
+                <div className="row mt-5">
+                    <div className="col-md-6 documents">
+                        <h3 style={{color: "#D2CCA1"}}>Documents</h3>
+                        <hr />
+                        {this.state.documents.map((i) => {
+                                return (
+                                    <a href={i.url}>
+                                        <h5>{i.title}</h5>
+                                    </a>
+                                )
+                            })}
+
+                    </div>
+                    <div className="col-md-6 newsletter">
+                        <h3 style={{color: "#D2CCA1"}}>Newsletter</h3>
+                        <hr />
+                        <div className="news-list">
+                            {this.state.news.map((i) => {
+                                return (
+                                    <NewsCard title={i.title} body={i.description} source={i.source} date={i.date}/>
+                                )
+                            })}
                         </div>
                     </div>
-                </Wrapper>
-            </div>
+                </div>
+            </Wrapper>
         )
     }
 }

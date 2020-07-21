@@ -6,9 +6,6 @@ import Shopping from '../../icons/Neighborhood/Shopping';
 import Dining from '../../icons/Neighborhood/Dining';
 import Schools from '../../icons/Neighborhood/Schools';
 import ParkTrail from '../../icons/Neighborhood/ParkTrail';
-
-import Navbar from '../../nav/301NAV';
-
 import './style.css';
 
 export default class Neighborhood extends Component {
@@ -20,7 +17,6 @@ export default class Neighborhood extends Component {
     render() {
         return (
             <div>
-                <Navbar />
                 <div className="hero">
                     <img className="bg" src={neighborhoodImage} alt="kitchen"></img>
                     

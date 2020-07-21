@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import Kitchen from '../../static/img/kitchen-zoomed-out.jpg'
 
-import Navbar from '../../nav/301NAV';
-
 const Wrapper = styled.div`
     .res-preview {
         position: relative;
@@ -33,8 +31,6 @@ class Residence extends Component {
     
     render() {
         return (
-            <div>
-                <Navbar />  
                 <Wrapper>
                     <div className="res-hero">
                         <img className="res-preview" alt="background" src={Kitchen}></img>
@@ -64,7 +60,6 @@ class Residence extends Component {
                         </div>
                     </div>
                 </Wrapper>
-            </div>
         )
     }
 }
