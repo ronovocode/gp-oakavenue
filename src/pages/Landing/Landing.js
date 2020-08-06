@@ -5,6 +5,8 @@ import kitchen from '../../static/img/kitchen.png';
 import kitchen_2 from '../../static/img/kitchen-zoomed-out.jpg';
 import loft from '../../static/img/loft.jpg';
 
+import Input from '../../components/Input/Input';
+
 import Chevron from '../../icons/Chevron';
 
 const LandingWrapper = styled.div`
@@ -64,6 +66,16 @@ export default class Landing extends Component {
         document.title = "301 Oak Avenue"
     }
 
+    scrollDown = (event) => {
+        //.current is verification that your element has rendered
+        if(this.myDivToFocus.current){
+            this.myDivToFocus.current.scrollIntoView({ 
+               behavior: "smooth", 
+               block: "nearest"
+            })
+        }
+    }
+
     render() {
         return (
             <LandingWrapper>
@@ -75,7 +87,7 @@ export default class Landing extends Component {
                             <hr />
                         </div>
                         <div className="hero-nav">
-                            <Chevron />
+                            <Chevron onClick={this.scrollDown} />
                         </div>
                     </div>
                     <div className="container">
@@ -112,6 +124,11 @@ export default class Landing extends Component {
                                     </a>
                                 </div>
                             </div>
+                        </div>
+                        <div className="row">
+                            <form className="w-50">
+                                <Input type="input" placeholder="E-Mail" />
+                            </form>
                         </div>
                     </div>
                 </div>
