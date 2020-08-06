@@ -57,6 +57,7 @@ function App() {
             <Route exact path="/testimonials" component={Testimonials}></Route>
 
             <PrivateRoute exact path='/resident/dashboard' user={user} component={Dashboard} />
+            
             <PrivateRoute exact path='/admin' user={user} component={Admin} />
             
             {/* Pass handleLogin to Login page as prop */}

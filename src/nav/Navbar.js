@@ -42,7 +42,7 @@ function Navbar(props) {
                   Residents
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <Link className="dropdown-item" to="/resident/login">Resident Application</Link>
+                  <Link className="dropdown-item" to="/resident/application">Resident Application</Link>
                   <Link className="dropdown-item" to="/resident/login">Resident Login</Link>
                   <Link className="dropdown-item" to="/resident/dashboard">Dashboard</Link>
                 </div>

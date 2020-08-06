@@ -235,7 +235,7 @@ class Properties extends Component {
     render() {
         return ( 
             <Wrapper className="container">
-                <h3 className="mt-5">Manage Properties</h3>
+                <h3 className="mt-5">Manage 301 Oak Avenue</h3>
                 <div className="row mt-5">
                     <div className="col available">
                         <div className="row">
