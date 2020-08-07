@@ -125,11 +125,6 @@ export default class Landing extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
-                            <form className="w-50">
-                                <Input type="input" placeholder="E-Mail" />
-                            </form>
-                        </div>
                     </div>
                 </div>
             </LandingWrapper>

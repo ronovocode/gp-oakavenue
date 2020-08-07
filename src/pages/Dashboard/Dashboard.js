@@ -164,14 +164,27 @@ class Investor extends Component {
 
                     </div>
                     <div className="col-md-6 newsletter">
-                        <h3 style={{color: "#D2CCA1"}}>Newsletter</h3>
+                        <h3 style={{color: "#D2CCA1"}}>Requests</h3>
                         <hr />
-                        <div className="news-list">
-                            {this.state.news.map((i) => {
-                                return (
-                                    <NewsCard title={i.title} body={i.description} source={i.source} date={i.date}/>
-                                )
-                            })}
+                        <div className="requests">
+                        <Input name="suggestions" 
+                            onChange={this.onChange}
+                            className="mt-4" 
+                            type="text" 
+                            label="Suggestions" 
+                            placeholder="Any ways we could improve our residence..." />
+                        <Button 
+                            text="Submit" 
+                            className="mt-3 mb-5"/>
+                        <Input name="maintenance" 
+                            onChange={this.onChange}
+                            className="mt-4" 
+                            type="text" 
+                            label="Maintenance" 
+                            placeholder="Type any issues you may be having here..." />
+                        <Button 
+                            text="Submit" 
+                            className="mt-3"/>
                         </div>
                     </div>
                 </div>
