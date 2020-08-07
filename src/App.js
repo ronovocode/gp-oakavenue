@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css';
 
 /* Theme Imports */
@@ -11,58 +11,80 @@ import Our_Homes from './pages/Our_Homes/Our_Homes';
 import Neighborhood from './pages/Neighborhood/Neighborhood';
 import Testimonials from './pages/Testimonials/Testimonials';
 
+/* Residents */
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Dashboard/Login';
 import ForgotPassword from './pages/Dashboard/ForgotPassword';
-
 import Residence from './pages/Residence/Residence';
 import Landing from './pages/Landing/Landing';
+
+import Admin from './pages/Admin/Admin';
+
+/* Navbar */
+import Navbar from './nav';
 
 /* React Router Imports */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from './components/PrivateRoute';
 
-function App() {
-  const [user, setUser] = useState(false)
+/* Redux */
+import { Provider } from "react-redux";
+import store from "./store";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/API/authToken";
+import { setCurrentUser, logoutUser } from "./actions/auth";
 
-  const handleLogin = e => {
-    e.preventDefault();
-    setUser(true);
-    localStorage.setItem("userAuthenticated", true);
+
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(token);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+  // Check for expired token
+  const currentTime = Date.now() / 1000; // to get in milliseconds
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+    // Redirect to login
+    window.location.href = "./login";
   }
-  
-  const handleLogout = e => {
-    e.preventDefault();
-    setUser(false);
-    localStorage.setItem("userAuthenticated", false);
-  }
+}
+
+function App() {
 
   return (
-    <Router>
-      <ThemeProvider theme={darkTheme}>
-        <GlobalStyles />
+    <Provider store={store}>
+        <Router>
+            <ThemeProvider theme={darkTheme}>
+            <GlobalStyles />
 
-        <div className="App"></div>
+            <div className="App"></div>
 
-        <Switch>
-            <Route exact path="/homes" component={Our_Homes}></Route>
-            <Route exact path="/neighborhood" component={Neighborhood}></Route>
-            <Route exact path="/testimonials" component={Testimonials}></Route>
-
-            <PrivateRoute exact path='/resident/dashboard' user={user} component={Dashboard} />
+            <Navbar />
             
-            {/* Pass handleLogin to Login page as prop */}
-            <Route exact path='/resident/login' handleLogin={handleLogin} render={
-              props => <Login {...props} user={user.toString()} handleLogin={handleLogin} />} 
-              />
+            <Switch>
+                <Route exact path="/homes" component={Our_Homes}></Route>
+                <Route exact path="/neighborhood" component={Neighborhood}></Route>
+                <Route exact path="/testimonials" component={Testimonials}></Route>
 
-            <Route exact path="/residence" component={Residence}></Route>
-            <Route exact path="/forgotpassword" component={ForgotPassword}/>
-            <Route path="/" component={Landing}></Route>
-        </Switch>
-        
-      </ThemeProvider>
-    </Router>
+                <Route exact path='/resident/login' component={Login}/>
+                
+                <PrivateRoute exact path='/resident/dashboard' component={Dashboard} />
+                
+                <PrivateRoute exact path='/admin' component={Admin} />
+                
+
+                <Route exact path="/residence" component={Residence}></Route>
+                <Route exact path="/forgotpassword" component={ForgotPassword}/>
+                <Route path="/" component={Landing}></Route>
+            </Switch>
+            
+            </ThemeProvider>
+        </Router>
+    </Provider>
   );
 }
 

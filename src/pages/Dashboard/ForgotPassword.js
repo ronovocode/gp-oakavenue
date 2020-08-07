@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-
-import Navbar from '../../nav/301NAV';
-
 import styled  from 'styled-components'
 
 import Input from '../../components/Input/Input';
@@ -33,30 +30,24 @@ class Login extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        console.log(this.state)
-        // const userData = {
-        //     email: this.state.email
-        // };
+        console.log(this.state);
 
     }
 
     render() {
         return (
-            <div>
-                <Navbar />
-                <LoginFormWrapper className="container">
-                    <h3 className="text-center my-5">Forgot Password</h3>
-                    <Input name="email" 
-                        onChange={this.onChange} 
-                        value={this.state.email} 
-                        type="input" 
-                        icon={<Mail />} 
-                        label="Email" 
-                        placeholder="johndoe@gmail.com" />
+            <LoginFormWrapper className="container">
+                <h3 className="text-center my-5">Forgot Password</h3>
+                <Input name="email" 
+                    onChange={this.onChange} 
+                    value={this.state.email} 
+                    type="input" 
+                    icon={<Mail />} 
+                    label="Email" 
+                    placeholder="johndoe@gmail.com" />
 
-                    <Button onClick={this.onSubmit} className="mt-4" text="Submit"/>
-                </LoginFormWrapper>
-            </div>
+                <Button onClick={this.onSubmit} className="mt-4" text="Submit"/>
+            </LoginFormWrapper>
         )   
     }
 }

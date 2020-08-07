@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-import GreenpointLogo from "../../icons/GreenpointLogo.js"
-import Menu from "../../icons/Menu.js"
+import GreenpointLogo from "../icons/GreenpointLogo.js"
+import Menu from "../icons/Menu.js"
 
 import './style.css'
 
@@ -42,7 +42,6 @@ function Navbar(props) {
                   Residents
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <Link className="dropdown-item" to="/resident/login">Resident Application</Link>
                   <Link className="dropdown-item" to="/resident/login">Resident Login</Link>
                   <Link className="dropdown-item" to="/resident/dashboard">Dashboard</Link>
                 </div>

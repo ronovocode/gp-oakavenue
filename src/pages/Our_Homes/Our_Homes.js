@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import Slider from '../../components/Slider/Slider';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 
-import Navbar from '../../nav/301NAV';
-
 import Card from '../../components/Card/Card'
 import Button from '../../components/Button/Button'
 import Dropdown from 'react-dropdown';
@@ -91,13 +89,11 @@ export default class Our_Homes extends Component {
 
     render() {
         return (
-            <div>
-                <Navbar />
                 <div className="container">
                     <Router />
                     <h1 className="mt-5">Our homes</h1>
                     <hr style={{backgroundColor: '#fff'}} />
-                    <div className="filters row mb-4">
+                    {/* <div className="filters row mb-4">
                         <div className="col-md-4">
                             <Dropdown className="mb-2" options={options.bedrooms} onChange={this._onSelect} value={defaultOption} placeholder="# of bedrooms" />
                             <Dropdown className="mb-2" options={options.bathrooms} onChange={this._onSelect} value={defaultOption} placeholder="# of bathrooms" />
@@ -106,7 +102,7 @@ export default class Our_Homes extends Component {
                         <div className="col-md-8">
                             <Slider className="mb-3" />
                         </div>
-                    </div>
+                    </div> */}
                     <div>
                         {this.state.apartments.length ? (
                             <div className="row">
@@ -134,7 +130,6 @@ export default class Our_Homes extends Component {
                         )}
                     </div>
                 </div>
-            </div>
         )
     }
 }
