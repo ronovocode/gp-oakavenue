@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
-import Slider from '../../components/Slider/Slider';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 
 import Card from '../../components/Card/Card'
-import Button from '../../components/Button/Button'
-import Dropdown from 'react-dropdown';
 import '../../utils/globalstyles/dropdown.css'
-
-const options = {
-    bedrooms: ['2 bedrooms', '3 bedrooms', '4 bedrooms'],
-    bathrooms: ['2 bathrooms', '3 bathrooms', '4 bathrooms']
-};
-
-const defaultOption = options[0];
 
 export default class Our_Homes extends Component {
     state = {
@@ -93,16 +83,6 @@ export default class Our_Homes extends Component {
                     <Router />
                     <h1 className="mt-5">Our homes</h1>
                     <hr style={{backgroundColor: '#fff'}} />
-                    {/* <div className="filters row mb-4">
-                        <div className="col-md-4">
-                            <Dropdown className="mb-2" options={options.bedrooms} onChange={this._onSelect} value={defaultOption} placeholder="# of bedrooms" />
-                            <Dropdown className="mb-2" options={options.bathrooms} onChange={this._onSelect} value={defaultOption} placeholder="# of bathrooms" />
-                            <Button style={{backgroundColor: '#D2CCA1', color: '#212121'}} text="Apply Filters"/>
-                        </div>
-                        <div className="col-md-8">
-                            <Slider className="mb-3" />
-                        </div>
-                    </div> */}
                     <div>
                         {this.state.apartments.length ? (
                             <div className="row">

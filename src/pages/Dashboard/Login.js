@@ -50,7 +50,6 @@ class Login extends Component {
     }
 
     onChange = e => {
-        console.log("FROM: " + e.target.id + " " + e.target.value);
         this.setState({ 
             [e.target.id]: e.target.value
         });

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 import UserIcon from '../../icons/UserIcon'
+import Phone from '../../icons/Phone'
+import Mail from '../../icons/Mail'
+
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 import NewsCard from '../../components/NewsCard/NewsCard'
@@ -8,6 +11,8 @@ import NewsCard from '../../components/NewsCard/NewsCard'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+    margin-bottom: 20rem;
+
     hr {
         background-color: #fff;
     }
@@ -26,8 +31,7 @@ const Wrapper = styled.div`
 class Investor extends Component {
     state = {
         toggleEdit: false,
-        firstName: "John",
-        lastName: "Doe",
+        name: "John Doe",
         cell: "6505216699",
         email: "johndoe@gmail.com",
         documents: [
@@ -101,6 +105,12 @@ class Investor extends Component {
         ]
     }
 
+    onChange = e => {
+        this.setState({ 
+            [e.target.id]: e.target.value
+        });
+    };
+
     render() {
         return (
             <Wrapper className="container">
@@ -111,23 +121,23 @@ class Investor extends Component {
                     <h4>Contact Information</h4>
                     {this.state.toggleEdit ? (
                         <div className="contact">
-                            <Input type="input" placeholder={this.state.firstName + " " + this.state.lastName} />
-                            <Input type="input" placeholder={this.state.cell} />
-                            <Input type="input" placeholder={this.state.email} />
+                            <Input name="name" onChange={this.onChange} type="input" placeholder="Name" />
+                            <Input name="cell" onChange={this.onChange} type="input" placeholder="Phone number" />
+                            <Input name="email" onChange={this.onChange} type="input" placeholder="E-mail" />
                         </div>
                     ) : (
                         <div className="contact">
                             <p className="investor-name">
-                                <UserIcon color="#fff" className="mr-3"/>
-                                {this.state.firstName + " " + this.state.lastName}
+                                {/* <UserIcon color="#fff" className="mr-3"/> */}
+                                Name: {this.state.name}
                             </p>
                             <p className="investor-cell">
-                                <UserIcon color="#fff" className="mr-3"/>
-                                {this.state.cell}
+                                {/* <Phone color="#fff" className="mr-3"/> */}
+                                Cell: {this.state.cell}
                             </p>
                             <p className="investor-email">
-                                <UserIcon color="#fff" className="mr-3"/>
-                                {this.state.email}
+                                {/* <Mail color="#fff" className="mr-5"/> */}
+                                Email: {this.state.email}
                             </p>
                         </div>
                     )}
