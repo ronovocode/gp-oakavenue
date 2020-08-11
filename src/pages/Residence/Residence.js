@@ -7,6 +7,7 @@ import Kitchen from '../../static/img/kitchen-zoomed-out.jpg'
 
 import Bed from '../../icons/Bed'
 import Bath from '../../icons/Bath'
+import House from '../../icons/House'
 
 const Wrapper = styled.div`
     .res-preview {
@@ -39,7 +40,7 @@ class Residence extends Component {
         this.state = {
                 Property_Number: "#221",
                 Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
+                Square_Footage: 1220,
                 Number_of_Bedrooms: 2,
                 Number_of_Bathrooms: 2,
                 Office_Rooms: 1,
@@ -50,9 +51,9 @@ class Residence extends Component {
                 Type: "Apartment",
                 Description: "See more...",
                 Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
+                Virtual_Tour: "https://my.matterport.com/show/?m=vbTzLCM4rtF",
                 Smart_Home_Features: ["Nest Thermostat ", 
-                    "Smart lock ", "Smart lighting"],
+                "Smart lock ", "Smart lighting"],
                 Images: [
                     "https://source.unsplash.com/random",
                     "https://source.unsplash.com/random",
@@ -92,6 +93,10 @@ class Residence extends Component {
                                         <Bath color="#D2CCA1" />
                                         <p className="mt-2">{this.state.Number_of_Bathrooms} bathrooms</p>
                                     </div>
+                                    <div className="col-md-2 text-center">
+                                        <House color="#D2CCA1" />
+                                        <p className="mt-2">{this.state.Square_Footage} sq ft</p>
+                                    </div>
                                 </div>
                                 <div className="row mt-5">
                                     <div className="col-md-6">
@@ -100,12 +105,14 @@ class Residence extends Component {
                                             {this.state.Office_Rooms > 0 && <li>Office Room</li>}
                                             {this.state.Powder_Room === "Yes" && <li>Powder Room</li>}
                                             {this.state.Washer_And_Dryer === "Common" ? <li>Common area washer & dryer</li> : <li>In-house washer & dryer</li>}
-                                            <li>
-                                                Smart Home Features
-                                                <ul className="mt-2">
-                                                    {this.state.Smart_Home_Features.map(feature => <li>{feature}</li>)}
-                                                </ul>
-                                            </li>
+                                            {this.state.Smart_Home_Features.length > 0 && 
+                                                <li>
+                                                    Smart Home Features
+                                                    <ul className="mt-2">
+                                                        {this.state.Smart_Home_Features.map(feature => <li>{feature}</li>)}
+                                                    </ul>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                     <div className="col-md-6">
@@ -116,7 +123,13 @@ class Residence extends Component {
                                         </ul>
                                     </div>
                                 </div>
-
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col text-center">
+                                <h3>Take a virtual tour</h3>
+                                <hr />
+                                <iframe width='853'height='480' src={this.state.Virtual_Tour} frameborder='0' allowfullscreen allow='vr'></iframe>
                             </div>
                         </div>
                     </div>

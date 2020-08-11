@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Bed extends Component {
+export default class Bath extends Component {
     constructor(props) {
         super(props);
         this.color = {
