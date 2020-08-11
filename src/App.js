@@ -23,6 +23,8 @@ import Admin from './pages/Admin/Admin';
 /* Navbar */
 import Navbar from './nav';
 
+import Footer from './components/Footer/Footer';
+
 /* React Router Imports */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from './components/PrivateRoute';
@@ -82,6 +84,7 @@ function App() {
                 <Route path="/" component={Landing}></Route>
             </Switch>
             
+            <Footer />
             </ThemeProvider>
         </Router>
     </Provider>
