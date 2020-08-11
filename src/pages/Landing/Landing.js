@@ -68,12 +68,13 @@ export default class Landing extends Component {
 
     scrollDown = (event) => {
         //.current is verification that your element has rendered
-        if(this.myDivToFocus.current){
-            this.myDivToFocus.current.scrollIntoView({ 
-               behavior: "smooth", 
-               block: "nearest"
-            })
-        }
+        // if(this.myDivToFocus.current){
+        //     this.myDivToFocus.current.scrollIntoView({ 
+        //        behavior: "smooth", 
+        //        block: "nearest"
+        //     })
+        // }
+        console.log("SCROLL")
     }
 
     render() {
@@ -124,6 +125,9 @@ export default class Landing extends Component {
                                     </a>
                                 </div>
                             </div>
+                        </div>
+                        <div className="row">
+                            <embed type="text/html" src=""></embed>
                         </div>
                     </div>
                 </div>
