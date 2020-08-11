@@ -51,8 +51,8 @@ class Residence extends Component {
                 Description: "See more...",
                 Floor_Plan: "Link to floorplan",
                 Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "],
+                Smart_Home_Features: ["Nest Thermostat ", 
+                    "Smart lock ", "Smart lighting"],
                 Images: [
                     "https://source.unsplash.com/random",
                     "https://source.unsplash.com/random",
@@ -79,7 +79,8 @@ class Residence extends Component {
                     <div className="container mt-3">
                         <div className="row">
                             <div className="col apartment-info">
-                                <h1>{this.state.unit}</h1>
+                                <h1>{this.state.Property_Number}</h1>
+                                <p className="text-muted">{this.state.Type}</p>
                                 <hr />
 
                                 <div className="row mt-5">
@@ -93,9 +94,26 @@ class Residence extends Component {
                                     </div>
                                 </div>
                                 <div className="row mt-5">
-                                    <div className="col">
-                                        <h3>Additional Amenities</h3>
-
+                                    <div className="col-md-6">
+                                        <h3>Amenities</h3>
+                                        <ul>
+                                            {this.state.Office_Rooms > 0 && <li>Office Room</li>}
+                                            {this.state.Powder_Room === "Yes" && <li>Powder Room</li>}
+                                            {this.state.Washer_And_Dryer === "Common" ? <li>Common area washer & dryer</li> : <li>In-house washer & dryer</li>}
+                                            <li>
+                                                Smart Home Features
+                                                <ul className="mt-2">
+                                                    {this.state.Smart_Home_Features.map(feature => <li>{feature}</li>)}
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h3>Additional Info</h3>
+                                        <ul>
+                                            {this.state.Facing_Direction && <li>Facing {this.state.Facing_Direction}</li>}
+                                            
+                                        </ul>
                                     </div>
                                 </div>
 
