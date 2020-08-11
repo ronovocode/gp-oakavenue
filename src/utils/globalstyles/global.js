@@ -84,10 +84,6 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.background};
   }
   
-  nav.navbar {
-    background-color: transparent;
-  }
-
   .modal-content {
     background-color: ${({ theme }) => theme.background}
   }

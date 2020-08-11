@@ -299,10 +299,11 @@ class Properties extends Component {
                                                 </button>
                                             </div>
                                             <div className="modal-body">
-                                                <h4 className="mb-3">Date available</h4>
+                                                <h4 className="mb-3">Date Available</h4>
                                                 <Calendar 
                                                     onChange={this.onChangeCalendar}
                                                     value={this.state.date}/>
+                                                <Input className="mt-4" label="Price per month" placeholder="$1120" type="input"></Input>
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -316,23 +317,6 @@ class Properties extends Component {
                         })}
                     </div>
                 </div>
-                {/* <div className="row mt-5">
-                    <div className="col-md-6">
-                        <h5>Add New Property</h5>
-                        <hr />
-                        {Object.entries(this.state.properties[0]).map((keyVal, index) => {
-                            let titleWithWhitespace = keyVal[0].replace(/_/g, " ");
-
-                            return(
-                                <Input key={index} type="input" label={titleWithWhitespace} placeholder={keyVal[1]}/>
-                            )
-                        })}
-                        <Button text="Add Property" />
-                    </div>
-                    <div className="col-md-6">
-
-                    </div>
-                </div> */}
             </Wrapper>
         )
     }
