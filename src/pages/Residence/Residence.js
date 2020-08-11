@@ -37,20 +37,32 @@ class Residence extends Component {
         super(props);
 
         this.state = {
-            unit: "101",
-            numberOfBeds: 2,
-            numberOfBaths: 3,
-            pricePerMonth: 1400,
-            images: [
-                "https://source.unsplash.com/random",
-                "https://source.unsplash.com/random",
-                "https://source.unsplash.com/random",
-                "https://source.unsplash.com/random",
-                "https://source.unsplash.com/random",
-                "https://source.unsplash.com/random",
-                "https://source.unsplash.com/random",
-                "https://source.unsplash.com/random"
-            ]
+                Property_Number: "#221",
+                Thumbnail: "http://source.unsplash.com/random/600x600",
+                Square_Footage: 890,
+                Number_of_Bedrooms: 2,
+                Number_of_Bathrooms: 2,
+                Office_Rooms: 1,
+                Powder_Room: "Yes",
+                Washer_And_Dryer: "Common",
+                Available_Date: "08/12/2020",
+                Facing_Direction: "East",
+                Type: "Apartment",
+                Description: "See more...",
+                Floor_Plan: "Link to floorplan",
+                Virtual_Tour: "https://my.matterport.com/",
+                Smart_Home_Features: ["Smart lighting ", 
+                    "Smart lock "],
+                Images: [
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random"
+                ]
         }
     }
 
@@ -73,16 +85,17 @@ class Residence extends Component {
                                 <div className="row mt-5">
                                     <div className="col-md-2 text-center">
                                         <Bed color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.numberOfBeds} bedrooms</p>
+                                        <p className="mt-2">{this.state.Number_of_Bedrooms} bedrooms</p>
                                     </div>
                                     <div className="col-md-2 text-center">
                                         <Bath color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.numberOfBaths} bathrooms</p>
+                                        <p className="mt-2">{this.state.Number_of_Bathrooms} bathrooms</p>
                                     </div>
                                 </div>
                                 <div className="row mt-5">
                                     <div className="col">
                                         <h3>Additional Amenities</h3>
+
                                     </div>
                                 </div>
 

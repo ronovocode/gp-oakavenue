@@ -87,4 +87,17 @@ export const GlobalStyles = createGlobalStyle`
   nav.navbar {
     background-color: transparent;
   }
+
+  .modal-content {
+    background-color: ${({ theme }) => theme.background}
+  }
+
+  .modal-header span {
+    color: ${({ theme }) => theme.text}
+  }
+
+  .card {
+    background-color: ${({ theme }) => theme.background};
+    border: 1px ${({ theme }) => theme.text} solid;
+  }
 `
