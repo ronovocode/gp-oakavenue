@@ -43,12 +43,14 @@ export default function Input(props) {
             <label for="basic-url">{props.label}</label>
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1">
-                        {props.icon}
-                    </span>
+                    {props.icon && 
+                        <span className="input-group-text" id="basic-addon1">
+                            {props.icon}
+                        </span>
+                    }
                 </div>
-                <input id={props.name} type={props.text_decoration === "password" ? "password" : "text"} 
-                        className="form-control" 
+                <input id={props.name} type={props.text_decoration} 
+                        className={"form-control"}
                         placeholder={props.placeholder} 
                         aria-label={props.placeholder} 
                         aria-describedby="basic-addon1">
