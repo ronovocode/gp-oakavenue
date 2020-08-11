@@ -49,12 +49,21 @@ class Residence extends Component {
                 Available_Date: "08/12/2020",
                 Facing_Direction: "East",
                 Type: "Apartment",
+                Price: 1140,
                 Description: "See more...",
                 Floor_Plan: "Link to floorplan",
                 Virtual_Tour: "https://my.matterport.com/show/?m=vbTzLCM4rtF",
                 Smart_Home_Features: ["Nest Thermostat ", 
                 "Smart lock ", "Smart lighting"],
                 Images: [
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
+                    "https://source.unsplash.com/random",
                     "https://source.unsplash.com/random",
                     "https://source.unsplash.com/random",
                     "https://source.unsplash.com/random",
@@ -97,6 +106,10 @@ class Residence extends Component {
                                         <House color="#D2CCA1" />
                                         <p className="mt-2">{this.state.Square_Footage} sq ft</p>
                                     </div>
+                                    <div className="col-md-2 text-center">
+                                        <House color="#D2CCA1" />
+                                        <p className="mt-2">{this.state.Square_Footage} /mo</p>
+                                    </div>
                                 </div>
                                 <div className="row mt-5">
                                     <div className="col-md-6">
@@ -130,6 +143,21 @@ class Residence extends Component {
                                 <h3>Take a virtual tour</h3>
                                 <hr />
                                 <iframe width='853'height='480' src={this.state.Virtual_Tour} frameborder='0' allowfullscreen allow='vr'></iframe>
+                            </div>
+                        </div>
+                        <div className="row mt-5">
+                            <div className="col text-center">
+                                <h3>Gallery</h3>
+                                <hr />
+                                <div className="row d-flex">
+                                    {this.state.Images && this.state.Images.map((image => {
+                                        return (
+                                            <div className="col-md-2 p-2">
+                                                <img className="img-fluid" src={image}/>
+                                            </div>
+                                        )
+                                    }))}
+                                </div>
                             </div>
                         </div>
                     </div>
