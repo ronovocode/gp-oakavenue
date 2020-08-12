@@ -59,6 +59,8 @@ const Wrapper = styled.div`
 
 class Properties extends Component {
     state = {
+        selectedInvestor: "",
+        currentFile: "Choose file...",
         properties: [
             {
                 Property_Number: "#221",
@@ -251,6 +253,30 @@ class Properties extends Component {
                     "Smart lock "]
             },
         ], 
+        residents: [
+            {
+                Unit: "#221",
+                First_Name: "Ronak",
+                Middle_Name: "S",
+                Last_Name: "Patel",
+                Email: "ronak0624@gmail.com",
+                Cell: "6505216699",
+                Documents: [
+                    {
+                        name: "SEC_Filing.pdf",
+                        url: "http://www.google.com/"
+                    },
+                    {
+                        name: "SEC_Filing2.pdf",
+                        url: "http://www.google.com/"
+                    },
+                    {
+                        name: "SEC_Filing3.pdf",
+                        url: "http://www.google.com/"
+                    }
+                ]
+            }
+        ]   
     }
 
     onChange = e => {
@@ -263,12 +289,24 @@ class Properties extends Component {
         window.location.reload();
     }
 
+    onChangeHandler = event => {
+        console.log(event.target.files[0]);
+
+        this.setState({
+            currentFile: event.target.files[0].name
+        });
+    }
+
+    modalOpenedHandler = event => {
+        console.log(event.target.key)
+    }
+
     render() {
         return ( 
             <Wrapper className="container">
-                <h3 className="mt-5">Manage 301 Oak Avenue</h3>
                 <div className="row mt-5">
                     <div className="col">
+                        <h3 className="mb-5">Manage 301 Oak Avenue</h3>
                         {this.state.properties.map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
@@ -307,7 +345,67 @@ class Properties extends Component {
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" className="btn btn-primary">Save</button>
+                                                <button type="button" className="btn btn-primary" data-dismiss="modal">Save</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="col">
+                        <h3 className="mb-5">Manage Residents</h3>
+                        {this.state.residents.map((resident, index) => {
+                            return(
+                                <div key={index} className="card mb-2">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{resident.First_Name + " " + resident.Middle_Name + " " + resident.Last_Name}</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">from {resident.Unit}</h6>
+                                        <ul>
+                                            <li>Email: <span>{resident.Email}</span></li>
+                                            <li>Phone: <span>{resident.Cell}</span></li>
+                                            <li>Documents
+                                                <ul>
+                                                    {resident.Documents.map(document => {
+                                                        return (
+                                                            <li>
+                                                                <a href={document.url}>{document.name}</a>
+                                                            </li>
+                                                        )
+                                                    })}
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal2-" + index} className="edit-button d-block">Edit</div>
+                                    </div>
+                                    <div className="modal fade" id={"modal2-" + index} tabindex="-1" aria-labelledby="newresidentModalLabel" aria-hidden="true">
+                                        <div className="modal-dialog">
+                                            <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="newresidentModalLabel">Edit {resident.PropertyUnderManagement}</h5>
+                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <form>
+                                                    <Input label="Unit" type="input" placeholder={resident.Unit}></Input>
+                                                    <Input label="First Name" type="input" placeholder={resident.First_Name}></Input>
+                                                    <Input label="Middle Name" type="input" placeholder={resident.Middle_Name}></Input>
+                                                    <Input label="Last Name" type="input" placeholder={resident.Last_Name}></Input>
+                                                    <Input label="Phone" type="input" placeholder={resident.Cell}></Input>
+                                                    <Input label="Email" type="input" placeholder={resident.Email}></Input>
+
+                                                    <div class="custom-file">
+                                                        <input onChange={this.onChangeHandler} type="file" class="custom-file-input" id="customFile" />
+                                                        <label class="custom-file-label" for="customFile">{this.state.currentFile}</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" className="btn btn-primary" data-dismiss="modal">Save</button>
                                             </div>
                                             </div>
                                         </div>
