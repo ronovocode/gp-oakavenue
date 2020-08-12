@@ -255,7 +255,7 @@ class Properties extends Component {
         ], 
         residents: [
             {
-                Unit: "#221",
+                Unit: "221",
                 First_Name: "Ronak",
                 Middle_Name: "S",
                 Last_Name: "Patel",
@@ -275,7 +275,29 @@ class Properties extends Component {
                         url: "http://www.google.com/"
                     }
                 ]
-            }
+            },
+            {
+                Unit: "101",
+                First_Name: "Clayton",
+                Middle_Name: "",
+                Last_Name: "Novotney",
+                Email: "clayton-notovney@hotmail.com",
+                Cell: "6505216699",
+                Documents: [
+                    {
+                        name: "SEC_Filing.pdf",
+                        url: "http://www.google.com/"
+                    },
+                    {
+                        name: "SEC_Filing2.pdf",
+                        url: "http://www.google.com/"
+                    },
+                    {
+                        name: "SEC_Filing3.pdf",
+                        url: "http://www.google.com/"
+                    }
+                ]
+            },
         ]   
     }
 
@@ -305,7 +327,7 @@ class Properties extends Component {
         return ( 
             <Wrapper className="container">
                 <div className="row mt-5">
-                    <div className="col">
+                    <div className="col-md">
                         <h3 className="mb-5">Manage 301 Oak Avenue</h3>
                         {this.state.properties.map((property, index) => {
                             return(
@@ -354,14 +376,14 @@ class Properties extends Component {
                             )
                         })}
                     </div>
-                    <div className="col">
+                    <div className="col-md">
                         <h3 className="mb-5">Manage Residents</h3>
                         {this.state.residents.map((resident, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
                                         <h5 className="card-title">{resident.First_Name + " " + resident.Middle_Name + " " + resident.Last_Name}</h5>
-                                        <h6 className="card-subtitle mb-2 text-muted">from {resident.Unit}</h6>
+                                        <h6 className="card-subtitle mb-2 text-muted">from Unit {resident.Unit}</h6>
                                         <ul>
                                             <li>Email: <span>{resident.Email}</span></li>
                                             <li>Phone: <span>{resident.Cell}</span></li>
