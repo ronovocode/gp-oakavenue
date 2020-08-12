@@ -83,8 +83,6 @@ function App() {
                 <Route exact path="/forgotpassword" component={ForgotPassword}/>
                 <Route path="/" component={Landing}></Route>
             </Switch>
-            
-            <Footer />
             </ThemeProvider>
         </Router>
     </Provider>
