@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-
 import { BrowserRouter as Router, useParams } from 'react-router-dom';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 import Kitchen from '../../static/img/kitchen-zoomed-out.jpg'
 
 import Bed from '../../icons/Bed'
 import Bath from '../../icons/Bath'
 import House from '../../icons/House'
+import Calendar from '../../icons/Calendar'
+import DollarSign from '../../icons/DollarSign'
 
 const Wrapper = styled.div`
     .res-preview {
@@ -30,6 +33,10 @@ const Wrapper = styled.div`
     hr {
         background-color: #D2CCA1
     }
+
+    .gallery .col-md-2 {
+        cursor: pointer;
+    }
     
 `
 
@@ -46,7 +53,7 @@ class Residence extends Component {
                 Office_Rooms: 1,
                 Powder_Room: "Yes",
                 Washer_And_Dryer: "Common",
-                Available_Date: "08/12/2020",
+                Available_Date: "08/19/20",
                 Facing_Direction: "East",
                 Type: "Apartment",
                 Price: 1140,
@@ -56,23 +63,20 @@ class Residence extends Component {
                 Smart_Home_Features: ["Nest Thermostat ", 
                 "Smart lock ", "Smart lighting"],
                 Images: [
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random",
-                    "https://source.unsplash.com/random"
-                ]
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/1-DSC00394.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/2-DSC00395.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/3-DSC00396.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/4-DSC00397.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/5-DSC00398.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/6-DSC00400.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/31-DSC00426.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/32-DSC00427.jpg",
+                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/9-DSC00403.jpg"
+                ],
+
+                lightboxIsOpen: false,
+                lightboxIndex: 0
+                
         }
     }
 
@@ -81,6 +85,7 @@ class Residence extends Component {
     }
     
     render() {
+        const { lightboxIndex, lightboxIsOpen, Images } = this.state
         return (
                 <Wrapper>
                     <div className="res-hero">
@@ -107,8 +112,12 @@ class Residence extends Component {
                                         <p className="mt-2">{this.state.Square_Footage} sq ft</p>
                                     </div>
                                     <div className="col-md-2 text-center">
-                                        <House color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.Square_Footage} /mo</p>
+                                        <Calendar color="#D2CCA1" />
+                                        <p className="mt-2">Available starting on {this.state.Available_Date}</p>
+                                    </div>
+                                    <div className="col-md-2 text-center">
+                                        <DollarSign color="#D2CCA1" />
+                                        <p className="mt-2">${this.state.Price}/mo</p>
                                     </div>
                                 </div>
                                 <div className="row mt-5">
@@ -142,21 +151,42 @@ class Residence extends Component {
                             <div className="col text-center">
                                 <h3>Take a virtual tour</h3>
                                 <hr />
-                                <iframe width='853'height='480' src={this.state.Virtual_Tour} frameborder='0' allowfullscreen allow='vr'></iframe>
+                                <iframe width='900'height='500' src={this.state.Virtual_Tour} frameborder='0' allowfullscreen allow='vr'></iframe>
                             </div>
                         </div>
                         <div className="row mt-5">
                             <div className="col text-center">
                                 <h3>Gallery</h3>
                                 <hr />
-                                <div className="row d-flex">
-                                    {this.state.Images && this.state.Images.map((image => {
+                                <div className="row d-flex gallery">
+                                    {this.state.Images && this.state.Images.map((image, index) => {
                                         return (
-                                            <div className="col-md-2 p-2">
+                                            <div className="col-md-2 p-2" onClick={() => this.setState({ 
+                                                    lightboxIsOpen: true, 
+                                                    lightboxIndex: index
+                                                })}>
                                                 <img className="img-fluid" src={image}/>
                                             </div>
                                         )
-                                    }))}
+                                    })}
+                                    {lightboxIsOpen && (
+                                        <Lightbox
+                                            mainSrc={Images[lightboxIndex]}
+                                            nextSrc={Images[(lightboxIndex + 1) % Images.length]}
+                                            prevSrc={Images[(lightboxIndex + Images.length - 1) % Images.length]}
+                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onMovePrevRequest={() =>
+                                                this.setState({
+                                                    lightboxIndex: (lightboxIndex + Images.length - 1) % Images.length,
+                                                })
+                                            }
+                                            onMoveNextRequest={() =>
+                                                this.setState({
+                                                    lightboxIndex: (lightboxIndex + 1) % Images.length,
+                                                })
+                                            }
+                                        />
+                                    )}
                                 </div>
                             </div>
                         </div>
