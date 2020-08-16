@@ -15,10 +15,11 @@ import Testimonials from './pages/Testimonials/Testimonials';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Dashboard/Login';
 import ForgotPassword from './pages/Dashboard/ForgotPassword';
-import Residence from './pages/Residence/Residence';
+import Residence from './pages/Our_Homes/Residence';
 import Landing from './pages/Landing/Landing';
 
 import Admin from './pages/Admin/Admin';
+import AdminLogin from './pages/Admin/Login';
 
 /* Navbar */
 import Navbar from './nav';
@@ -77,14 +78,13 @@ function App() {
                 <PrivateRoute exact path='/resident/dashboard' component={Dashboard} />
                 
                 <PrivateRoute exact path='/admin' component={Admin} />
+                <Route exact path='/admin/login' component={AdminLogin} />
                 
 
                 <Route exact path="/residence" component={Residence}></Route>
                 <Route exact path="/forgotpassword" component={ForgotPassword}/>
                 <Route path="/" component={Landing}></Route>
             </Switch>
-            
-            <Footer />
             </ThemeProvider>
         </Router>
     </Provider>

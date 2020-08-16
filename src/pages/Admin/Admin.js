@@ -6,6 +6,8 @@ import Table from '../../components/Table/Table';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 
+import API from '../../utils/API';
+
 
 const Wrapper = styled.div`
     hr {
@@ -61,198 +63,6 @@ class Properties extends Component {
     state = {
         selectedInvestor: "",
         currentFile: "Choose file...",
-        properties: [
-            {
-                Property_Number: "#221",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#222",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 920,
-                Number_of_Bedrooms: 3,
-                Number_of_Bathrooms: 4,
-                Office_Rooms: 0,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#223",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "No",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#224",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#221",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#221",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#222",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 920,
-                Number_of_Bedrooms: 3,
-                Number_of_Bathrooms: 4,
-                Office_Rooms: 0,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#223",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "No",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#224",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-            {
-                Property_Number: "#221",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 890,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/2/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Description: "Lorem ipsum placeholder text",
-                Images: "View images",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/",
-                Smart_Home_Features: ["Smart lighting ", 
-                    "Smart lock "]
-            },
-        ], 
         residents: [
             {
                 Unit: "221",
@@ -307,6 +117,12 @@ class Properties extends Component {
 
     onChangeCalendar = date => this.setState({ date })
 
+    componentWillMount = () => {
+        this.setState({
+            apartments: API.GET_ALL_APARTMENTS()
+        })
+    }
+
     toggleAllEdit = () => {
         window.location.reload();
     }
@@ -329,7 +145,7 @@ class Properties extends Component {
                 <div className="row mt-5">
                     <div className="col-md">
                         <h3 className="mb-5">Manage 301 Oak Avenue</h3>
-                        {this.state.properties.map((property, index) => {
+                        {this.state.apartments.map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
@@ -344,7 +160,6 @@ class Properties extends Component {
                                             <li>Available Date: <span>{property.Available_Date}</span></li>
                                             <li>Facing Direction: <span>{property.Facing_Direction}</span></li>
                                             <li>Type: <span>{property.Type}</span></li>
-                                            <li>Description: <span>{property.Description}</span></li>
 
                                         </ul>
                                         <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal-" + index} className="edit-button d-block">Edit</div>
