@@ -5,6 +5,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
 import Kitchen from '../../static/img/kitchen-zoomed-out.jpg'
+import Plan3D from '../../static/img/3dplan1.png'
 
 import Bed from '../../icons/Bed'
 import Bath from '../../icons/Bath'
@@ -143,7 +144,11 @@ class Residence extends Component {
                                 <h1>{this.state.Property_Number}</h1>
                                 <p className="text-muted">{this.state.Type}</p>
                                 <hr />
-
+                                <div className="row">
+                                    <div className="col">
+                                        <img className="img-fluid" src={Plan3D}></img>
+                                    </div>
+                                </div>
                                 <div className="row mt-5">
                                     <div className="col-md-2 text-center">
                                         <Bed color="#D2CCA1" />
@@ -193,6 +198,7 @@ class Residence extends Component {
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="row">
                             <div className="col text-center">
                                 <h3>Take a virtual tour</h3>
