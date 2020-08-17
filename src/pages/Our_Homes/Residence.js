@@ -15,6 +15,7 @@ import Office from '../../icons/Office'
 import SmartHome from '../../icons/SmartHome'
 import Washer from '../../icons/Washer'
 import Compass from '../../icons/Compass'
+import Magnifying from '../../icons/Magnifying'
 
 const Wrapper = styled.div`
     .res-preview {
@@ -44,6 +45,18 @@ const Wrapper = styled.div`
 
     .text-lighter {
 
+    }
+
+    .zoom {
+        position: absolute;
+        left: 5rem;
+        bottom: 5rem;
+        transition: 0.3s
+    }
+
+    .zoom:hover {
+        cursor: pointer;
+        transform: scale(1.1);
     }
     
     .iframe-container {
@@ -115,7 +128,14 @@ class Residence extends Component {
         return (
                 <Wrapper>
                     <div className="res-hero">
-                        <img className="res-preview" alt="background" src={Kitchen}></img>
+                        <img 
+                            className="res-preview" 
+                            alt="background" 
+                            src={Kitchen}></img>
+                        <Magnifying className="zoom" color="#151C0D" onClick={() => this.setState({ 
+                                                    lightboxIsOpen: true, 
+                                                    lightboxIndex: 0
+                                                })} />
                     </div>
                     <div className="container mt-3">
                         <div className="row">
@@ -204,7 +224,7 @@ class Residence extends Component {
                                             mainSrc={Images[lightboxIndex]}
                                             nextSrc={Images[(lightboxIndex + 1) % Images.length]}
                                             prevSrc={Images[(lightboxIndex + Images.length - 1) % Images.length]}
-                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onCloseRequest={() => this.setState({ lightboxIsOpen: false })}
                                             onMovePrevRequest={() =>
                                                 this.setState({
                                                     lightboxIndex: (lightboxIndex + Images.length - 1) % Images.length,
