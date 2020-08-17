@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Link} from 'react-router-dom';
 import Card from '../../components/Card/Card'
 import '../../utils/globalstyles/dropdown.css'
 
+import { apartments } from '../../static/data';
+
 export default class Our_Homes extends Component {
     state = {
         apartments: [

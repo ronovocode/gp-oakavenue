@@ -11,6 +11,11 @@ import Bath from '../../icons/Bath'
 import House from '../../icons/House'
 import Calendar from '../../icons/Calendar'
 import DollarSign from '../../icons/DollarSign'
+import Office from '../../icons/Office'
+import SmartHome from '../../icons/SmartHome'
+import Washer from '../../icons/Washer'
+import Compass from '../../icons/Compass'
+import Magnifying from '../../icons/Magnifying'
 
 const Wrapper = styled.div`
     .res-preview {
@@ -37,7 +42,40 @@ const Wrapper = styled.div`
     .gallery .col-md-2 {
         cursor: pointer;
     }
+
+    .text-lighter {
+
+    }
+
+    .zoom {
+        position: absolute;
+        left: 5rem;
+        bottom: 5rem;
+        transition: 0.3s
+    }
+
+    .zoom:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
     
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+      
+    .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    }
 `
 
 class Residence extends Component {
@@ -50,7 +88,7 @@ class Residence extends Component {
                 Square_Footage: 1220,
                 Number_of_Bedrooms: 2,
                 Number_of_Bathrooms: 2,
-                Office_Rooms: 1,
+                Office_Rooms: 2,
                 Powder_Room: "Yes",
                 Washer_And_Dryer: "Common",
                 Available_Date: "08/19/20",
@@ -75,7 +113,8 @@ class Residence extends Component {
                 ],
 
                 lightboxIsOpen: false,
-                lightboxIndex: 0
+                lightboxIndex: 0,
+                virtual_tour_fullscreen: false
                 
         }
     }
@@ -89,7 +128,14 @@ class Residence extends Component {
         return (
                 <Wrapper>
                     <div className="res-hero">
-                        <img className="res-preview" alt="background" src={Kitchen}></img>
+                        <img 
+                            className="res-preview" 
+                            alt="background" 
+                            src={Kitchen}></img>
+                        <Magnifying className="zoom" color="#151C0D" onClick={() => this.setState({ 
+                                                    lightboxIsOpen: true, 
+                                                    lightboxIndex: 0
+                                                })} />
                     </div>
                     <div className="container mt-3">
                         <div className="row">
@@ -119,30 +165,30 @@ class Residence extends Component {
                                         <DollarSign color="#D2CCA1" />
                                         <p className="mt-2">${this.state.Price}/mo</p>
                                     </div>
-                                </div>
-                                <div className="row mt-5">
-                                    <div className="col-md-6">
-                                        <h3>Amenities</h3>
-                                        <ul>
-                                            {this.state.Office_Rooms > 0 && <li>Office Room</li>}
-                                            {this.state.Powder_Room === "Yes" && <li>Powder Room</li>}
-                                            {this.state.Washer_And_Dryer === "Common" ? <li>Common area washer & dryer</li> : <li>In-house washer & dryer</li>}
-                                            {this.state.Smart_Home_Features.length > 0 && 
-                                                <li>
-                                                    Smart Home Features
-                                                    <ul className="mt-2">
-                                                        {this.state.Smart_Home_Features.map(feature => <li>{feature}</li>)}
-                                                    </ul>
-                                                </li>
+                                    {this.state.Office_Rooms > 0 && 
+                                        <div className="col-md-2 text-center">
+                                            <Office color="#D2CCA1" />
+                                            <p className="mt-2">{this.state.Office_Rooms} office room(s)</p>
+                                        </div>
+                                    }
+                                    <div className="col-md-2 text-center">
+                                        <SmartHome color="#D2CCA1" />
+                                        {this.state.Smart_Home_Features.length > 0 && 
+                                                <div className="mt-2">
+                                                    Smart Home
+                                                    <div className="mt-2 text-muted">
+                                                        {this.state.Smart_Home_Features.map(feature => <p>{feature}</p>)}
+                                                    </div>
+                                                </div>
                                             }
-                                        </ul>
                                     </div>
-                                    <div className="col-md-6">
-                                        <h3>Additional Info</h3>
-                                        <ul>
-                                            {this.state.Facing_Direction && <li>Facing {this.state.Facing_Direction}</li>}
-                                            
-                                        </ul>
+                                    <div className="col-md-2 text-center">
+                                        <Washer color="#D2CCA1" />
+                                        {this.state.Washer_And_Dryer === "Common" ? <p className="mt-2">Common area washer & dryer</p> : <p className="mt-2">In-house washer & dryer</p>}
+                                    </div>
+                                    <div className="col-md-2 text-center">
+                                        <Compass color="#D2CCA1" />
+                                        {this.state.Facing_Direction && <p className="mt-2">Facing {this.state.Facing_Direction}</p>}
                                     </div>
                                 </div>
                             </div>
@@ -150,8 +196,12 @@ class Residence extends Component {
                         <div className="row">
                             <div className="col text-center">
                                 <h3>Take a virtual tour</h3>
+                                {/* <p onClick={() => this.setState({virtual_tour_fullscreen: true})} className="text-muted">Tap here for fullscreen</p> */}
                                 <hr />
-                                <iframe width='900'height='500' src={this.state.Virtual_Tour} frameborder='0' allowfullscreen allow='vr'></iframe>
+                                <div className="iframe-container">
+                                    {this.state.virtual_tour_fullscreen&& <div className="close_virtual_tour">&#215;</div>}
+                                    <iframe src={this.state.Virtual_Tour} frameborder='0' allowfullscreen allow='vr'></iframe>
+                                </div>
                             </div>
                         </div>
                         <div className="row mt-5">
@@ -174,7 +224,7 @@ class Residence extends Component {
                                             mainSrc={Images[lightboxIndex]}
                                             nextSrc={Images[(lightboxIndex + 1) % Images.length]}
                                             prevSrc={Images[(lightboxIndex + Images.length - 1) % Images.length]}
-                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onCloseRequest={() => this.setState({ lightboxIsOpen: false })}
                                             onMovePrevRequest={() =>
                                                 this.setState({
                                                     lightboxIndex: (lightboxIndex + Images.length - 1) % Images.length,

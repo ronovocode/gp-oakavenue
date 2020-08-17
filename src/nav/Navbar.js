@@ -25,8 +25,11 @@ function Navbar(props) {
               <li className="nav-item active">
                 <Link className="nav-link" to="/">About</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/homes">Our Homes</Link>
+              </li>
 
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Our Homes
                 </Link>
@@ -35,7 +38,7 @@ function Navbar(props) {
                   <Link className="dropdown-item" to="/homes">Amenities</Link>
                   <Link className="dropdown-item" to="/homes">Browse Availability</Link>
                 </div>
-              </li>
+              </li> */}
 
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

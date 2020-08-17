@@ -33,13 +33,13 @@ class Login extends Component {
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/resident/dashboard");
+            this.props.history.push("/admin");
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/resident/dashboard");
+            this.props.history.push("/admin");
         }
 
         if (nextProps.errors) {
@@ -60,7 +60,7 @@ class Login extends Component {
         const userData = {
             email: this.state.email,
             password: this.state.password,
-            type: "resident"
+            type: "manager"
         };
 
         this.props.loginUser(userData);
@@ -71,7 +71,7 @@ class Login extends Component {
 
         return (
             <LoginFormWrapper onSubmit={this.onSubmit} className="container">
-                <h3 className="text-center my-5">Resident Login</h3>
+                <h3 className="text-center my-5">Manager Login</h3>
                 <Input name="email" 
                     onChange={this.onChange}
                     type="input" 
