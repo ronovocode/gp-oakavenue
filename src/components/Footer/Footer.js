@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import { logoutUser } from '../../actions/auth';
+import { connect } from "react-redux";
+
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 
 const Foot = styled.footer`
@@ -17,6 +20,14 @@ const Foot = styled.footer`
     a:hover {
         color: #454C3D
     }
+
+    .logout {
+        font-weight: lighter;
+    }
+
+    .logout:hover {
+        cursor: pointer;
+    }
 `
 
 function Footer(props) {
@@ -24,11 +35,13 @@ function Footer(props) {
         <Foot>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4 mt-4">
+                    <div className="col-md-4 mt-4 text-center">
                         &#169; 2020 Greenpoint Real Estate
                     </div>
-                    <div className="col-md-4"></div>
-                    <div className="col-md-4 mt-4">
+                    <div className="col-md-4 mt-4 text-center">
+                        <a className="logout" onClick={props.logoutUser}>LOGOUT</a>
+                    </div>
+                    <div className="col-md-4 mt-4 text-center">
                         <Link to="/admin">Admin Login</Link>
                     </div>
                 </div>
@@ -37,4 +50,13 @@ function Footer(props) {
     )
 }
 
-export default Footer;
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps, {
+        logoutUser
+    }
+)(Footer);

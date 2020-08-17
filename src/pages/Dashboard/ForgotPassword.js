@@ -19,8 +19,7 @@ class Login extends Component {
         super();
 
         this.state = {
-            email: "",
-            password: ""
+            email: ""
         };
     }
 
@@ -38,6 +37,7 @@ class Login extends Component {
         return (
             <LoginFormWrapper className="container">
                 <h3 className="text-center my-5">Forgot Password</h3>
+                <p>You will recieve a reset email if there is an account associated with your email.</p>
                 <Input name="email" 
                     onChange={this.onChange} 
                     value={this.state.email} 
