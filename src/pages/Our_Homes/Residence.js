@@ -17,6 +17,7 @@ import SmartHome from '../../icons/SmartHome'
 import Washer from '../../icons/Washer'
 import Compass from '../../icons/Compass'
 import Magnifying from '../../icons/Magnifying'
+import API from '../../utils/API';
 
 const Wrapper = styled.div`
     .res-preview {
@@ -101,18 +102,7 @@ class Residence extends Component {
                 Virtual_Tour: "https://my.matterport.com/show/?m=vbTzLCM4rtF",
                 Smart_Home_Features: ["Nest Thermostat ", 
                 "Smart lock ", "Smart lighting"],
-                Images: [
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/1-DSC00394.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/2-DSC00395.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/3-DSC00396.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/4-DSC00397.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/5-DSC00398.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/6-DSC00400.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/31-DSC00426.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/32-DSC00427.jpg",
-                    "https://greenpointbackend.s3-us-west-1.amazonaws.com/Images/9-DSC00403.jpg"
-                ],
-
+                Images: [],
                 lightboxIsOpen: false,
                 lightboxIndex: 0,
                 virtual_tour_fullscreen: false
@@ -120,8 +110,18 @@ class Residence extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        let unit_number = window.location.href.split("/")
+        unit_number = unit_number[unit_number.length - 1]
 
+        console.log(unit_number);
+        API.GET_ONE_APARTMENT(unit_number).then(res => {
+            console.log(res.data)
+            this.setState({
+                Images: res.data.images,
+                Available_Date: res.data.available_date
+            })
+        })
     }
     
     render() {

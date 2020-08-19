@@ -81,7 +81,7 @@ function App() {
                 <Route exact path='/admin/login' component={AdminLogin} />
                 
 
-                <Route exact path="/residence" component={Residence}></Route>
+                <Route path="/residence" component={Residence}></Route>
                 <Route exact path="/forgotpassword" component={ForgotPassword}/>
                 <Route path="/" component={Landing}></Route>
             </Switch>
