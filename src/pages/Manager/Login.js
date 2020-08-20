@@ -18,6 +18,10 @@ const LoginFormWrapper = styled.form`
     .h3{
         var(--dark-accent)
     }
+
+    .error {
+        color: red;
+    }
 `
 
 class Login extends Component {
@@ -26,7 +30,7 @@ class Login extends Component {
         this.state = {
           email: "",
           password: "",
-          errors: ""
+          errors: {}
         };
       }
     
@@ -42,6 +46,8 @@ class Login extends Component {
             this.props.history.push("/manager");
         }
 
+        console.log(nextProps.errors);
+
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
@@ -50,6 +56,7 @@ class Login extends Component {
     }
 
     onChange = e => {
+        console.log("FROM: " + e.target.id + " " + e.target.value);
         this.setState({ 
             [e.target.id]: e.target.value
         });
@@ -57,6 +64,7 @@ class Login extends Component {
 
     onSubmit = e => {
         e.preventDefault();
+        // console.log(this.state);
         const userData = {
             email: this.state.email,
             password: this.state.password,
@@ -78,6 +86,7 @@ class Login extends Component {
                     icon={<Mail />} 
                     label="Email" 
                     placeholder="johndoe@gmail.com" />
+                {errors && errors.emailnotfound && <span className="error">{errors.emailnotfound}</span>}
                 <Input name="password" 
                     onChange={this.onChange}
                     text_decoration="password" 
@@ -86,7 +95,8 @@ class Login extends Component {
                     icon={<Password />} 
                     label="Password" 
                     placeholder="password" />
-                <span className="error">{errors.email}</span>
+                {errors && errors.unauthorized && <span className="error">{errors.unauthorized}</span>}
+                {errors && errors.passwordincorrect && <span className="error">{errors.passwordincorrect}</span>}
 
                 <Button
                     className="mt-4" 

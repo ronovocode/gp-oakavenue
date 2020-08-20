@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Calendar from 'react-calendar'
 
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/auth";
+import PropTypes from "prop-types";
+
 import Table from '../../components/Table/Table';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -61,9 +65,18 @@ const Wrapper = styled.div`
     .react-calendar abbr {
         color: #989898;
     }
+
+    .logout {
+        color: #D2CCA1;
+        transition-duration: 0.5s;
+        :hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
 `
 
-class Properties extends Component {
+class Manager extends Component {
     state = {
         selectedInvestor: "",
         currentFile: "Choose file...",
@@ -79,7 +92,6 @@ class Properties extends Component {
 
     componentDidMount = () => {
         API.GET_ALL_APARTMENTS("Oak Avenue").then(res => {
-            console.log(res.data)
             this.setState({
                 apartments: res.data
             })
@@ -94,14 +106,6 @@ class Properties extends Component {
 
     }
 
-    onChangeHandler = event => {
-        console.log(event.target.files[0]);
-
-        this.setState({
-            currentFile: event.target.files[0].name
-        });
-    }
-
     modalOpenedHandler = event => {
         console.log(event.target.key)
     }
@@ -113,16 +117,21 @@ class Properties extends Component {
             <Wrapper className="container">
                 <div className="row mt-5">
                     <div className="col-md">
+                        <span className="logout" onClick={() => this.props.logoutUser()}>LOGOUT</span>
+                    </div>
+                </div>
+                <div className="row mt-5">
+                    <div className="col-md">
                         <h3 className="mb-5">Manage Oak Avenue</h3>
                         {apartments.length > 0 ? apartments.map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
                                         <h5 className="card-title">Unit: {property.unit}</h5>
-                                        <p>
-                                            <span>Available Date</span>
+                                        <div>
+                                            <span>Available Date:</span>
                                             {property.available_date ? <p>{property.available_date}</p> : <p className="text-muted">No date set</p>}
-                                        </p>
+                                        </div>
                                         
                                         <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal-" + index} className="edit-button d-block">Edit</div>
                                     </div>
@@ -159,21 +168,24 @@ class Properties extends Component {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
-                                        <h5 className="card-title">{resident.First_Name + " " + resident.Middle_Name + " " + resident.Last_Name}</h5>
-                                        <h6 className="card-subtitle mb-2 text-muted">from Unit {resident.Unit}</h6>
+                                        <h5 className="card-title">{resident.name}</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">from Unit: {resident.unit}</h6>
                                         <ul>
-                                            <li>Email: <span>{resident.Email}</span></li>
-                                            <li>Phone: <span>{resident.Cell}</span></li>
+                                            <li>Email: <span>{resident.email}</span></li>
+                                            <li>Cell: <span>{resident.cell}</span></li>
                                             <li>Documents
-                                                <ul>
-                                                    {resident.Documents.map(document => {
-                                                        return (
-                                                            <li>
-                                                                <a href={document.url}>{document.name}</a>
-                                                            </li>
-                                                        )
-                                                    })}
-                                                </ul>
+                                                {resident.documents.length > 0 ? 
+                                                    <ul>
+                                                        {resident.documents.map(document => {
+                                                            console.log(document)
+                                                            return (
+                                                                <li>
+                                                                    <a href={document.url}>{document.title}</a>
+                                                                </li>
+                                                            )
+                                                        })}
+                                                    </ul> : <p className="text-muted">No documents yet</p>
+                                                }
                                             </li>
                                         </ul>
                                         <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal2-" + index} className="edit-button d-block">Edit</div>
@@ -219,4 +231,18 @@ class Properties extends Component {
     }
 }
 
-export default Properties
+Manager.propTypes = {
+    logputUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { logoutUser }
+)(Manager);

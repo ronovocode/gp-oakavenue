@@ -18,8 +18,8 @@ export default {
   EDIT_APARTMENT_AVAILABILITY: function(unit, body) {
       return axios.put(URL + "/apartment/unit/", body);
   },
-  GET_ALL_RESIDENTS: function() {
-    return axios.get(URL + "/users/residents/Oak Avenue")
+  GET_ALL_RESIDENTS: function(property) {
+    return axios.get(URL + "/users/residents/" + property);
   }
 
 };
