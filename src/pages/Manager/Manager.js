@@ -84,7 +84,8 @@ class Manager extends Component {
         edit_price: "",
         currentFile: "Choose file...",
         apartments: [],
-        residents: []
+        residents: [],
+        isManager: true
     }
 
     onChange = e => {
@@ -109,7 +110,17 @@ class Manager extends Component {
             this.setState({
                 residents: res.data
             })
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            if(err.response.status === 401) {
+                this.setState({
+                    isManager: false
+                })
+            }
+        });
+    }
+
+    getDerivedStateFromProps = (props, state) => {
+        console.log("DERIVED")
     }
 
     onApartmentSave = () => {
@@ -153,7 +164,7 @@ class Manager extends Component {
     }
 
     render() {
-        const { apartments, residents } = this.state;
+        const { apartments, residents, isManager } = this.state;
 
         return ( 
             <Wrapper className="container">
@@ -162,7 +173,7 @@ class Manager extends Component {
                         <span className="logout" onClick={() => this.props.logoutUser()}>LOGOUT</span>
                     </div>
                 </div>
-                <div className="row mt-5">
+                {isManager ? <div className="row mt-5">
                     <div className="col-md mb-5">
                         <h3 className="mb-5">Manage Oak Avenue</h3>
                         {apartments.length > 0 ? apartments.map((property, index) => {
@@ -196,7 +207,7 @@ class Manager extends Component {
                                                 <Calendar 
                                                     onChange={this.onChangeCalendar}
                                                     value={this.state.date}/>
-                                                <Input className="mt-4" label="Price per month" placeholder="$1120" type="input"></Input>
+                                                <Input name="edit_price" onChange={this.onChange} className="mt-4" label="Price per month" placeholder="$1120" type="input"></Input>
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -272,7 +283,7 @@ class Manager extends Component {
                             )
                         }) : <p className="text-muted">No residents</p>}
                     </div>
-                </div>
+                </div> : <p className="text-muted mt-5">You are unauthorized</p>}
             </Wrapper>
         )
     }

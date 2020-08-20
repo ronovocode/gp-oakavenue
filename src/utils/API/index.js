@@ -16,7 +16,6 @@ export default {
   }, 
 
   EDIT_APARTMENT: function(unit, body) {
-      return axios.put(URL + "/apartment/" + unit, body);
       return axios({
         method: 'put',
         url: URL + "/apartment/" + unit,
