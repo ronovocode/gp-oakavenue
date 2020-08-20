@@ -7,6 +7,7 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 
 import API from '../../utils/API';
+import { apartments } from '../../static/data';
 
 
 const Wrapper = styled.div`
@@ -57,58 +58,17 @@ const Wrapper = styled.div`
         padding: 0.7rem;
         border: 1px solid #D2cca1
     }
+    .react-calendar abbr {
+        color: #989898;
+    }
 `
 
 class Properties extends Component {
     state = {
         selectedInvestor: "",
         currentFile: "Choose file...",
-        residents: [
-            {
-                Unit: "221",
-                First_Name: "Ronak",
-                Middle_Name: "S",
-                Last_Name: "Patel",
-                Email: "ronak0624@gmail.com",
-                Cell: "6505216699",
-                Documents: [
-                    {
-                        name: "SEC_Filing.pdf",
-                        url: "http://www.google.com/"
-                    },
-                    {
-                        name: "SEC_Filing2.pdf",
-                        url: "http://www.google.com/"
-                    },
-                    {
-                        name: "SEC_Filing3.pdf",
-                        url: "http://www.google.com/"
-                    }
-                ]
-            },
-            {
-                Unit: "101",
-                First_Name: "Clayton",
-                Middle_Name: "",
-                Last_Name: "Novotney",
-                Email: "clayton-notovney@hotmail.com",
-                Cell: "6505216699",
-                Documents: [
-                    {
-                        name: "SEC_Filing.pdf",
-                        url: "http://www.google.com/"
-                    },
-                    {
-                        name: "SEC_Filing2.pdf",
-                        url: "http://www.google.com/"
-                    },
-                    {
-                        name: "SEC_Filing3.pdf",
-                        url: "http://www.google.com/"
-                    }
-                ]
-            },
-        ]   
+        apartments: [],
+        residents: []
     }
 
     onChange = e => {
@@ -117,14 +77,21 @@ class Properties extends Component {
 
     onChangeCalendar = date => this.setState({ date })
 
-    componentWillMount = () => {
-        this.setState({
-            apartments: API.GET_ALL_APARTMENTS()
-        })
-    }
+    componentDidMount = () => {
+        API.GET_ALL_APARTMENTS("Oak Avenue").then(res => {
+            console.log(res.data)
+            this.setState({
+                apartments: res.data
+            })
+        }).catch(err => console.log(err));
 
-    toggleAllEdit = () => {
-        window.location.reload();
+        API.GET_ALL_RESIDENTS("Oak Avenue").then(res => {
+            console.log(res.data)
+            this.setState({
+                residents: res.data
+            })
+        }).catch(err => console.log(err));
+
     }
 
     onChangeHandler = event => {
@@ -140,28 +107,23 @@ class Properties extends Component {
     }
 
     render() {
+        const { apartments, residents } = this.state;
+
         return ( 
             <Wrapper className="container">
                 <div className="row mt-5">
                     <div className="col-md">
-                        <h3 className="mb-5">Manage 301 Oak Avenue</h3>
-                        {this.state.apartments.map((property, index) => {
+                        <h3 className="mb-5">Manage Oak Avenue</h3>
+                        {apartments.length > 0 ? apartments.map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
-                                        <h5 className="card-title">{property.Property_Number}</h5>
-                                        <ul>
-                                            <li>Square Footage: <span>{property.Square_Footage}</span></li>
-                                            <li>Number of Bedrooms: <span>{property.Number_of_Bedrooms}</span></li>
-                                            <li>Number of Bathrooms: <span>{property.Number_of_Bathrooms}</span></li>
-                                            <li>Office Rooms: <span>{property.Office_Rooms}</span></li>
-                                            <li>Powder Room: <span>{property.Powder_Room}</span></li>
-                                            <li>Washer And Dryer: <span>{property.Washer_And_Dryer}</span></li>
-                                            <li>Available Date: <span>{property.Available_Date}</span></li>
-                                            <li>Facing Direction: <span>{property.Facing_Direction}</span></li>
-                                            <li>Type: <span>{property.Type}</span></li>
-
-                                        </ul>
+                                        <h5 className="card-title">Unit: {property.unit}</h5>
+                                        <p>
+                                            <span>Available Date</span>
+                                            {property.available_date ? <p>{property.available_date}</p> : <p className="text-muted">No date set</p>}
+                                        </p>
+                                        
                                         <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal-" + index} className="edit-button d-block">Edit</div>
                                     </div>
                                     <div className="modal fade" id={"modal-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
@@ -189,11 +151,11 @@ class Properties extends Component {
                                     </div>
                                 </div>
                             )
-                        })}
+                        }) : <p className="text-muted">No properties</p>}
                     </div>
                     <div className="col-md">
                         <h3 className="mb-5">Manage Residents</h3>
-                        {this.state.residents.map((resident, index) => {
+                        {residents.length > 0? residents.map((resident, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
@@ -249,7 +211,7 @@ class Properties extends Component {
                                     </div>
                                 </div>
                             )
-                        })}
+                        }) : <p className="text-muted">No residents</p>}
                     </div>
                 </div>
             </Wrapper>

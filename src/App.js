@@ -12,14 +12,14 @@ import Neighborhood from './pages/Neighborhood/Neighborhood';
 import Testimonials from './pages/Testimonials/Testimonials';
 
 /* Residents */
-import Dashboard from './pages/Dashboard/Dashboard';
-import Login from './pages/Dashboard/Login';
-import ForgotPassword from './pages/Dashboard/ForgotPassword';
+import Dashboard from './pages/Resident/Dashboard';
+import Login from './pages/Resident/Login';
+import ForgotPassword from './pages/Resident/ForgotPassword';
 import Residence from './pages/Our_Homes/Residence';
 import Landing from './pages/Landing/Landing';
 
-import Admin from './pages/Admin/Admin';
-import AdminLogin from './pages/Admin/Login';
+import Manager from './pages/Manager/Manager';
+import ManagerLogin from './pages/Manager/Login';
 
 /* Navbar */
 import Navbar from './nav';
@@ -28,7 +28,8 @@ import Footer from './components/Footer/Footer';
 
 /* React Router Imports */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRouteManager from './components/PrivateRouteManager';
+import PrivateRouteResident from './components/PrivateRouteResident';
 
 /* Redux */
 import { Provider } from "react-redux";
@@ -75,10 +76,11 @@ function App() {
 
                 <Route exact path='/resident/login' component={Login}/>
                 
-                <PrivateRoute exact path='/resident/dashboard' component={Dashboard} />
+                <PrivateRouteResident exact path='/resident/dashboard' component={Dashboard} />
                 
-                <PrivateRoute exact path='/admin' component={Admin} />
-                <Route exact path='/admin/login' component={AdminLogin} />
+                <PrivateRouteManager exact path='/manager' component={Manager} />
+
+                <Route exact path='/manager/login' component={ManagerLogin} />
                 
 
                 <Route path="/residence" component={Residence}></Route>

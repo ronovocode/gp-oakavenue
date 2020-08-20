@@ -7,9 +7,8 @@ const URL = apiURL;
 
 export default {
 
-  GET_ALL_APARTMENTS: function() {
-    //   return axios.get(URL + "/apartments");
-    return apartments;
+  GET_ALL_APARTMENTS: function(property) {
+    return axios.get(URL + "/apartment/all/" + property);
   },
 
   GET_ONE_APARTMENT: function(unit) {
@@ -18,6 +17,9 @@ export default {
 
   EDIT_APARTMENT_AVAILABILITY: function(unit, body) {
       return axios.put(URL + "/apartment/unit/", body);
+  },
+  GET_ALL_RESIDENTS: function() {
+    return axios.get(URL + "/users/residents/Oak Avenue")
   }
 
 };

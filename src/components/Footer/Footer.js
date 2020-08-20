@@ -42,7 +42,7 @@ function Footer(props) {
                         <a className="logout" onClick={props.logoutUser}>LOGOUT</a>
                     </div>
                     <div className="col-md-4 mt-4 text-center">
-                        <Link to="/admin">Admin Login</Link>
+                        <Link to="/manager">Manager Login</Link>
                     </div>
                 </div>
             </div>
