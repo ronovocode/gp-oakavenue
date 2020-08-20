@@ -78,7 +78,10 @@ const Wrapper = styled.div`
 
 class Manager extends Component {
     state = {
-        selectedInvestor: "",
+        selectedResident: "",
+        selectedApartment: "",
+        edit_date: "",
+        edit_price: "",
         currentFile: "Choose file...",
         apartments: [],
         residents: []
@@ -88,7 +91,11 @@ class Manager extends Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
-    onChangeCalendar = date => this.setState({ date })
+    onChangeCalendar = date => {
+        this.setState({
+            edit_date: date.toLocaleDateString("en-US")
+        })
+    }
 
     componentDidMount = () => {
         API.GET_ALL_APARTMENTS("Oak Avenue").then(res => {
@@ -103,11 +110,46 @@ class Manager extends Component {
                 residents: res.data
             })
         }).catch(err => console.log(err));
+    }
 
+    onApartmentSave = () => {
+        let request = {}
+        let {edit_date, edit_price } = this.state;
+
+        if(edit_date != "") {
+            request.available_date = edit_date
+        }
+
+        if(edit_price != "") {
+            request.price = edit_price
+        }
+
+        API.EDIT_APARTMENT(this.state.selectedApartment, request).then(res => {
+            console.log("EDIT:", res)
+        }).catch(err => {
+            this.setState({
+                error: err.response.data
+            }).then(window.location.reload())
+        })
     }
 
     modalOpenedHandler = event => {
-        console.log(event.target.key)
+        let selected = event.target.getAttribute("data-identifier");
+
+        if(selected[0] === "r") {
+            console.log("Resident:", selected.substring(1))
+            this.setState({
+                selectedResident: selected.substring(1)
+            })
+        }
+
+        if(selected[0] === "p") {
+            console.log("Property:", selected.substring(1))
+            this.setState({
+                selectedApartment: selected.substring(1)
+            })
+        }
+        
     }
 
     render() {
@@ -121,19 +163,24 @@ class Manager extends Component {
                     </div>
                 </div>
                 <div className="row mt-5">
-                    <div className="col-md">
+                    <div className="col-md mb-5">
                         <h3 className="mb-5">Manage Oak Avenue</h3>
                         {apartments.length > 0 ? apartments.map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
                                         <h5 className="card-title">Unit: {property.unit}</h5>
-                                        <div>
-                                            <span>Available Date:</span>
-                                            {property.available_date ? <p>{property.available_date}</p> : <p className="text-muted">No date set</p>}
-                                        </div>
-                                        
-                                        <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal-" + index} className="edit-button d-block">Edit</div>
+                                        <div className="row">
+                                            <div className="col">
+                                                <span>Available Date:</span>
+                                                {property.available_date ? <p>{property.available_date}</p> : <p className="text-muted">No date set</p>}
+                                            </div>
+                                            <div className="col">
+                                                <span>Price per month:</span>
+                                                {property.price ? <p>${property.price}</p> : <p className="text-muted">No price set</p>}
+                                            </div>
+                                        </div>                                        
+                                        <div data-identifier={"p" + property.unit} key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal-" + index} className="edit-button d-block">Edit</div>
                                     </div>
                                     <div className="modal fade" id={"modal-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
                                         <div className="modal-dialog">
@@ -153,7 +200,7 @@ class Manager extends Component {
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" className="btn btn-primary" data-dismiss="modal">Save</button>
+                                                <button type="button" onClick={() => this.onApartmentSave()} className="btn btn-primary" data-dismiss="modal">Save</button>
                                             </div>
                                             </div>
                                         </div>
@@ -162,7 +209,7 @@ class Manager extends Component {
                             )
                         }) : <p className="text-muted">No properties</p>}
                     </div>
-                    <div className="col-md">
+                    <div className="col-md mb-5">
                         <h3 className="mb-5">Manage Residents</h3>
                         {residents.length > 0? residents.map((resident, index) => {
                             return(
@@ -188,7 +235,7 @@ class Manager extends Component {
                                                 }
                                             </li>
                                         </ul>
-                                        <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal2-" + index} className="edit-button d-block">Edit</div>
+                                        <div data-identifier={"r" + resident.email} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal2-" + index} className="edit-button d-block">Edit</div>
                                     </div>
                                     <div className="modal fade" id={"modal2-" + index} tabindex="-1" aria-labelledby="newresidentModalLabel" aria-hidden="true">
                                         <div className="modal-dialog">

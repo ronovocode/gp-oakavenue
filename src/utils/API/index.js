@@ -15,11 +15,25 @@ export default {
       return axios.get(URL + "/apartment/" + unit);
   }, 
 
-  EDIT_APARTMENT_AVAILABILITY: function(unit, body) {
-      return axios.put(URL + "/apartment/unit/", body);
+  EDIT_APARTMENT: function(unit, body) {
+      return axios.put(URL + "/apartment/" + unit, body);
+      return axios({
+        method: 'put',
+        url: URL + "/apartment/" + unit,
+        data: body,
+        headers: {
+          property: "Oak Avenue"
+        }
+      });
   },
   GET_ALL_RESIDENTS: function(property) {
     return axios.get(URL + "/users/residents/" + property);
+  },
+  GET_RESIDENT: function() {
+    return axios.get(URL + "/users/resident")
+  },
+  EDIT_RESIDENT: function(body) {
+    return axios.put(URL + "/users/resident", body)
   }
 
 };
