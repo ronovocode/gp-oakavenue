@@ -167,7 +167,7 @@ class Dashboard extends Component {
                     name: res.data.name,
                     email: res.data.email,
                     unit: res.data.unit,
-                    property: res.data.property,
+                    property: res.data.unit_property,
                     cell: res.data.cell,
                     documents: res.data.documents
                 })
