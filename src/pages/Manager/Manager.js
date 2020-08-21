@@ -78,17 +78,25 @@ const Wrapper = styled.div`
 
 class Manager extends Component {
     state = {
-        selectedInvestor: "",
+        selectedResident: "",
+        selectedApartment: "",
+        edit_date: "",
+        edit_price: "",
         currentFile: "Choose file...",
         apartments: [],
-        residents: []
+        residents: [],
+        isManager: true
     }
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
-    onChangeCalendar = date => this.setState({ date })
+    onChangeCalendar = date => {
+        this.setState({
+            edit_date: date.toLocaleDateString("en-US")
+        })
+    }
 
     componentDidMount = () => {
         API.GET_ALL_APARTMENTS("Oak Avenue").then(res => {
@@ -102,59 +110,152 @@ class Manager extends Component {
             this.setState({
                 residents: res.data
             })
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            if(err.response.status === 401) {
+                this.setState({
+                    isManager: false
+                })
+            }
+        });
+    }
+
+    onApartmentSave = () => {
+        let request = {}
+        let {edit_date, edit_price } = this.state;
+
+        if(edit_date != "") {
+            request.available_date = edit_date
+        }
+
+        if(edit_price != "") {
+            request.price = edit_price
+        }
+
+        API.EDIT_APARTMENT(this.state.selectedApartment, request).then(res => {
+            this.componentDidMount()
+        }).catch(err => {
+            this.setState({
+                error: err.response.data
+            }).then(window.location.reload())
+        })
+    }
+
+    createResident = () => {
 
     }
 
     modalOpenedHandler = event => {
-        console.log(event.target.key)
+        let selected = event.target.getAttribute("data-identifier");
+
+        if(selected[0] === "r") {
+            console.log("Resident:", selected.substring(1))
+            this.setState({
+                selectedResident: selected.substring(1)
+            })
+        }
+
+        if(selected[0] === "p") {
+            console.log("Property:", selected.substring(1))
+            this.setState({
+                selectedApartment: selected.substring(1)
+            })
+        }
+        
     }
 
     render() {
-        const { apartments, residents } = this.state;
+        const { apartments, residents, isManager } = this.state;
 
         return ( 
             <Wrapper className="container">
                 <div className="row mt-5">
-                    <div className="col-md">
-                        <span className="logout" onClick={() => this.props.logoutUser()}>LOGOUT</span>
+                    {isManager &&   <div className="col-md">
+                                        <span className="logout">WELCOME, Oak Avenue Manager</span>
+                                    </div>
+                    }
+                    <div className="col-md align-items-end">
+                        <span className="logout d-inline-flex" onClick={() => this.props.logoutUser()}>LOGOUT</span>
                     </div>
                 </div>
-                <div className="row mt-5">
-                    <div className="col-md">
+                {isManager ? <div className="row mt-5">
+                    <div className="col-md mb-5">
                         <h3 className="mb-5">Manage Oak Avenue</h3>
                         {apartments.length > 0 ? apartments.map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">
                                         <h5 className="card-title">Unit: {property.unit}</h5>
-                                        <div>
-                                            <span>Available Date:</span>
-                                            {property.available_date ? <p>{property.available_date}</p> : <p className="text-muted">No date set</p>}
+                                        <div className="row">
+                                            <div className="col">
+                                                <span>Available Date:</span>
+                                                {property.available_date ? <p>{property.available_date}</p> : <p className="text-muted">No date set</p>}
+                                            </div>
+                                            <div className="col">
+                                                <span>Price per month:</span>
+                                                {property.price ? <p>${property.price}</p> : <p className="text-muted">No price set</p>}
+                                            </div>
                                         </div>
-                                        
-                                        <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal-" + index} className="edit-button d-block">Edit</div>
+                                        <div className="row">
+                                            <div className="col">
+                                                <div data-identifier={"p" + property.unit} 
+                                                key={index} 
+                                                onClick={this.modalOpenedHandler} 
+                                                data-toggle="modal" 
+                                                data-target={"#modal-edit-" + index} 
+                                                className="edit-button d-block">Edit</div>
+                                            </div>                                         
+                                            <div className="col">
+                                                <div data-identifier={"p" + property.unit} 
+                                                key={index} 
+                                                onClick={this.modalOpenedHandler} 
+                                                data-toggle="modal" 
+                                                data-target={"#modal-add-" + index} 
+                                                className="edit-button d-block">Add Resident</div>
+                                            </div>                                        
+                                        </div>
                                     </div>
-                                    <div className="modal fade" id={"modal-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
+                                    <div className="modal fade" id={"modal-edit-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
                                         <div className="modal-dialog">
                                             <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h5 className="modal-title" id="newpropertyModalLabel">Edit Unit {property.Property_Number}</h5>
-                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
+                                                <div className="modal-header">
+                                                    <h5 className="modal-title" id="newpropertyModalLabel">Edit Unit {property.Property_Number}</h5>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    <h5 className="mb-3">Date Available</h5>
+                                                    <Calendar 
+                                                        onChange={this.onChangeCalendar}
+                                                        value={this.state.date}/>
+                                                    {this.state.edit_date && <p className="mt-4">{this.state.edit_date} selected</p>}
+                                                    <Input name="edit_price" onChange={this.onChange} className="mt-2" label="Price per month" placeholder="$1120" type="input"></Input>
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" onClick={() => this.onApartmentSave()} className="btn btn-primary" data-dismiss="modal">Save</button>
+                                                </div>
                                             </div>
-                                            <div className="modal-body">
-                                                <h4 className="mb-3">Date Available</h4>
-                                                <Calendar 
-                                                    onChange={this.onChangeCalendar}
-                                                    value={this.state.date}/>
-                                                <Input className="mt-4" label="Price per month" placeholder="$1120" type="input"></Input>
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" className="btn btn-primary" data-dismiss="modal">Save</button>
-                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="modal fade" id={"modal-add-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
+                                        <div className="modal-dialog">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h5 className="mb-3">Add Resident for Unit: {property.unit}</h5>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    <Input name="add_name" onChange={this.onChange} className="mt-2" label="Name" placeholder="First (M) Last" type="input"></Input>
+                                                    <Input name="add_email" onChange={this.onChange} className="mt-2" label="Email" placeholder="username@mail.com" type="input"></Input>
+                                                    <Input name="add_cell" onChange={this.onChange} className="mt-2" label="Cell" placeholder="6505216699" text_decoration="number" type="input"></Input>
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" onClick={() => this.createResident()} className="btn btn-primary" data-dismiss="modal">Save</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +263,7 @@ class Manager extends Component {
                             )
                         }) : <p className="text-muted">No properties</p>}
                     </div>
-                    <div className="col-md">
+                    <div className="col-md mb-5">
                         <h3 className="mb-5">Manage Residents</h3>
                         {residents.length > 0? residents.map((resident, index) => {
                             return(
@@ -188,7 +289,7 @@ class Manager extends Component {
                                                 }
                                             </li>
                                         </ul>
-                                        <div key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal2-" + index} className="edit-button d-block">Edit</div>
+                                        <div data-identifier={"r" + resident.email} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal2-" + index} className="edit-button d-block">Edit</div>
                                     </div>
                                     <div className="modal fade" id={"modal2-" + index} tabindex="-1" aria-labelledby="newresidentModalLabel" aria-hidden="true">
                                         <div className="modal-dialog">
@@ -201,13 +302,7 @@ class Manager extends Component {
                                             </div>
                                             <div className="modal-body">
                                                 <form>
-                                                    <Input label="Unit" type="input" placeholder={resident.Unit}></Input>
-                                                    <Input label="First Name" type="input" placeholder={resident.First_Name}></Input>
-                                                    <Input label="Middle Name" type="input" placeholder={resident.Middle_Name}></Input>
-                                                    <Input label="Last Name" type="input" placeholder={resident.Last_Name}></Input>
-                                                    <Input label="Phone" type="input" placeholder={resident.Cell}></Input>
-                                                    <Input label="Email" type="input" placeholder={resident.Email}></Input>
-
+                                                    <Input label="Unit" type="input" placeholder={resident.unit}></Input>
                                                     <div class="custom-file">
                                                         <input onChange={this.onChangeHandler} type="file" class="custom-file-input" id="customFile" />
                                                         <label class="custom-file-label" for="customFile">{this.state.currentFile}</label>
@@ -225,7 +320,7 @@ class Manager extends Component {
                             )
                         }) : <p className="text-muted">No residents</p>}
                     </div>
-                </div>
+                </div> : <p className="text-muted mt-5">You are unauthorized</p>}
             </Wrapper>
         )
     }

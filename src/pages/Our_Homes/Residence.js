@@ -69,15 +69,16 @@ const Wrapper = styled.div`
     }
       
     .iframe-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
     }
+    
 `
 
 class Residence extends Component {
@@ -117,10 +118,17 @@ class Residence extends Component {
         console.log(unit_number);
         API.GET_ONE_APARTMENT(unit_number).then(res => {
             console.log(res.data)
-            this.setState({
-                Images: res.data.images,
-                Available_Date: res.data.available_date
-            })
+            if(res.data.images) {
+                this.setState({
+                    Images: res.data.images
+                });
+            }
+
+            if(res.data.available_date) {
+                this.setState({
+                    Available_Date: res.data.available_date
+                })
+            }
         })
     }
     
