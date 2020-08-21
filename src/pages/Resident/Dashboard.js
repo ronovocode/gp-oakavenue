@@ -38,11 +38,18 @@ const Wrapper = styled.div`
         color: green;
     }
 
+    .error {
+        color: red;
+    }
+
     .logout {
         :hover {
             cursor: pointer;
             text-decoration: underline;
         }
+    }
+    textarea:focus {
+        color: #ddd;
     }
 `
 
@@ -53,14 +60,22 @@ class Dashboard extends Component {
         name_input: "",
         cell_input: "",
         email_input: "",
+        maintenance: "",
+        suggestions: "",
         documents: [],
         isResident: true
     }
 
-    onChangeContact = e => {
-        this.setState({ 
-            [e.target.id]: e.target.value
-        });
+    onChange = e => {
+        if(e.target.type === "checkbox") {
+            this.setState({
+                [e.target.id]: e.target.checked
+            })
+        } else {
+            this.setState({ 
+                [e.target.id]: e.target.value
+            });
+        }
     }
 
     contactSave = () => {
@@ -85,6 +100,54 @@ class Dashboard extends Component {
         }).catch(err => {
             this.setState({
                 error: err.response.data
+            })
+        })
+    }
+
+    sendMaintenanceRequest = () => {
+        let { maintenance, unit, email, maintenanceradio } = this.state
+        let request = {}
+        request.unit = unit;
+        request.property = "Oak Avenue";
+        request.email = email;
+        request.inUnit = maintenanceradio;
+        request.message = maintenance;
+        
+        API.SEND_MAINTENANCE_REQUEST(request).then(res => {
+            this.setState({
+                success: {
+                    maintenance: res.data
+                }
+            })
+        }).catch(err => {
+            this.setState({
+                error: {
+                    maintenance: err.response.data
+                }
+            })
+        })
+    }
+
+    sendSuggestionRequest = () => {
+        let { maintenance, unit, email, maintenanceradio } = this.state
+        let request = {}
+        request.unit = unit;
+        request.property = "Oak Avenue";
+        request.email = email;
+        request.inUnit = maintenanceradio;
+        request.message = maintenance;
+        
+        API.SEND_MAINTENANCE_REQUEST(request).then(res => {
+            this.setState({
+                success: {
+                    maintenance: res.data
+                }
+            })
+        }).catch(err => {
+            this.setState({
+                error: {
+                    maintenance: err.response.data
+                }
             })
         })
     }
@@ -116,6 +179,7 @@ class Dashboard extends Component {
     }
 
     render() {
+        const { error, success } = this.state
         return (
             <Wrapper className="container">
                 {this.state.isResident ? <div>
@@ -132,37 +196,32 @@ class Dashboard extends Component {
                                     <Input name="name_input" onChange={this.onChangeContact} type="input" placeholder="Name" />
                                     <Input name="cell_input" onChange={this.onChangeContact} type="input" placeholder="Phone number" />
                                     <Input name="email_input" onChange={this.onChangeContact} type="input" placeholder="E-mail" />
-                                    {this.state.investorInfoSaved && <p className="success">Saved</p>}
-                                    {this.state.error && <p className="success">{this.state.error}</p>}
+                                    {this.state.error && <p className="error">{this.state.error}</p>}
                                 </div>
                             ) : (
                                 <div className="contact">
                                     <p className="investor-name">
-                                        {/* <UserIcon color="#D2CCA1" className="mr-3"/> */}
                                         {this.state.name}
                                     </p>
                                     <p className="investor-cell">
-                                        {/* <Phone color="#D2CCA1" className="mr-3"/> */}
                                         {this.state.cell}
                                     </p>
                                     <p className="investor-email">
-                                        {/* <Mail color="#D2CCA1" className="mr-5"/> */}
                                         {this.state.email}
                                     </p>
+                                    {this.state.investorInfoSaved && <p className="success">Saved</p>}
                                 </div>
                             )}
                         </div>
                         <div className="col-md">
                             <div className="investment">
-                                <h4>Your home info</h4>
+                                <h4>Your home</h4>
                                 <hr />
                                 <p className="investor-entity-name">
-                                    {/* <UserIcon color="#fff" className="mr-3"/> */}
                                     <b>Unit:</b> {this.state.unit}
                                 </p>
                                 <p className="investor-entity-type">
-                                    {/* <Phone color="#fff" className="mr-3"/> */}
-                                    <b>Type:</b> {this.state.entity_type}
+                                    <b>Property:</b> {this.state.property}
                                 </p>
                             </div>
                         </div>
@@ -184,22 +243,28 @@ class Dashboard extends Component {
                     )}
 
                     <div className="row mt-5">
-                    <div className="col-md-6 documents">
-                            <h3 style={{color: "#D2CCA1"}}>Documents</h3>
-                            <hr />
-                            {this.state.documents.length > 0 ?this.state.documents.map((i) => {
-                                    return (
-                                        <a href={i.url}>
-                                            <h5>{i.title}</h5>
-                                        </a>
-                                    )
-                                }) : <p className="text-muted">No documents yet</p>}
-
-                    </div>
-                    <div className="col-md-6 requests">
+                        <div className="col-md-6 requests">
                             <h3 style={{color: "#D2CCA1"}}>Requests</h3>
                             <hr />
                             <div className="requests">
+                            <Input name="maintenance" 
+                                onChange={this.onChange}
+                                className="mt-4" 
+                                type="text" 
+                                label="Maintenance" 
+                                placeholder="Type any issues you may be having here..." />
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" onChange={this.onChange} type="checkbox" name="maintenanceradio" id="maintenanceradio"/>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Would you prefer to be in unit during maintenance?
+                                </label>
+                            </div>
+                            <Button 
+                                text="Submit" 
+                                className="mt-3"
+                                onClick={() => this.sendMaintenanceRequest()}/>
+                            {success && success.maintenance && <p className="success mt-4">{success.maintenance}</p>}
+                            {error && !success && error.maintenance && <p className="error mt-4">{error.maintenance}</p>}
                             <Input name="suggestions" 
                                 onChange={this.onChange}
                                 className="mt-4" 
@@ -209,15 +274,8 @@ class Dashboard extends Component {
                             <Button 
                                 text="Submit" 
                                 className="mt-3 mb-5"/>
-                            <Input name="maintenance" 
-                                onChange={this.onChange}
-                                className="mt-4" 
-                                type="text" 
-                                label="Maintenance" 
-                                placeholder="Type any issues you may be having here..." />
-                            <Button 
-                                text="Submit" 
-                                className="mt-3"/>
+                            {success && success.suggestion && <p className="success mt-4">{success.suggestion}</p>}
+                            {error && !success && error.suggestion && <p className="error mt-4">{error.suggestion}</p>}
                             </div>
                         </div>
                     </div>
