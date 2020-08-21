@@ -265,7 +265,7 @@ class Dashboard extends Component {
                                 onClick={() => this.sendMaintenanceRequest()}/>
                             {success && success.maintenance && <p className="success mt-4">{success.maintenance}</p>}
                             {error && !success && error.maintenance && <p className="error mt-4">{error.maintenance}</p>}
-                            <Input name="suggestions" 
+                            {/* <Input name="suggestions" 
                                 onChange={this.onChange}
                                 className="mt-4" 
                                 type="text" 
@@ -275,7 +275,7 @@ class Dashboard extends Component {
                                 text="Submit" 
                                 className="mt-3 mb-5"/>
                             {success && success.suggestion && <p className="success mt-4">{success.suggestion}</p>}
-                            {error && !success && error.suggestion && <p className="error mt-4">{error.suggestion}</p>}
+                            {error && !success && error.suggestion && <p className="error mt-4">{error.suggestion}</p>} */}
                             </div>
                         </div>
                     </div>
