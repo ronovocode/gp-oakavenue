@@ -14,7 +14,6 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
-    overflow-y: scroll;
     font-family: 'Europa', 'Avenir', sans-serif;
     transition: all 0.5s linear;
   }

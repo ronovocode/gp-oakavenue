@@ -119,10 +119,6 @@ class Manager extends Component {
         });
     }
 
-    getDerivedStateFromProps = (props, state) => {
-        console.log("DERIVED")
-    }
-
     onApartmentSave = () => {
         let request = {}
         let {edit_date, edit_price } = this.state;
@@ -136,12 +132,16 @@ class Manager extends Component {
         }
 
         API.EDIT_APARTMENT(this.state.selectedApartment, request).then(res => {
-            console.log("EDIT:", res)
+            this.componentDidMount()
         }).catch(err => {
             this.setState({
                 error: err.response.data
             }).then(window.location.reload())
         })
+    }
+
+    createResident = () => {
+
     }
 
     modalOpenedHandler = event => {
@@ -169,8 +169,12 @@ class Manager extends Component {
         return ( 
             <Wrapper className="container">
                 <div className="row mt-5">
-                    <div className="col-md">
-                        <span className="logout" onClick={() => this.props.logoutUser()}>LOGOUT</span>
+                    {isManager &&   <div className="col-md">
+                                        <span className="logout">WELCOME, Oak Avenue Manager</span>
+                                    </div>
+                    }
+                    <div className="col-md align-items-end">
+                        <span className="logout d-inline-flex" onClick={() => this.props.logoutUser()}>LOGOUT</span>
                     </div>
                 </div>
                 {isManager ? <div className="row mt-5">
@@ -190,29 +194,68 @@ class Manager extends Component {
                                                 <span>Price per month:</span>
                                                 {property.price ? <p>${property.price}</p> : <p className="text-muted">No price set</p>}
                                             </div>
-                                        </div>                                        
-                                        <div data-identifier={"p" + property.unit} key={index} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal-" + index} className="edit-button d-block">Edit</div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col">
+                                                <div data-identifier={"p" + property.unit} 
+                                                key={index} 
+                                                onClick={this.modalOpenedHandler} 
+                                                data-toggle="modal" 
+                                                data-target={"#modal-edit-" + index} 
+                                                className="edit-button d-block">Edit</div>
+                                            </div>                                         
+                                            <div className="col">
+                                                <div data-identifier={"p" + property.unit} 
+                                                key={index} 
+                                                onClick={this.modalOpenedHandler} 
+                                                data-toggle="modal" 
+                                                data-target={"#modal-add-" + index} 
+                                                className="edit-button d-block">Add Resident</div>
+                                            </div>                                        
+                                        </div>
                                     </div>
-                                    <div className="modal fade" id={"modal-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
+                                    <div className="modal fade" id={"modal-edit-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
                                         <div className="modal-dialog">
                                             <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h5 className="modal-title" id="newpropertyModalLabel">Edit Unit {property.Property_Number}</h5>
-                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
+                                                <div className="modal-header">
+                                                    <h5 className="modal-title" id="newpropertyModalLabel">Edit Unit {property.Property_Number}</h5>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    <h5 className="mb-3">Date Available</h5>
+                                                    <Calendar 
+                                                        onChange={this.onChangeCalendar}
+                                                        value={this.state.date}/>
+                                                    {this.state.edit_date && <p className="mt-4">{this.state.edit_date} selected</p>}
+                                                    <Input name="edit_price" onChange={this.onChange} className="mt-2" label="Price per month" placeholder="$1120" type="input"></Input>
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" onClick={() => this.onApartmentSave()} className="btn btn-primary" data-dismiss="modal">Save</button>
+                                                </div>
                                             </div>
-                                            <div className="modal-body">
-                                                <h4 className="mb-3">Date Available</h4>
-                                                <Calendar 
-                                                    onChange={this.onChangeCalendar}
-                                                    value={this.state.date}/>
-                                                <Input name="edit_price" onChange={this.onChange} className="mt-4" label="Price per month" placeholder="$1120" type="input"></Input>
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" onClick={() => this.onApartmentSave()} className="btn btn-primary" data-dismiss="modal">Save</button>
-                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="modal fade" id={"modal-add-" + index} tabindex="-1" aria-labelledby="newpropertyModalLabel" aria-hidden="true">
+                                        <div className="modal-dialog">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h5 className="mb-3">Add Resident for Unit: {property.unit}</h5>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    <Input name="add_name" onChange={this.onChange} className="mt-2" label="Name" placeholder="First (M) Last" type="input"></Input>
+                                                    <Input name="add_email" onChange={this.onChange} className="mt-2" label="Email" placeholder="username@mail.com" type="input"></Input>
+                                                    <Input name="add_cell" onChange={this.onChange} className="mt-2" label="Cell" placeholder="6505216699" text_decoration="number" type="input"></Input>
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" onClick={() => this.createResident()} className="btn btn-primary" data-dismiss="modal">Save</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -259,13 +302,7 @@ class Manager extends Component {
                                             </div>
                                             <div className="modal-body">
                                                 <form>
-                                                    <Input label="Unit" type="input" placeholder={resident.Unit}></Input>
-                                                    <Input label="First Name" type="input" placeholder={resident.First_Name}></Input>
-                                                    <Input label="Middle Name" type="input" placeholder={resident.Middle_Name}></Input>
-                                                    <Input label="Last Name" type="input" placeholder={resident.Last_Name}></Input>
-                                                    <Input label="Phone" type="input" placeholder={resident.Cell}></Input>
-                                                    <Input label="Email" type="input" placeholder={resident.Email}></Input>
-
+                                                    <Input label="Unit" type="input" placeholder={resident.unit}></Input>
                                                     <div class="custom-file">
                                                         <input onChange={this.onChangeHandler} type="file" class="custom-file-input" id="customFile" />
                                                         <label class="custom-file-label" for="customFile">{this.state.currentFile}</label>

@@ -84,28 +84,8 @@ class Dashboard extends Component {
         }).catch(err => {
             this.setState({
                 error: err.response.data
-            }).then(window.location.reload())
+            })
         })
-    }
-
-    getDerivedStateFromProps = () => {
-        console.log("tiggered")
-        // API.GET_RESIDENT().then(res => {
-        //     if(!res.data.name && !res.data.cell) {
-        //         this.props.logoutUser();
-        //     } else {
-        //         this.setState({
-        //             name: res.data.name,
-        //             email: res.data.email,
-        //             entity_name: res.data.entity_name,
-        //             entity_type: res.data.entity_type,
-        //             cell: res.data.cell,
-        //             documents: res.data.documents
-        //         })
-        //     }
-        // }).catch(err => {
-        //     this.props.logoutUser();
-        // })
     }
 
     componentDidMount = () => {
