@@ -18,6 +18,10 @@ const LoginFormWrapper = styled.form`
     .h3{
         var(--dark-accent)
     }
+
+    .error {
+        color: red;
+    }
 `
 
 class Login extends Component {
@@ -78,6 +82,7 @@ class Login extends Component {
                     icon={<Mail />} 
                     label="Email" 
                     placeholder="johndoe@gmail.com" />
+                {errors && errors.emailnotfound && <span className="error">{errors.emailnotfound}</span>}
                 <Input name="password" 
                     onChange={this.onChange}
                     text_decoration="password" 
@@ -86,7 +91,8 @@ class Login extends Component {
                     icon={<Password />} 
                     label="Password" 
                     placeholder="password" />
-                <span className="error">{errors.email}</span>
+                {errors && errors.unauthorized && <span className="error">{errors.unauthorized}</span>}
+                {errors && errors.passwordincorrect && <span className="error">{errors.passwordincorrect}</span>}
 
                 <Button
                     className="mt-4" 

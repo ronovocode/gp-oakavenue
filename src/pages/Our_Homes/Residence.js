@@ -4,9 +4,11 @@ import { BrowserRouter as Router, useParams } from 'react-router-dom';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
+// Static Images
 import Kitchen from '../../static/img/kitchen-zoomed-out.jpg'
 import Plan3D from '../../static/img/3dplan1.png'
 
+// Icons
 import Bed from '../../icons/Bed'
 import Bath from '../../icons/Bath'
 import House from '../../icons/House'
@@ -17,20 +19,23 @@ import SmartHome from '../../icons/SmartHome'
 import Washer from '../../icons/Washer'
 import Compass from '../../icons/Compass'
 import Magnifying from '../../icons/Magnifying'
-import API from '../../utils/API';
+
+import API from '../../utils/API'
+import apartments from '../../static/data';
 
 const Wrapper = styled.div`
     .res-preview {
-        position: relative;
         
-        width: 100%;
-        transform: translateY(-15%);
     }
 
     .res-hero {
-        height: 75vh;
-        overflow: hidden;
         position: relative;
+        height: 50vw;
+        min-width: 100vw;
+        background-image: url(${Kitchen});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
     }
 
     h1, h2, h3, h4, h5 {
@@ -69,15 +74,16 @@ const Wrapper = styled.div`
     }
       
     .iframe-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
     }
+    
 `
 
 class Residence extends Component {
@@ -85,28 +91,11 @@ class Residence extends Component {
         super(props);
 
         this.state = {
-                Property_Number: "#221",
-                Thumbnail: "http://source.unsplash.com/random/600x600",
-                Square_Footage: 1220,
-                Number_of_Bedrooms: 2,
-                Number_of_Bathrooms: 2,
-                Office_Rooms: 2,
-                Powder_Room: "Yes",
-                Washer_And_Dryer: "Common",
-                Available_Date: "08/19/20",
-                Facing_Direction: "East",
-                Type: "Apartment",
-                Price: 1140,
-                Description: "See more...",
-                Floor_Plan: "Link to floorplan",
-                Virtual_Tour: "https://my.matterport.com/show/?m=vbTzLCM4rtF",
-                Smart_Home_Features: ["Nest Thermostat ", 
-                "Smart lock ", "Smart lighting"],
-                Images: [],
                 lightboxIsOpen: false,
                 lightboxIndex: 0,
-                virtual_tour_fullscreen: false
-                
+                virtual_tour_fullscreen: false,
+                images: [],
+                unit: {}
         }
     }
 
@@ -114,25 +103,40 @@ class Residence extends Component {
         let unit_number = window.location.href.split("/")
         unit_number = unit_number[unit_number.length - 1]
 
+        let currentUnit = apartments.filter(apartment => apartment.unit === unit_number)[0]
+        
+        this.setState({
+            unit: currentUnit
+        })
+
         console.log(unit_number);
         API.GET_ONE_APARTMENT(unit_number).then(res => {
-            console.log(res.data)
-            this.setState({
-                Images: res.data.images,
-                Available_Date: res.data.available_date
-            })
+
+            if(res.data.images) {
+                this.setState({
+                    images: res.data.images
+                });
+            }
+            if(res.data.available_date) {
+                this.setState({
+                    available_date: res.data.available_date
+                })
+            }
+
+            if(res.data.price) {
+                this.setState({
+                    price: res.data.price
+                })
+            }
         })
     }
     
     render() {
-        const { lightboxIndex, lightboxIsOpen, Images } = this.state
+        const { lightboxIndex, lightboxIsOpen, images } = this.state
         return (
                 <Wrapper>
                     <div className="res-hero">
-                        <img 
-                            className="res-preview" 
-                            alt="background" 
-                            src={Kitchen}></img>
+                        
                         <Magnifying className="zoom" color="#151C0D" onClick={() => this.setState({ 
                                                     lightboxIsOpen: true, 
                                                     lightboxIndex: 0
@@ -140,9 +144,19 @@ class Residence extends Component {
                     </div>
                     <div className="container mt-3">
                         <div className="row">
-                            <div className="col apartment-info">
-                                <h1>{this.state.Property_Number}</h1>
-                                <p className="text-muted">{this.state.Type}</p>
+                            <div className="col apartment-info mt-3">
+                            {images && images.map((image, index) => {
+                                        return (
+                                            <div className="col-md-2 p-2" onClick={() => this.setState({ 
+                                                    lightboxIsOpen: true, 
+                                                    lightboxIndex: index
+                                                })}>
+                                                <img className="img-fluid" src={image}/>
+                                            </div>
+                                        )
+                                    })}
+                                <h1>{this.state.unit.unit}</h1>
+                                <p className="text-muted">{this.state.unit.type}</p>
                                 <hr />
                                 <div className="row">
                                     <div className="col">
@@ -152,48 +166,48 @@ class Residence extends Component {
                                 <div className="row mt-5">
                                     <div className="col-md-2 text-center">
                                         <Bed color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.Number_of_Bedrooms} bedrooms</p>
+                                        <p className="mt-2">{this.state.unit.number_of_bedrooms} bedrooms</p>
                                     </div>
                                     <div className="col-md-2 text-center">
                                         <Bath color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.Number_of_Bathrooms} bathrooms</p>
+                                        <p className="mt-2">{this.state.unit.number_of_bathrooms} bathrooms</p>
                                     </div>
                                     <div className="col-md-2 text-center">
                                         <House color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.Square_Footage} sq ft</p>
+                                        <p className="mt-2">{this.state.unit.square_footage} sq ft</p>
                                     </div>
                                     <div className="col-md-2 text-center">
                                         <Calendar color="#D2CCA1" />
-                                        <p className="mt-2">Available starting on {this.state.Available_Date}</p>
+                                        <p className="mt-2">Available starting on {this.state.available_date}</p>
                                     </div>
                                     <div className="col-md-2 text-center">
                                         <DollarSign color="#D2CCA1" />
-                                        <p className="mt-2">${this.state.Price}/mo</p>
+                                        <p className="mt-2">${this.state.price}/mo</p>
                                     </div>
-                                    {this.state.Office_Rooms > 0 && 
+                                    {this.state.unit.Office_Rooms && 
                                         <div className="col-md-2 text-center">
                                             <Office color="#D2CCA1" />
-                                            <p className="mt-2">{this.state.Office_Rooms} office room(s)</p>
+                                            <p className="mt-2">{this.state.unit.Office_Rooms}</p>
                                         </div>
                                     }
                                     <div className="col-md-2 text-center">
                                         <SmartHome color="#D2CCA1" />
-                                        {this.state.Smart_Home_Features.length > 0 && 
-                                                <div className="mt-2">
-                                                    Smart Home
-                                                    <div className="mt-2 text-muted">
-                                                        {this.state.Smart_Home_Features.map(feature => <p>{feature}</p>)}
-                                                    </div>
+                                        {this.state.unit.smart_home_features && this.state.unit.smart_home_features.length && 
+                                            <div className="mt-2">
+                                                Smart Home
+                                                <div className="mt-2 text-muted">
+                                                    {this.state.unit.smart_home_features.map(feature => <p>{feature}</p>)}
                                                 </div>
-                                            }
+                                            </div>
+                                        }
                                     </div>
                                     <div className="col-md-2 text-center">
                                         <Washer color="#D2CCA1" />
-                                        {this.state.Washer_And_Dryer === "Common" ? <p className="mt-2">Common area washer & dryer</p> : <p className="mt-2">In-house washer & dryer</p>}
+                                        {this.state.unit.washer_and_dryer === "Common" ? <p className="mt-2">Common washer & dryer</p> : <p className="mt-2">In-unit washer & dryer</p>}
                                     </div>
                                     <div className="col-md-2 text-center">
                                         <Compass color="#D2CCA1" />
-                                        {this.state.Facing_Direction && <p className="mt-2">Facing {this.state.Facing_Direction}</p>}
+                                        {this.state.unit.window_directions && <p className="mt-2">{this.state.unit.window_directions}</p>}
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +220,7 @@ class Residence extends Component {
                                 <hr />
                                 <div className="iframe-container">
                                     {this.state.virtual_tour_fullscreen&& <div className="close_virtual_tour">&#215;</div>}
-                                    <iframe src={this.state.Virtual_Tour} frameborder='0' allowfullscreen allow='vr'></iframe>
+                                    <iframe src={this.state.unit.virtual_tour} frameborder='0' allowfullscreen allow='vr'></iframe>
                                 </div>
                             </div>
                         </div>
@@ -215,30 +229,20 @@ class Residence extends Component {
                                 <h3>Gallery</h3>
                                 <hr />
                                 <div className="row d-flex gallery">
-                                    {this.state.Images && this.state.Images.map((image, index) => {
-                                        return (
-                                            <div className="col-md-2 p-2" onClick={() => this.setState({ 
-                                                    lightboxIsOpen: true, 
-                                                    lightboxIndex: index
-                                                })}>
-                                                <img className="img-fluid" src={image}/>
-                                            </div>
-                                        )
-                                    })}
                                     {lightboxIsOpen && (
                                         <Lightbox
-                                            mainSrc={Images[lightboxIndex]}
-                                            nextSrc={Images[(lightboxIndex + 1) % Images.length]}
-                                            prevSrc={Images[(lightboxIndex + Images.length - 1) % Images.length]}
+                                            mainSrc={images[lightboxIndex]}
+                                            nextSrc={images[(lightboxIndex + 1) % images.length]}
+                                            prevSrc={images[(lightboxIndex + images.length - 1) % images.length]}
                                             onCloseRequest={() => this.setState({ lightboxIsOpen: false })}
                                             onMovePrevRequest={() =>
                                                 this.setState({
-                                                    lightboxIndex: (lightboxIndex + Images.length - 1) % Images.length,
+                                                    lightboxIndex: (lightboxIndex + images.length - 1) % images.length,
                                                 })
                                             }
                                             onMoveNextRequest={() =>
                                                 this.setState({
-                                                    lightboxIndex: (lightboxIndex + 1) % Images.length,
+                                                    lightboxIndex: (lightboxIndex + 1) % images.length,
                                                 })
                                             }
                                         />

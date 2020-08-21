@@ -18,6 +18,10 @@ const LoginFormWrapper = styled.form`
     .h3{
         var(--dark-accent)
     }
+
+    .error {
+        color: red;
+    }
 `
 
 class Login extends Component {
@@ -26,20 +30,20 @@ class Login extends Component {
         this.state = {
           email: "",
           password: "",
-          errors: ""
+          errors: {}
         };
       }
     
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/admin");
+            this.props.history.push("/manager");
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/admin");
+            this.props.history.push("/manager");
         }
 
         if (nextProps.errors) {
@@ -57,6 +61,7 @@ class Login extends Component {
 
     onSubmit = e => {
         e.preventDefault();
+        // console.log(this.state);
         const userData = {
             email: this.state.email,
             password: this.state.password,
@@ -78,6 +83,7 @@ class Login extends Component {
                     icon={<Mail />} 
                     label="Email" 
                     placeholder="johndoe@gmail.com" />
+                {errors && errors.emailnotfound && <span className="error">{errors.emailnotfound}</span>}
                 <Input name="password" 
                     onChange={this.onChange}
                     text_decoration="password" 
@@ -86,7 +92,8 @@ class Login extends Component {
                     icon={<Password />} 
                     label="Password" 
                     placeholder="password" />
-                <span className="error">{errors.email}</span>
+                {errors && errors.unauthorized && <span className="error">{errors.unauthorized}</span>}
+                {errors && errors.passwordincorrect && <span className="error">{errors.passwordincorrect}</span>}
 
                 <Button
                     className="mt-4" 

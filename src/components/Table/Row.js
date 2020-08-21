@@ -11,7 +11,6 @@ class Row extends Component {
 
     toggleEdit = e => {
         this.setState({editMode: !this.state.editMode});
-        console.log(e.target)
     }
 
     render() {
