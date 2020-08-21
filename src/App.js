@@ -42,7 +42,6 @@ import { setCurrentUser, logoutUser } from "./actions/auth";
 if (localStorage.jwtToken) {
   // Set auth token header auth
   const token = localStorage.jwtToken;
-  console.log(localStorage._id);
   setAuthToken(token, localStorage._id);
   // Decode token and get user info and exp
   const decoded = jwt_decode(token);

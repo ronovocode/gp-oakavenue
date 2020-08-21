@@ -46,8 +46,6 @@ class Login extends Component {
             this.props.history.push("/manager");
         }
 
-        console.log(nextProps.errors);
-
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
@@ -56,7 +54,6 @@ class Login extends Component {
     }
 
     onChange = e => {
-        console.log("FROM: " + e.target.id + " " + e.target.value);
         this.setState({ 
             [e.target.id]: e.target.value
         });

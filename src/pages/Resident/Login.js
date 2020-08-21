@@ -72,7 +72,7 @@ class Login extends Component {
 
     render() {
         const {errors} = this.state;
-        console.log(errors);
+
         return (
             <LoginFormWrapper onSubmit={this.onSubmit} className="container">
                 <h3 className="text-center my-5">Resident Login</h3>
@@ -82,8 +82,7 @@ class Login extends Component {
                     icon={<Mail />} 
                     label="Email" 
                     placeholder="johndoe@gmail.com" />
-                <span className="error">{errors.email}</span>
-                <span className="error">{errors.emailnotfound}</span>
+                {errors && errors.emailnotfound && <span className="error">{errors.emailnotfound}</span>}
                 <Input name="password" 
                     onChange={this.onChange}
                     text_decoration="password" 
@@ -92,7 +91,8 @@ class Login extends Component {
                     icon={<Password />} 
                     label="Password" 
                     placeholder="password" />
-                <span className="error">{errors.password}</span>
+                {errors && errors.unauthorized && <span className="error">{errors.unauthorized}</span>}
+                {errors && errors.passwordincorrect && <span className="error">{errors.passwordincorrect}</span>}
 
                 <Button
                     className="mt-4" 

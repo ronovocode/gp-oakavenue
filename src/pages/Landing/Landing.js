@@ -18,15 +18,6 @@ const LandingWrapper = styled.div`
         background-position: 50% 50%;
     }
 
-    .hero .bg {
-        height: 100vh;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        opacity: 0.5;
-        z-index: 0;
-    }
-
     .hero h1 {
         background-color: transparent;
     }

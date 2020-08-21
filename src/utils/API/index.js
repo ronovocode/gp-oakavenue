@@ -1,38 +1,48 @@
-import { apiURL } from "./url"
+import {
+  apiURL
+} from "./url"
 import axios from "axios";
 
-import { apartments } from '../../static/data';
+import {
+  apartments
+} from '../../static/data';
 
 const URL = apiURL;
 
 export default {
 
-  GET_ALL_APARTMENTS: function(property) {
+  GET_ALL_APARTMENTS: function (property) {
     return axios.get(URL + "/apartment/all/" + property);
   },
 
-  GET_ONE_APARTMENT: function(unit) {
-      return axios.get(URL + "/apartment/" + unit);
-  }, 
-
-  EDIT_APARTMENT: function(unit, body) {
-      return axios({
-        method: 'put',
-        url: URL + "/apartment/" + unit,
-        data: body,
-        headers: {
-          property: "Oak Avenue"
-        }
-      });
+  GET_ONE_APARTMENT: function (unit) {
+    return axios.get(URL + "/apartment/" + unit);
   },
-  GET_ALL_RESIDENTS: function(property) {
+
+  EDIT_APARTMENT: function (unit, body) {
+    return axios({
+      method: 'put',
+      url: URL + "/apartment/" + unit,
+      data: body,
+      headers: {
+        property: "Oak Avenue"
+      }
+    });
+  },
+  GET_ALL_RESIDENTS: function (property) {
     return axios.get(URL + "/users/residents/" + property);
   },
-  GET_RESIDENT: function() {
+  GET_RESIDENT: function () {
     return axios.get(URL + "/users/resident")
   },
-  EDIT_RESIDENT: function(body) {
+  EDIT_RESIDENT: function (body) {
     return axios.put(URL + "/users/resident", body)
-  }
+  },
+  CREATE_RESIDENT: function (body) {
+    return axios.post(URL + "/api/auth/create", body);
+  },
+  DELETE_RESIDENT: function (body) {
+    return axios.delete(URL + "/users/resident", body);
+  },
 
 };

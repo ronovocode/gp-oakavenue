@@ -6,7 +6,6 @@ import Mail from '../../icons/Mail'
 
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
-// import NewsCard from '../../components/NewsCard/NewsCard'
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -54,7 +53,8 @@ class Dashboard extends Component {
         name_input: "",
         cell_input: "",
         email_input: "",
-        documents: []
+        documents: [],
+        isResident: true
     }
 
     onChangeContact = e => {
@@ -81,6 +81,7 @@ class Dashboard extends Component {
                 investorInfoSaved: true,
                 toggleEdit: false
             });
+            this.componentDidMount();
         }).catch(err => {
             this.setState({
                 error: err.response.data
@@ -90,6 +91,11 @@ class Dashboard extends Component {
 
     componentDidMount = () => {
         API.GET_RESIDENT().then(res => {
+            if(!res.data.unit) {
+                this.setState({
+                    isResident: false
+                })
+            }
             if(!res.data.name && !res.data.cell) {
                 this.props.logoutUser();
             } else {
@@ -112,108 +118,112 @@ class Dashboard extends Component {
     render() {
         return (
             <Wrapper className="container">
-                <h2 className="mt-5" style={{color: "#D2CCA1"}}>Welcome, {this.state.name}</h2>
-                <span className="text-muted logout" onClick={() => {this.props.logoutUser()}}>Logout</span>
-                <hr />
+                {this.state.isResident ? <div>
+                    <h2 className="mt-5" style={{color: "#D2CCA1"}}>Welcome, {this.state.name}</h2>
+                    <span className="text-muted logout" onClick={() => {this.props.logoutUser()}}>Logout</span>
+                    <hr />
 
-                <div className="row">
-                    <div className="col-md">
-                        <h4>Contact Information</h4>
-                        <hr />
-                        {this.state.toggleEdit ? (
-                            <div className="contact">
-                                <Input name="name_input" onChange={this.onChangeContact} type="input" placeholder="Name" />
-                                <Input name="cell_input" onChange={this.onChangeContact} type="input" placeholder="Phone number" />
-                                <Input name="email_input" onChange={this.onChangeContact} type="input" placeholder="E-mail" />
-                                {this.state.investorInfoSaved && <p className="success">Saved</p>}
-                                {this.state.error && <p className="success">{this.state.error}</p>}
-                            </div>
-                        ) : (
-                            <div className="contact">
-                                <p className="investor-name">
-                                    {/* <UserIcon color="#D2CCA1" className="mr-3"/> */}
-                                    {this.state.name}
-                                </p>
-                                <p className="investor-cell">
-                                    {/* <Phone color="#D2CCA1" className="mr-3"/> */}
-                                    {this.state.cell}
-                                </p>
-                                <p className="investor-email">
-                                    {/* <Mail color="#D2CCA1" className="mr-5"/> */}
-                                    {this.state.email}
-                                </p>
-                            </div>
-                        )}
-                    </div>
-                    <div className="col-md">
-                        <div className="investment">
-                            <h4>Your home info</h4>
+                    <div className="row">
+                        <div className="col-md">
+                            <h4>Contact Information</h4>
                             <hr />
-                            <p className="investor-entity-name">
-                                {/* <UserIcon color="#fff" className="mr-3"/> */}
-                                <b>Unit:</b> {this.state.unit}
-                            </p>
-                            <p className="investor-entity-type">
-                                {/* <Phone color="#fff" className="mr-3"/> */}
-                                <b>Type:</b> {this.state.entity_type}
-                            </p>
+                            {this.state.toggleEdit ? (
+                                <div className="contact">
+                                    <Input name="name_input" onChange={this.onChangeContact} type="input" placeholder="Name" />
+                                    <Input name="cell_input" onChange={this.onChangeContact} type="input" placeholder="Phone number" />
+                                    <Input name="email_input" onChange={this.onChangeContact} type="input" placeholder="E-mail" />
+                                    {this.state.investorInfoSaved && <p className="success">Saved</p>}
+                                    {this.state.error && <p className="success">{this.state.error}</p>}
+                                </div>
+                            ) : (
+                                <div className="contact">
+                                    <p className="investor-name">
+                                        {/* <UserIcon color="#D2CCA1" className="mr-3"/> */}
+                                        {this.state.name}
+                                    </p>
+                                    <p className="investor-cell">
+                                        {/* <Phone color="#D2CCA1" className="mr-3"/> */}
+                                        {this.state.cell}
+                                    </p>
+                                    <p className="investor-email">
+                                        {/* <Mail color="#D2CCA1" className="mr-5"/> */}
+                                        {this.state.email}
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+                        <div className="col-md">
+                            <div className="investment">
+                                <h4>Your home info</h4>
+                                <hr />
+                                <p className="investor-entity-name">
+                                    {/* <UserIcon color="#fff" className="mr-3"/> */}
+                                    <b>Unit:</b> {this.state.unit}
+                                </p>
+                                <p className="investor-entity-type">
+                                    {/* <Phone color="#fff" className="mr-3"/> */}
+                                    <b>Type:</b> {this.state.entity_type}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {this.state.toggleEdit ? (
-                    <div className="d-flex">
+                    {this.state.toggleEdit ? (
+                        <div className="d-flex">
+                            <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
+                                text="Cancel" 
+                                className="w-50 mr-2"/>
+                            <Button onClick={() => this.contactSave()} 
+                                text="Save" 
+                                className="w-50"/>
+                        </div>
+                    ) : (
                         <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
-                            text="Cancel" 
-                            className="w-50 mr-2"/>
-                        <Button onClick={() => this.contactSave()} 
-                            text="Save" 
+                            text="Edit Contact Info" 
                             className="w-50"/>
+                    )}
+
+                    <div className="row mt-5">
+                    <div className="col-md-6 documents">
+                            <h3 style={{color: "#D2CCA1"}}>Documents</h3>
+                            <hr />
+                            {this.state.documents.length > 0 ?this.state.documents.map((i) => {
+                                    return (
+                                        <a href={i.url}>
+                                            <h5>{i.title}</h5>
+                                        </a>
+                                    )
+                                }) : <p className="text-muted">No documents yet</p>}
+
                     </div>
-                ) : (
-                    <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
-                        text="Edit Contact Info" 
-                        className="w-50"/>
-                )}
-
-                <div className="row mt-5">
-                <div className="col-md-6 documents">
-                        <h3 style={{color: "#D2CCA1"}}>Documents</h3>
-                        <hr />
-                        {this.state.documents.length > 0 ?this.state.documents.map((i) => {
-                                return (
-                                    <a href={i.url}>
-                                        <h5>{i.title}</h5>
-                                    </a>
-                                )
-                            }) : <p className="text-muted">No documents yet</p>}
-
-                </div>
-                <div className="col-md-6 requests">
-                        <h3 style={{color: "#D2CCA1"}}>Requests</h3>
-                        <hr />
-                        <div className="requests">
-                        <Input name="suggestions" 
-                            onChange={this.onChange}
-                            className="mt-4" 
-                            type="text" 
-                            label="Suggestions" 
-                            placeholder="Any ways we could improve our residence..." />
-                        <Button 
-                            text="Submit" 
-                            className="mt-3 mb-5"/>
-                        <Input name="maintenance" 
-                            onChange={this.onChange}
-                            className="mt-4" 
-                            type="text" 
-                            label="Maintenance" 
-                            placeholder="Type any issues you may be having here..." />
-                        <Button 
-                            text="Submit" 
-                            className="mt-3"/>
+                    <div className="col-md-6 requests">
+                            <h3 style={{color: "#D2CCA1"}}>Requests</h3>
+                            <hr />
+                            <div className="requests">
+                            <Input name="suggestions" 
+                                onChange={this.onChange}
+                                className="mt-4" 
+                                type="text" 
+                                label="Suggestions" 
+                                placeholder="Any ways we could improve our residence..." />
+                            <Button 
+                                text="Submit" 
+                                className="mt-3 mb-5"/>
+                            <Input name="maintenance" 
+                                onChange={this.onChange}
+                                className="mt-4" 
+                                type="text" 
+                                label="Maintenance" 
+                                placeholder="Type any issues you may be having here..." />
+                            <Button 
+                                text="Submit" 
+                                className="mt-3"/>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div> : <div>
+                            <a href="/manager">Click here for the right dashboard.</a>
+                        </div>}
             </Wrapper>
         )
     }
