@@ -49,7 +49,7 @@ const Wrapper = styled.div`
     }
 
     .gallery {
-        max-height: 15rem;
+        max-height: 10vh;
         overflow: hidden;
     }
 

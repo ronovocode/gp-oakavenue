@@ -56,7 +56,7 @@ const Wrapper = styled.div`
 class Dashboard extends Component {
     state = {
         toggleEdit: false,
-        investorInfoSaved: false,
+        residentInfoSaved: false,
         name_input: "",
         cell_input: "",
         email_input: "",
@@ -94,7 +94,7 @@ class Dashboard extends Component {
         API.EDIT_RESIDENT(request).then(res => {
             console.log(res.data)
             this.setState({
-                investorInfoSaved: true,
+                residentInfoSaved: true,
                 toggleEdit: false
             });
             this.componentDidMount();
