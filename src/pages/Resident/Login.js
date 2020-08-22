@@ -91,6 +91,7 @@ class Login extends Component {
                     icon={<Password />} 
                     label="Password" 
                     placeholder="password" />
+                <a href="https://www.gpre.co/forgotpassword">Forgot password?</a>
                 {errors && errors.unauthorized && <span className="error">{errors.unauthorized}</span>}
                 {errors && errors.passwordincorrect && <span className="error">{errors.passwordincorrect}</span>}
 

@@ -54,7 +54,7 @@ const LandingWrapper = styled.div`
 export default class Landing extends Component {
 
     componentDidMount() {
-        document.title = "301 Oak Avenue"
+        document.title = "Oak Avenue"
     }
 
     scrollDown = (event) => {
@@ -74,7 +74,7 @@ export default class Landing extends Component {
                 <div className="container-fluid">
                     <div className="hero text-center">
                         <div className="hero-text">
-                            <h1>301 Oak Avenue</h1>
+                            <h1>Oak Avenue</h1>
                             <h2 className="mt-4">Redwood City, CA</h2>
                             <hr />
                         </div>

@@ -56,7 +56,7 @@ const Wrapper = styled.div`
 class Dashboard extends Component {
     state = {
         toggleEdit: false,
-        investorInfoSaved: false,
+        residentInfoSaved: false,
         name_input: "",
         cell_input: "",
         email_input: "",
@@ -94,7 +94,7 @@ class Dashboard extends Component {
         API.EDIT_RESIDENT(request).then(res => {
             console.log(res.data)
             this.setState({
-                investorInfoSaved: true,
+                residentInfoSaved: true,
                 toggleEdit: false
             });
             this.componentDidMount();
@@ -170,9 +170,9 @@ class Dashboard extends Component {
                             <hr />
                             {this.state.toggleEdit ? (
                                 <div className="contact">
-                                    <Input name="name_input" onChange={this.onChangeContact} type="input" placeholder="Name" />
-                                    <Input name="cell_input" onChange={this.onChangeContact} type="input" placeholder="Phone number" />
-                                    <Input name="email_input" onChange={this.onChangeContact} type="input" placeholder="E-mail" />
+                                    <Input name="name_input" onChange={this.onChange} type="input" placeholder="Name" />
+                                    <Input name="cell_input" onChange={this.onChange} type="input" placeholder="Phone number" />
+                                    <Input name="email_input" onChange={this.onChange} type="input" placeholder="E-mail" />
                                     {this.state.error && <p className="error">{this.state.error}</p>}
                                 </div>
                             ) : (
