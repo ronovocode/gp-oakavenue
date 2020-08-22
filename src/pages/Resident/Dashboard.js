@@ -92,6 +92,7 @@ class Dashboard extends Component {
             request.email = email_input
         }
         API.EDIT_RESIDENT(request).then(res => {
+            console.log(res.data)
             this.setState({
                 investorInfoSaved: true,
                 toggleEdit: false
@@ -105,30 +106,6 @@ class Dashboard extends Component {
     }
 
     sendMaintenanceRequest = () => {
-        let { maintenance, unit, email, maintenanceradio } = this.state
-        let request = {}
-        request.unit = unit;
-        request.property = "Oak Avenue";
-        request.email = email;
-        request.inUnit = maintenanceradio;
-        request.message = maintenance;
-        
-        API.SEND_MAINTENANCE_REQUEST(request).then(res => {
-            this.setState({
-                success: {
-                    maintenance: res.data
-                }
-            })
-        }).catch(err => {
-            this.setState({
-                error: {
-                    maintenance: err.response.data
-                }
-            })
-        })
-    }
-
-    sendSuggestionRequest = () => {
         let { maintenance, unit, email, maintenanceradio } = this.state
         let request = {}
         request.unit = unit;

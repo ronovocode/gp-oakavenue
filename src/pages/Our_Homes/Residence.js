@@ -9,16 +9,16 @@ import Kitchen from '../../static/img/kitchen-zoomed-out.jpg'
 import Plan3D from '../../static/img/3dplan1.png'
 
 // Icons
-import Bed from '../../icons/Bed'
-import Bath from '../../icons/Bath'
-import House from '../../icons/House'
-import Calendar from '../../icons/Calendar'
-import DollarSign from '../../icons/DollarSign'
-import Office from '../../icons/Office'
-import SmartHome from '../../icons/SmartHome'
-import Washer from '../../icons/Washer'
-import Compass from '../../icons/Compass'
-import Magnifying from '../../icons/Magnifying'
+import Bed from '../../icons/Residence/Bed'
+import Bath from '../../icons/Residence/Bath'
+import House from '../../icons/Residence/House'
+import Calendar from '../../icons/Residence/Calendar'
+import DollarSign from '../../icons/Residence/DollarSign'
+import Office from '../../icons/Residence/Office'
+import SmartHome from '../../icons/Residence/SmartHome'
+import Washer from '../../icons/Residence/Washer'
+import Compass from '../../icons/Residence/Compass'
+import Magnifying from '../../icons/Residence/Magnifying'
 
 import API from '../../utils/API'
 import apartments from '../../static/data';
@@ -132,7 +132,7 @@ class Residence extends Component {
     }
     
     render() {
-        const { lightboxIndex, lightboxIsOpen, images } = this.state
+        const { lightboxIndex, lightboxIsOpen, images, unit, available_date } = this.state
         return (
                 <Wrapper>
                     <div className="res-hero">
@@ -145,18 +145,18 @@ class Residence extends Component {
                     <div className="container mt-3">
                         <div className="row">
                             <div className="col apartment-info mt-3">
-                            {images && images.map((image, index) => {
-                                        return (
-                                            <div className="col-md-2 p-2" onClick={() => this.setState({ 
-                                                    lightboxIsOpen: true, 
-                                                    lightboxIndex: index
-                                                })}>
-                                                <img className="img-fluid" src={image}/>
-                                            </div>
-                                        )
-                                    })}
-                                <h1>{this.state.unit.unit}</h1>
-                                <p className="text-muted">{this.state.unit.type}</p>
+                                {images && images.map((image, index) => {
+                                    return (
+                                        <div className="col-md-2 p-2" onClick={() => this.setState({ 
+                                                lightboxIsOpen: true, 
+                                                lightboxIndex: index
+                                            })}>
+                                            <img className="img-fluid" src={image}/>
+                                        </div>
+                                    )
+                                })}
+                                <h1>{unit.unit}</h1>
+                                <p className="text-muted">{unit.type}</p>
                                 <hr />
                                 <div className="row">
                                     <div className="col">
@@ -164,55 +164,80 @@ class Residence extends Component {
                                     </div>
                                 </div>
                                 <div className="row mt-5">
-                                    <div className="col-md-2 text-center">
-                                        <Bed color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.unit.number_of_bedrooms} bedrooms</p>
-                                    </div>
-                                    <div className="col-md-2 text-center">
-                                        <Bath color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.unit.number_of_bathrooms} bathrooms</p>
-                                    </div>
-                                    <div className="col-md-2 text-center">
-                                        <House color="#D2CCA1" />
-                                        <p className="mt-2">{this.state.unit.square_footage} sq ft</p>
-                                    </div>
-                                    <div className="col-md-2 text-center">
-                                        <Calendar color="#D2CCA1" />
-                                        <p className="mt-2">Available starting on {this.state.available_date}</p>
-                                    </div>
-                                    <div className="col-md-2 text-center">
-                                        <DollarSign color="#D2CCA1" />
-                                        <p className="mt-2">${this.state.price}/mo</p>
-                                    </div>
-                                    {this.state.unit.Office_Rooms && 
-                                        <div className="col-md-2 text-center">
-                                            <Office color="#D2CCA1" />
-                                            <p className="mt-2">{this.state.unit.Office_Rooms}</p>
-                                        </div>
-                                    }
-                                    <div className="col-md-2 text-center">
-                                        <SmartHome color="#D2CCA1" />
-                                        {this.state.unit.smart_home_features && this.state.unit.smart_home_features.length && 
-                                            <div className="mt-2">
-                                                Smart Home
-                                                <div className="mt-2 text-muted">
-                                                    {this.state.unit.smart_home_features.map(feature => <p>{feature}</p>)}
+                                    <div className="col info">
+                                        <h4>Apartment Info</h4>
+                                        <hr />
+                                        <div className="row pt-3">
+                                            {unit.number_of_bedrooms && 
+                                                <div className="col-md-2 text-center">
+                                                    <Bed color="#D2CCA1" />
+                                                    <p className="mt-2">{unit.number_of_bedrooms} bedrooms</p>
                                                 </div>
+                                            }
+                                            {unit.number_of_bathrooms && 
+                                                <div className="col-md-2 text-center">
+                                                    <Bath color="#D2CCA1" />
+                                                    <p className="mt-2">{unit.number_of_bathrooms} bathrooms</p>
+                                                </div>
+                                            }
+                                            {unit.square_footage && 
+                                                <div className="col-md-2 text-center">
+                                                    <House color="#D2CCA1" />
+                                                    <p className="mt-2">{unit.square_footage} sq ft</p>
+                                                </div>
+                                            }
+                                            {available_date && 
+                                                <div className="col-md-2 text-center">
+                                                    <Calendar color="#D2CCA1" />
+                                                    <p className="mt-2">Available starting on {available_date}</p>
+                                                </div>
+                                            }
+                                            {this.state.price && 
+                                                <div className="col-md-2 text-center">
+                                                    <DollarSign color="#D2CCA1" />
+                                                    <p className="mt-2">${this.state.price}/mo</p>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row mt-5">
+                                    <div className="col amenities">
+                                        <h4>Amenities</h4>
+                                        <hr />
+                                        <div className="row pt-3">
+                                            {unit.office_rooms && 
+                                                <div className="col-md-2 text-center">
+                                                    <Office color="#D2CCA1" />
+                                                    <p className="mt-2">{unit.office_rooms}</p>
+                                                </div>
+                                            }
+                                            {unit.smart_home_features && unit.smart_home_features.length && <div className="col-md-2 text-center">
+                                                <SmartHome color="#D2CCA1" />
+                                                
+                                                    <div className="mt-2">
+                                                        Smart Home
+                                                        <div className="mt-2 text-muted">
+                                                            {unit.smart_home_features.map(feature => <p>{feature}</p>)}
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>}
+                                            <div className="col-md-2 text-center">
+                                                <Washer color="#D2CCA1" />
+                                                {unit.washer_and_dryer === "Common" ? <p className="mt-2">Common washer & dryer</p> : <p className="mt-2">In-unit washer & dryer</p>}
                                             </div>
-                                        }
-                                    </div>
-                                    <div className="col-md-2 text-center">
-                                        <Washer color="#D2CCA1" />
-                                        {this.state.unit.washer_and_dryer === "Common" ? <p className="mt-2">Common washer & dryer</p> : <p className="mt-2">In-unit washer & dryer</p>}
-                                    </div>
-                                    <div className="col-md-2 text-center">
-                                        <Compass color="#D2CCA1" />
-                                        {this.state.unit.window_directions && <p className="mt-2">{this.state.unit.window_directions}</p>}
+                                            <div className="col-md-2 text-center">
+                                                <Compass color="#D2CCA1" />
+                                                {unit.window_directions && <p className="mt-2">Facing {unit.window_directions}</p>}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
+                        {unit.virtual_tour && 
                         <div className="row">
                             <div className="col text-center">
                                 <h3>Take a virtual tour</h3>
@@ -220,14 +245,12 @@ class Residence extends Component {
                                 <hr />
                                 <div className="iframe-container">
                                     {this.state.virtual_tour_fullscreen&& <div className="close_virtual_tour">&#215;</div>}
-                                    <iframe src={this.state.unit.virtual_tour} frameborder='0' allowfullscreen allow='vr'></iframe>
+                                    <iframe src={unit.virtual_tour} frameborder='0' allowfullscreen allow='vr'></iframe>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                         <div className="row mt-5">
                             <div className="col text-center">
-                                <h3>Gallery</h3>
-                                <hr />
                                 <div className="row d-flex gallery">
                                     {lightboxIsOpen && (
                                         <Lightbox
