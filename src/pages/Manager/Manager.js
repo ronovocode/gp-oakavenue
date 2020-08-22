@@ -72,6 +72,14 @@ const Wrapper = styled.div`
         }
     }
 
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
+
     .logout {
         color: #D2CCA1;
         transition-duration: 0.5s;
@@ -145,8 +153,8 @@ class Manager extends Component {
             this.componentDidMount()
         }).catch(err => {
             this.setState({
-                error: err.response.data
-            }).then(window.location.reload())
+                errors: err.response.data
+            });
         })
     }
 
@@ -160,7 +168,13 @@ class Manager extends Component {
             unit_property: "Oak Avenue",
             type: "resident"
         }).then(res => {
-            this.componentDidMount()
+            this.setState({
+                success: res.data
+            })
+        }).catch(err => {
+            this.setState({
+                errors: err.response.data
+            });
         })
     }
 
@@ -196,7 +210,7 @@ class Manager extends Component {
     }
 
     render() {
-        const { apartments, residents, isManager, selectedIndex } = this.state;
+        const { errors, success, apartments, residents, isManager, selectedIndex } = this.state;
 
         return ( 
             <Wrapper className="container">
@@ -209,6 +223,15 @@ class Manager extends Component {
                         <span className="logout d-inline-flex" onClick={() => this.props.logoutUser()}>LOGOUT</span>
                     </div>
                 </div>
+                {errors && !success && 
+                    <div>
+                        {errors.cell && <span className="error d-block">{errors.cell}</span>}
+                        {errors.email && <span className="error d-block">{errors.email}</span>}
+                        {errors.name && <span className="error d-block">{errors.name}</span>}
+                        {errors.investor && <span className="error d-block">{errors.investor}</span>}
+                    </div>
+                }
+                {success && <span className="success">{success}</span>}
                 {isManager ? <div className="row mt-5">
                     <div className="col-md mb-5">
                         <h3 className="mb-5">Manage Oak Avenue</h3>
@@ -286,7 +309,7 @@ class Manager extends Component {
                                     <h5 className="mb-3">Date Available</h5>
                                     <Calendar 
                                         onChange={this.onChangeCalendar}
-                                        value={this.state.edit_date}/>
+                                        value={this.state.date}/>
                                     {this.state.edit_date && <p className="mt-4">{this.state.edit_date} selected</p>}
                                     <Input name="edit_price" onChange={this.onChange} className="mt-2" label="Price per month" placeholder="$1120" type="input"></Input>
                                 </div>
@@ -315,7 +338,7 @@ class Manager extends Component {
                                         <ul>
                                             <li>Email: <span>{resident.email}</span></li>
                                             <li>Cell: <span>{resident.cell}</span></li>
-                                            <li>Documents
+                                            {/* <li>Documents
                                                 {resident.documents.length > 0 ? 
                                                     <ul>
                                                         {resident.documents.map(document => {
@@ -328,34 +351,8 @@ class Manager extends Component {
                                                         })}
                                                     </ul> : <p className="text-muted">No documents yet</p>
                                                 }
-                                            </li>
+                                            </li> */}
                                         </ul>
-                                        <div data-identifier={"r" + resident.email} onClick={this.modalOpenedHandler} data-toggle="modal" data-target={"#modal2-" + index} className="edit-button d-block">Edit</div>
-                                    </div>
-                                    <div className="modal fade" id={"modal2-" + index} tabindex="-1" aria-labelledby="newresidentModalLabel" aria-hidden="true">
-                                        <div className="modal-dialog">
-                                            <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h5 className="modal-title" id="newresidentModalLabel">Edit {resident.PropertyUnderManagement}</h5>
-                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div className="modal-body">
-                                                <form>
-                                                    <Input label="Unit" type="input" placeholder={resident.unit}></Input>
-                                                    <div class="custom-file">
-                                                        <input onChange={this.onChangeHandler} type="file" class="custom-file-input" id="customFile" />
-                                                        <label class="custom-file-label" for="customFile">{this.state.currentFile}</label>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" className="btn btn-primary" data-dismiss="modal">Save</button>
-                                            </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             )

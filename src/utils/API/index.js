@@ -1,10 +1,10 @@
 import {
-apiURL
+    apiURL
 } from "./url"
 import axios from "axios";
 
 import {
-apartments
+    apartments
 } from '../../static/data';
 
 const URL = apiURL;
@@ -21,12 +21,12 @@ export default {
 
     EDIT_APARTMENT: function (unit, body) {
         return axios({
-        method: 'put',
-        url: URL + "/apartment/" + unit,
-        data: body,
-        headers: {
-            property: "Oak Avenue"
-        }
+            method: 'put',
+            url: URL + "/apartment/" + unit,
+            data: body,
+            headers: {
+                property: "Oak Avenue"
+            }
         });
     },
     GET_ALL_RESIDENTS: function (property) {
@@ -42,9 +42,13 @@ export default {
         return axios.post(URL + "/api/auth/create", body);
     },
     DELETE_RESIDENT: function (body) {
-        return axios.delete(URL + "/users/resident", body);
+        return axios({
+            method: 'delete',
+            url: URL + "/users/resident",
+            data: body
+        });
     },
-    SEND_MAINTENANCE_REQUEST: function(body) {
+    SEND_MAINTENANCE_REQUEST: function (body) {
         return axios.post(URL + "/request/maintenance", body);
     }
 

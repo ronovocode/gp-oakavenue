@@ -11,7 +11,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "Yes",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "301B",
@@ -25,7 +26,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "301C",
@@ -39,7 +41,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "301D",
@@ -53,7 +56,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "301E",
@@ -67,7 +71,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "301F",
@@ -81,7 +86,8 @@ const apartments = [
       "patios": "Very large patio from living room and 1 from master bedrrom",
       "fireplace": "Yes",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "293A",
@@ -95,7 +101,8 @@ const apartments = [
       "patios": "Very large patio from living room and 1 from master bedrrom",
       "fireplace": "Yes",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "293B",
@@ -109,7 +116,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "293C",
@@ -123,7 +131,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "293D",
@@ -137,7 +146,8 @@ const apartments = [
       "patios": "Very large patio from living room and 1 from master bedrrom",
       "fireplace": "Yes",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "297A",
@@ -151,7 +161,8 @@ const apartments = [
       "patios": "Very large patio from living room and 1 from master bedrrom",
       "fireplace": "Yes",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "297B",
@@ -165,7 +176,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "297C",
@@ -179,7 +191,8 @@ const apartments = [
       "patios": "1 from living room and 1 from master bedrrom",
       "fireplace": "No",
       "type": "Townhouse",
-      "property": "Oak Avenue"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     },
     {
       "unit": "297D",
@@ -193,217 +206,8 @@ const apartments = [
       "patios": "Very large patio from living room and 1 from master bedrrom",
       "fireplace": "Yes",
       "type": "Townhouse",
-      "property": "Oak Avenue"
-    },
-    {
-      "unit": 101,
-      "square_footage": 850,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and West",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 102,
-      "square_footage": 550,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Apartment",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 103,
-      "square_footage": 750,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and East",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 104,
-      "square_footage": "1,000",
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and North",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 105,
-      "square_footage": "1,000",
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "North and West",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 201,
-      "square_footage": 850,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and West",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 202,
-      "square_footage": 550,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Apartment",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 203,
-      "square_footage": 750,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and East",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 204,
-      "square_footage": "1,000",
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and North",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 205,
-      "square_footage": "1,000",
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "North and West",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 301,
-      "square_footage": 850,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and West",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 302,
-      "square_footage": 550,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Apartment",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 303,
-      "square_footage": 750,
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and East",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 304,
-      "square_footage": "1,000",
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "South and North",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
-    },
-    {
-      "unit": 305,
-      "square_footage": "1,000",
-      "number_of_bedrooms": 1,
-      "number_of_bathrooms": 1.5,
-      "office_rooms": 1,
-      "washer_and_dryer": "In unit",
-      "smart_home_features": ["Nest thermostat, Halo smart lighting, Smartlock, Ring video Bell, Smart appliances"],
-      "window_directions": "North and West",
-      "patios": "No",
-      "fireplace": "No",
-      "type": "Penthouse",
-      "property": "El Caminno"
+      "property": "Oak Avenue",
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
     }
   ]
 
