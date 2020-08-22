@@ -170,9 +170,9 @@ class Dashboard extends Component {
                             <hr />
                             {this.state.toggleEdit ? (
                                 <div className="contact">
-                                    <Input name="name_input" onChange={this.onChangeContact} type="input" placeholder="Name" />
-                                    <Input name="cell_input" onChange={this.onChangeContact} type="input" placeholder="Phone number" />
-                                    <Input name="email_input" onChange={this.onChangeContact} type="input" placeholder="E-mail" />
+                                    <Input name="name_input" onChange={this.onChange} type="input" placeholder="Name" />
+                                    <Input name="cell_input" onChange={this.onChange} type="input" placeholder="Phone number" />
+                                    <Input name="email_input" onChange={this.onChange} type="input" placeholder="E-mail" />
                                     {this.state.error && <p className="error">{this.state.error}</p>}
                                 </div>
                             ) : (
