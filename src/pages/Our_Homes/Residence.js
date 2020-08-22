@@ -19,6 +19,8 @@ import SmartHome from '../../icons/Residence/SmartHome'
 import Washer from '../../icons/Residence/Washer'
 import Compass from '../../icons/Residence/Compass'
 import Magnifying from '../../icons/Residence/Magnifying'
+import Fire from '../../icons/Residence/Fire'
+import Patio from '../../icons/Residence/Patio'
 
 import API from '../../utils/API'
 import apartments from '../../static/data';
@@ -44,6 +46,11 @@ const Wrapper = styled.div`
 
     hr {
         background-color: #D2CCA1
+    }
+
+    .gallery {
+        max-height: 15rem;
+        overflow: hidden;
     }
 
     .gallery .col-md-2 {
@@ -145,17 +152,19 @@ class Residence extends Component {
                     <div className="container mt-3">
                         <div className="row">
                             <div className="col apartment-info mt-3">
-                                {images && images.map((image, index) => {
-                                    return (
-                                        <div className="col-md-2 p-2" onClick={() => this.setState({ 
-                                                lightboxIsOpen: true, 
-                                                lightboxIndex: index
-                                            })}>
-                                            <img className="img-fluid" src={image}/>
-                                        </div>
-                                    )
-                                })}
-                                <h1>{unit.unit}</h1>
+                                <div className="gallery">
+                                    {images && images.map((image, index) => {
+                                        return (
+                                            <div className="col-md-2 p-2" onClick={() => this.setState({ 
+                                                    lightboxIsOpen: true, 
+                                                    lightboxIndex: index
+                                                })}>
+                                                <img className="img-fluid" src={image}/>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <h1 className="mt-4">{unit.unit}</h1>
                                 <p className="text-muted">{unit.type}</p>
                                 <hr />
                                 <div className="row">
@@ -223,14 +232,29 @@ class Residence extends Component {
                                                     </div>
                                                 
                                             </div>}
-                                            <div className="col-md-2 text-center">
+                                            {unit.washer_and_dryer && <div className="col-md-2 text-center">
                                                 <Washer color="#D2CCA1" />
                                                 {unit.washer_and_dryer === "Common" ? <p className="mt-2">Common washer & dryer</p> : <p className="mt-2">In-unit washer & dryer</p>}
-                                            </div>
-                                            <div className="col-md-2 text-center">
-                                                <Compass color="#D2CCA1" />
-                                                {unit.window_directions && <p className="mt-2">Facing {unit.window_directions}</p>}
-                                            </div>
+                                            </div>}
+                                            {unit.window_directions && 
+                                                <div className="col-md-2 text-center">
+                                                    <Compass color="#D2CCA1" />
+                                                    <p className="mt-2">Facing {unit.window_directions}</p>
+                                                </div>
+                                            }
+                                            {unit.fireplace === "Yes" && 
+                                                <div className="col-md-2 text-center">
+                                                    <Fire color="#D2CCA1" />
+                                                    <p className="mt-2">Fireplace</p>
+                                                </div>
+                                            }
+                                            {unit.patios && 
+                                                <div className="col-md-2 text-center">
+                                                    <Patio color="#D2CCA1" />
+                                                    <p className="mt-2">Patios</p>
+                                                    <p className="mt-1 text-muted">{unit.patios}</p>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
