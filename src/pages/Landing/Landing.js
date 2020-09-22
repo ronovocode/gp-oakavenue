@@ -27,6 +27,15 @@ const LandingWrapper = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
     }
 
     .hero-nav {
@@ -101,10 +110,10 @@ export default class Landing extends Component {
                             <h2 className="mt-4 font-weight-light">Redwood City, CA</h2>
                             <hr />
                             <div className="row">
-                                <div className="col">
+                                <div className="col pt-1">
                                     <button onClick={this.onInfoButtonClick} className="info-button"> View homes</button>
                                 </div>
-                                <div className="col">
+                                <div className="col pt-1">
                                     <button onClick={this.scrollDown} className="info-button">Learn More</button>
                                 </div>
                             </div>
