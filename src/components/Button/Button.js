@@ -14,14 +14,17 @@ const ButtonWrapper = styled.div`
     }
 `
 
-class Button extends Component {
-    render() {
-        return (
-            <ButtonWrapper {...this.props}>
-                <button>{this.props.text}</button>
-            </ButtonWrapper>
-        )
+function Button(props) {
+    const color = {
+        backgroundColor: props.background,
+        color: props.text_color
     }
+
+    return (
+        <ButtonWrapper {...props}>
+            <button style={color}>{props.text}</button>
+        </ButtonWrapper>
+    )
 }
 
 export default Button

@@ -92,8 +92,8 @@ class Login extends Component {
                     label="Password" 
                     placeholder="password" />
                 <a href="https://www.gpre.co/forgotpassword">Forgot password?</a>
-                {errors && errors.unauthorized && <span className="error">{errors.unauthorized}</span>}
-                {errors && errors.passwordincorrect && <span className="error">{errors.passwordincorrect}</span>}
+                {errors && errors.unauthorized && <span className="error d-block">{errors.unauthorized}</span>}
+                {errors && errors.passwordincorrect && <span className="error d-block">{errors.passwordincorrect}</span>}
 
                 <Button
                     className="mt-4" 

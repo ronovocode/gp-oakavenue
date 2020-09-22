@@ -26,10 +26,6 @@ import API from '../../utils/API'
 import apartments from '../../static/data';
 
 const Wrapper = styled.div`
-    .res-preview {
-        
-    }
-
     .res-hero {
         position: relative;
         height: 50vw;
@@ -49,7 +45,7 @@ const Wrapper = styled.div`
     }
 
     .gallery {
-        max-height: 10vh;
+        max-height: 9%;
         overflow: hidden;
     }
 
@@ -63,10 +59,15 @@ const Wrapper = styled.div`
 
     .zoom {
         position: absolute;
-        left: 5rem;
-        bottom: 5rem;
+        left: 5%;
+        bottom: 6%;
         transition: 0.3s
     }
+    @media only screen and (max-width: 600px) {
+        .zoom {
+            width: 1rem;
+        }
+      }
 
     .zoom:hover {
         cursor: pointer;
@@ -166,7 +167,6 @@ class Residence extends Component {
                                 </div>
                                 <h1 className="mt-4">{unit.unit}</h1>
                                 <p className="text-muted">{unit.type}</p>
-                                <hr />
                                 <div className="row">
                                     <div className="col">
                                         <img className="img-fluid" src={Plan3D}></img>

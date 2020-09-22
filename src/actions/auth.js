@@ -12,7 +12,8 @@ import {
     USER_LOADING
 } from "./types";
 
-// Login - get user token
+// Login - get user token, checks if user is manager and if they are logging
+// in on the correct portal
 export const loginUser = userData => dispatch => {
     axios
         .post(apiURL + "/api/auth/login", userData)
@@ -21,15 +22,26 @@ export const loginUser = userData => dispatch => {
             const {
                 token
             } = res.data;
-            localStorage.setItem("jwtToken", token);
 
-            localStorage.setItem("_id", res.data._id);
-            // Set token to Auth header
-            setAuthToken(token, res.data._id);
-            // Decode token to get user data
-            const decoded = jwt_decode(token);
-            // Set current user
-            dispatch(setCurrentUser(decoded));
+            if(res.data.property_managing && res.data.property_managing !== "Oak Avenue") {
+                console.log("WRONG PROPERTY")
+                let err = {
+                    unauthorized: "You are not the manager of this property"
+                }
+                dispatch({
+                    type: GET_ERRORS,
+                    payload: err
+                })
+            } else {
+                localStorage.setItem("jwtToken", token);
+                localStorage.setItem("_id", res.data._id);
+                // Set token to Auth header
+                setAuthToken(token, res.data._id);
+                // Decode token to get user data
+                const decoded = jwt_decode(token);
+                // Set current user
+                dispatch(setCurrentUser(decoded));
+            }
         })
         .catch(err => {
             if(!err.response) {
