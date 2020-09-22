@@ -44,6 +44,10 @@ const LandingWrapper = styled.div`
         left: 50%;
         transform: translate(-50%);
         animation: upDownInfinite 3s ease-in-out 1s infinite alternate;
+
+        :hover {
+            cursor: pointer;
+        }
     }
     
     @keyframes upDownInfinite {
@@ -93,8 +97,8 @@ export default class Landing extends Component {
     componentDidMount() {
         document.title = "Oak Avenue"
     }
-
-    scrollDown = () => window.scrollTo(0, this.scrollRef.current.offsetTop);
+    // Scroll down with offset for navbar
+    scrollDown = () => window.scrollTo(0, this.scrollRef.current.offsetTop - 26);
 
     onInfoButtonClick = () => {
         window.location.href = "./homes";
@@ -109,14 +113,9 @@ export default class Landing extends Component {
                             <h1>Oak Avenue</h1>
                             <h2 className="mt-4 font-weight-light">Redwood City, CA</h2>
                             <hr />
-                            <div className="row">
-                                <div className="col pt-1">
-                                    <button onClick={this.onInfoButtonClick} className="info-button"> View homes</button>
-                                </div>
-                                <div className="col pt-1">
-                                    <button onClick={this.scrollDown} className="info-button">Learn More</button>
-                                </div>
-                            </div>
+                        </div>
+                        <div className="hero-nav">
+                            <Chevron onClick={this.scrollDown} />
                         </div>
                     </div>
                     <div className="container">
