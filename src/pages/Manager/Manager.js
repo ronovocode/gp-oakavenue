@@ -338,20 +338,6 @@ class Manager extends Component {
                                         <ul>
                                             <li>Email: <span>{resident.email}</span></li>
                                             <li>Cell: <span>{resident.cell}</span></li>
-                                            {/* <li>Documents
-                                                {resident.documents.length > 0 ? 
-                                                    <ul>
-                                                        {resident.documents.map(document => {
-                                                            console.log(document)
-                                                            return (
-                                                                <li>
-                                                                    <a href={document.url}>{document.title}</a>
-                                                                </li>
-                                                            )
-                                                        })}
-                                                    </ul> : <p className="text-muted">No documents yet</p>
-                                                }
-                                            </li> */}
                                         </ul>
                                     </div>
                                 </div>

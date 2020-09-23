@@ -6,6 +6,10 @@
     --light-accent: #2D3A3A;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 p {
     font-weight: lighter;
 }

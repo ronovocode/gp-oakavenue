@@ -5,7 +5,7 @@ import kitchen from '../../static/img/kitchen.png';
 import kitchen_2 from '../../static/img/kitchen-zoomed-out.jpg';
 import loft from '../../static/img/loft.jpg';
 
-import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
 
 import Chevron from '../../icons/Chevron';
 
@@ -27,6 +27,15 @@ const LandingWrapper = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
     }
 
     .hero-nav {
@@ -35,6 +44,10 @@ const LandingWrapper = styled.div`
         left: 50%;
         transform: translate(-50%);
         animation: upDownInfinite 3s ease-in-out 1s infinite alternate;
+
+        :hover {
+            cursor: pointer;
+        }
     }
     
     @keyframes upDownInfinite {
@@ -49,23 +62,46 @@ const LandingWrapper = styled.div`
     hr {
         border: 1px solid rgba(255,255,255,0.5);
     }
+
+    .carousel {
+        max-height: 100%;
+        overflow-y: hidden;
+    }
+
+    .info-button {
+        width: 100%;
+        background-color: #eee;
+        color: #212121;
+        padding: 0.7rem;
+        font-weight: lighter;
+        transition: 0.2s;
+
+        :hover {
+            background-color: transparent;
+            color: #eee;
+        }
+
+        :focus {
+            outline: none;
+        }
+    }
 `
 
 export default class Landing extends Component {
 
+    constructor(props) {
+        super(props);
+        this.scrollRef = React.createRef();
+    }
+
     componentDidMount() {
         document.title = "Oak Avenue"
     }
+    // Scroll down with offset for navbar
+    scrollDown = () => window.scrollTo(0, this.scrollRef.current.offsetTop - 26);
 
-    scrollDown = (event) => {
-        //.current is verification that your element has rendered
-        // if(this.myDivToFocus.current){
-        //     this.myDivToFocus.current.scrollIntoView({ 
-        //        behavior: "smooth", 
-        //        block: "nearest"
-        //     })
-        // }
-        console.log("SCROLL")
+    onInfoButtonClick = () => {
+        window.location.href = "./homes";
     }
 
     render() {
@@ -75,7 +111,7 @@ export default class Landing extends Component {
                     <div className="hero text-center">
                         <div className="hero-text">
                             <h1>Oak Avenue</h1>
-                            <h2 className="mt-4">Redwood City, CA</h2>
+                            <h2 className="mt-4 font-weight-light">Redwood City, CA</h2>
                             <hr />
                         </div>
                         <div className="hero-nav">
@@ -83,7 +119,7 @@ export default class Landing extends Component {
                         </div>
                     </div>
                     <div className="container">
-                        <div className="row">
+                        <div ref={this.scrollRef} className="row equal-height">
                             <div className="col-md-6 p-5">
                                 <h2>Overview</h2>
                                 <hr />
@@ -116,9 +152,6 @@ export default class Landing extends Component {
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <embed type="text/html" src=""></embed>
                         </div>
                     </div>
                 </div>

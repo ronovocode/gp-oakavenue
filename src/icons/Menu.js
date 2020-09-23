@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Style = styled.div`
     .a {
         fill: none;
-        stroke: #000;
+        stroke: #D2CCA1;
         stroke-linecap:round;
         stroke-linejoin:round;
         stroke-width:3px;
