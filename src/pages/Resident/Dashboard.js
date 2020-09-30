@@ -48,8 +48,13 @@ const Wrapper = styled.div`
             text-decoration: underline;
         }
     }
+
     textarea:focus {
         color: #ddd;
+    }
+
+    .form-control {
+        color: #efefef;
     }
 `
 
@@ -165,7 +170,7 @@ class Dashboard extends Component {
                     <hr />
 
                     <div className="row">
-                        <div className="col-md">
+                        <div className="col-md pb-4">
                             <h4>Contact Information</h4>
                             <hr />
                             {this.state.toggleEdit ? (
@@ -189,6 +194,20 @@ class Dashboard extends Component {
                                     {this.state.investorInfoSaved && <p className="success">Saved</p>}
                                 </div>
                             )}
+                            {this.state.toggleEdit ? (
+                                <div className="d-flex">
+                                    <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
+                                        text="Cancel" 
+                                        className="w-50 mr-2"/>
+                                    <Button onClick={() => this.contactSave()} 
+                                        text="Save" 
+                                        className="w-50"/>
+                                </div>
+                            ) : (
+                                <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
+                                    text="Edit Contact Info" 
+                                    className="w-50"/>
+                            )}
                         </div>
                         <div className="col-md">
                             <div className="investment">
@@ -204,20 +223,7 @@ class Dashboard extends Component {
                         </div>
                     </div>
 
-                    {this.state.toggleEdit ? (
-                        <div className="d-flex">
-                            <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
-                                text="Cancel" 
-                                className="w-50 mr-2"/>
-                            <Button onClick={() => this.contactSave()} 
-                                text="Save" 
-                                className="w-50"/>
-                        </div>
-                    ) : (
-                        <Button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} 
-                            text="Edit Contact Info" 
-                            className="w-50"/>
-                    )}
+                    
 
                     <div className="row mt-5">
                         <div className="col-md-6 requests">

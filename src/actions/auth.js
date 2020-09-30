@@ -44,17 +44,19 @@ export const loginUser = userData => dispatch => {
             }
         })
         .catch(err => {
-            if(!err.response) {
+            if(err && err.response) {
                 dispatch({
-                    type: GET_ERRORS,
-                    payload: err
+                  type: GET_ERRORS,
+                  payload: err.response ? err.response.data : err
                 })
-            } else {
-                dispatch({
+              } else {
+                  dispatch({
                     type: GET_ERRORS,
-                    payload: err.response.data
-                })
-            }
+                    payload: {
+                      unauthorized: "Server currently offline, please try again later"
+                    }
+                  })
+              }
         });
 };
 
