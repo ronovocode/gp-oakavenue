@@ -23,7 +23,7 @@ export const loginUser = userData => dispatch => {
                 token
             } = res.data;
 
-            if(res.data.property_managing && res.data.property_managing !== "Oak Avenue") {
+            if (res.data.property_managing && res.data.property_managing !== "Oak Avenue") {
                 console.log("WRONG PROPERTY")
                 let err = {
                     unauthorized: "You are not the manager of this property"
@@ -44,15 +44,17 @@ export const loginUser = userData => dispatch => {
             }
         })
         .catch(err => {
-            if(!err.response) {
+            if (err && err.response) {
                 dispatch({
                     type: GET_ERRORS,
-                    payload: err
+                    payload: err.response ? err.response.data : err
                 })
             } else {
                 dispatch({
                     type: GET_ERRORS,
-                    payload: err.response.data
+                    payload: {
+                        unauthorized: "Server currently offline, please try again later"
+                    }
                 })
             }
         });

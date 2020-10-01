@@ -351,7 +351,7 @@ class Manager extends Component {
 }
 
 Manager.propTypes = {
-    logputUser: PropTypes.func.isRequired,
+    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };

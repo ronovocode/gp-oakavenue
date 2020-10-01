@@ -67,24 +67,6 @@ const LandingWrapper = styled.div`
         max-height: 100%;
         overflow-y: hidden;
     }
-
-    .info-button {
-        width: 100%;
-        background-color: #eee;
-        color: #212121;
-        padding: 0.7rem;
-        font-weight: lighter;
-        transition: 0.2s;
-
-        :hover {
-            background-color: transparent;
-            color: #eee;
-        }
-
-        :focus {
-            outline: none;
-        }
-    }
 `
 
 export default class Landing extends Component {

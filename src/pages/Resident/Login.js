@@ -24,13 +24,22 @@ const LoginFormWrapper = styled.form`
     }
 `
 
+const LoadingSpinner = function() {
+    return (
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    )
+}
+
 class Login extends Component {
     constructor() {
         super();
         this.state = {
           email: "",
           password: "",
-          errors: ""
+          errors: "",
+          isLoading: false
         };
       }
     
@@ -48,6 +57,7 @@ class Login extends Component {
 
         if (nextProps.errors) {
             this.setState({
+                isLoading: false,
                 errors: nextProps.errors
             });
         }
@@ -66,7 +76,9 @@ class Login extends Component {
             password: this.state.password,
             type: "resident"
         };
-
+        this.setState({
+            isLoading: true
+        });
         this.props.loginUser(userData);
     }
 
@@ -94,12 +106,21 @@ class Login extends Component {
                 <a href="https://www.gpre.co/forgotpassword">Forgot password?</a>
                 {errors && errors.unauthorized && <span className="error d-block">{errors.unauthorized}</span>}
                 {errors && errors.passwordincorrect && <span className="error d-block">{errors.passwordincorrect}</span>}
-
-                <Button
-                    className="mt-4" 
-                    text="Submit"
-                    type="submit"
+                
+                {this.state.isLoading ? (
+                    <Button
+                        className="mt-4" 
+                        text={<LoadingSpinner />}
+                        type="submit"
                     />
+                 ) : (
+                    <Button
+                        className="mt-4" 
+                        text="Submit"
+                        type="submit"
+                    />
+                 )
+                }
             </LoginFormWrapper>
         )
     }

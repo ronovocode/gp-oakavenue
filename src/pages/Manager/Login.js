@@ -24,6 +24,14 @@ const LoginFormWrapper = styled.form`
     }
 `
 
+const LoadingSpinner = function() {
+    return (
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    )
+}
+
 class Login extends Component {
     constructor() {
         super();
@@ -48,6 +56,7 @@ class Login extends Component {
 
         if (nextProps.errors) {
             this.setState({
+                isLoading: false,
                 errors: nextProps.errors
             });
         }
@@ -61,13 +70,16 @@ class Login extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        // console.log(this.state);
+        
         const userData = {
             email: this.state.email,
             password: this.state.password,
             type: "manager"
         };
 
+        this.setState({
+            isLoading: true
+        });
         this.props.loginUser(userData);
     }
 
@@ -95,11 +107,20 @@ class Login extends Component {
                 {errors && errors.unauthorized && <span className="error">{errors.unauthorized}</span>}
                 {errors && errors.passwordincorrect && <span className="error">{errors.passwordincorrect}</span>}
 
-                <Button
-                    className="mt-4" 
-                    text="Submit"
-                    type="submit"
+                {this.state.isLoading ? (
+                    <Button
+                        className="mt-4" 
+                        text={<LoadingSpinner />}
+                        type="submit"
                     />
+                 ) : (
+                    <Button
+                        className="mt-4" 
+                        text="Submit"
+                        type="submit"
+                    />
+                 )
+                }
             </LoginFormWrapper>
         )
     }
