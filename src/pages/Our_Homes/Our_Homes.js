@@ -9,16 +9,16 @@ import styled from 'styled-components';
 import apartments from '../../static/data';
 
 // 3D Plans
-import plan_293A from '../../static/img/PLAN3D/293A.png';
-import plan_293D from '../../static/img/PLAN3D/293D.png';
-import plan_297D from '../../static/img/PLAN3D/297D.png';
-import plan_301A from '../../static/img/PLAN3D/301A.png';
-import plan_301B301D297C293B from '../../static/img/PLAN3D/301B301D297C293B.png';
-import plan_301C301E297B293C from '../../static/img/PLAN3D/301C301E297B293C.png';
-import plan_301F297A from '../../static/img/PLAN3D/301F297A.png';
+import plan_293A from '../../static/img/thumbnails/293A.png';
+import plan_293D from '../../static/img/thumbnails/293D.png';
+import plan_297D from '../../static/img/thumbnails/297D.png';
+import plan_301A from '../../static/img/thumbnails/301A.png';
+import plan_301B301D297C293B from '../../static/img/thumbnails/301B301D297C293B.png';
+import plan_301C301E297B293C from '../../static/img/thumbnails/301C301E297B293C.png';
+import plan_301F297A from '../../static/img/thumbnails/301F297A.png';
 
 // Need to make alias for each plan so that the page populates the appropriate one 
-const plan3ds = {
+const thumbnails = {
     "293A.png": plan_293A,
     "293D.png": plan_293D,
     "297D.png": plan_297D,
@@ -50,9 +50,9 @@ export default class Our_Homes extends Component {
                         {apartments.length ? (
                             <div className="row">
                                 {apartments.map(apartment => (
-                                    <Link className="col-md-4" to={"/residence/" + apartment.unit}>  
-                                        <Card type="apartment">
-                                            <img alt={apartment.PLAN3D} src={plan3ds[apartment.PLAN3D]}></img>
+                                    <Link className="col-md-4 p-3" to={"/residence/" + apartment.unit}>  
+                                        <Card type="apartment" className="border">
+                                            <img alt={apartment.PLAN3D} src={thumbnails[apartment.PLAN3D]}></img>
                                             <h3 className="unitnumber mt-4"><b>{apartment.unit}</b></h3>
                                             <p className="float-left">
                                                 {apartment.square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
