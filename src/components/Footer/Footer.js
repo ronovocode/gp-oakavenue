@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { logoutUser } from '../../actions/auth';
 import { connect } from "react-redux";
 
-import { BrowserRouter as Router, Link} from 'react-router-dom';
+import { BrowserRouter as Link} from 'react-router-dom';
 
 const Foot = styled.footer`
     width: 100vw;

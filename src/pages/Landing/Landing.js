@@ -5,8 +5,6 @@ import kitchen from '../../static/img/kitchen.png';
 import kitchen_2 from '../../static/img/kitchen-zoomed-out.jpg';
 import loft from '../../static/img/loft.jpg';
 
-import Button from '../../components/Button/Button';
-
 import Chevron from '../../icons/Chevron';
 
 const LandingWrapper = styled.div`

@@ -12,7 +12,8 @@ const apartments = [
       "fireplace": "Yes",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301A.png"
     },
     {
       "unit": "301B",
@@ -27,7 +28,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301B301D297C293B.png"
     },
     {
       "unit": "301C",
@@ -42,7 +44,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301C301E297B293C.png"
     },
     {
       "unit": "301D",
@@ -57,7 +60,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301B301D297C293B.png"
     },
     {
       "unit": "301E",
@@ -72,7 +76,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301C301E297B293C.png"
     },
     {
       "unit": "301F",
@@ -87,7 +92,8 @@ const apartments = [
       "fireplace": "Yes",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301F297A.png"
     },
     {
       "unit": "293A",
@@ -102,7 +108,8 @@ const apartments = [
       "fireplace": "Yes",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "293A.png"
     },
     {
       "unit": "293B",
@@ -117,7 +124,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301B301D297C293B.png"
     },
     {
       "unit": "293C",
@@ -132,7 +140,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301C301E297B293C.png"
     },
     {
       "unit": "293D",
@@ -147,7 +156,8 @@ const apartments = [
       "fireplace": "Yes",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "293D.png"
     },
     {
       "unit": "297A",
@@ -162,7 +172,8 @@ const apartments = [
       "fireplace": "Yes",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301F297A.png"
     },
     {
       "unit": "297B",
@@ -177,7 +188,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301C301E297B293C.png"
     },
     {
       "unit": "297C",
@@ -192,7 +204,8 @@ const apartments = [
       "fireplace": "No",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "301B301D297C293B.png"
     },
     {
       "unit": "297D",
@@ -207,7 +220,8 @@ const apartments = [
       "fireplace": "Yes",
       "type": "Townhouse",
       "property": "Oak Avenue",
-      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF"
+      "virtual_tour": "https://my.matterport.com/show/?m=vbTzLCM4rtF",
+      "PLAN3D": "297D.png"
     }
   ]
 

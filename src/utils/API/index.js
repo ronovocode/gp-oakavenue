@@ -3,10 +3,6 @@ import {
 } from "./url"
 import axios from "axios";
 
-import {
-    apartments
-} from '../../static/data';
-
 const URL = apiURL;
 
 export default {
