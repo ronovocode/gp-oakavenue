@@ -139,16 +139,14 @@ class Residence extends Component {
     }
 
     componentDidMount() {
-        let unit_number = window.location.href.split("/")
-        unit_number = unit_number[unit_number.length - 1]
+        let unit_number = window.location.pathname.split("/")[2];
 
-        let currentUnit = apartments.filter(apartment => apartment.unit === unit_number)[0]
+        let currentUnit = apartments.filter(apartment => apartment.unit === unit_number)[0];
         
         this.setState({
             unit: currentUnit
         })
 
-        console.log(unit_number);
         API.GET_ONE_APARTMENT(unit_number).then(res => {
 
             if(res.data.images) {
@@ -173,6 +171,7 @@ class Residence extends Component {
     render() {
         const { lightboxIndex, lightboxIsOpen, images, unit, available_date } = this.state
         return (
+            <div> { unit ? 
                 <Wrapper>
                     <div className="res-hero">
                         
@@ -329,7 +328,14 @@ class Residence extends Component {
                             </div>
                         </div>
                     </div>
-                </Wrapper>
+                </Wrapper> : 
+                <Wrapper>
+                    <div className="container">
+                        <h1 className="mt-5">No apartment found! </h1>
+                        <a href="/homes">Please click here!</a>
+                    </div>
+                </Wrapper> }
+            </div>
         )
     }
 }
