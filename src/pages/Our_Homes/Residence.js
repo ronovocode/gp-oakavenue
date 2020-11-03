@@ -112,6 +112,9 @@ const Wrapper = styled.div`
 
     .gallery .img-fluid {
         max-height: 110px;
+        background-color: rgba(255,255,255,0.2);
+        padding: 0.5rem;
+        cursor: pointer;
     }
 
     .gallery {
