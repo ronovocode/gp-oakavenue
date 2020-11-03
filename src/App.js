@@ -24,8 +24,6 @@ import ManagerLogin from './pages/Manager/Login';
 /* Navbar */
 import Navbar from './nav';
 
-import Footer from './components/Footer/Footer';
-
 /* React Router Imports */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRouteManager from './components/PrivateRouteManager';

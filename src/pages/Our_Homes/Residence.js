@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter as Router, useParams } from 'react-router-dom';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
 // Static Images
 import Kitchen from '../../static/img/kitchen-zoomed-out.jpg'
-import Plan3D from '../../static/img/3dplan1.png'
 
 // Icons
 import Bed from '../../icons/Residence/Bed'
@@ -24,6 +22,26 @@ import Patio from '../../icons/Residence/Patio'
 
 import API from '../../utils/API'
 import apartments from '../../static/data';
+
+// 3D Plans
+import plan_293A from '../../static/img/PLAN3D/293A.png';
+import plan_293D from '../../static/img/PLAN3D/293D.png';
+import plan_297D from '../../static/img/PLAN3D/297D.png';
+import plan_301A from '../../static/img/PLAN3D/301A.png';
+import plan_301B301D297C293B from '../../static/img/PLAN3D/301B301D297C293B.png';
+import plan_301C301E297B293C from '../../static/img/PLAN3D/301C301E297B293C.png';
+import plan_301F297A from '../../static/img/PLAN3D/301F297A.png';
+
+// Need to make alias for each plan so that the page populates the appropriate one 
+const plan3ds = {
+    "293A.png": plan_293A,
+    "293D.png": plan_293D,
+    "297D.png": plan_297D,
+    "301A.png": plan_301A,
+    "301B301D297C293B.png": plan_301B301D297C293B,
+    "301C301E297B293C.png": plan_301C301E297B293C,
+    "301F297A.png": plan_301F297A
+}
 
 const Wrapper = styled.div`
     .res-hero {
@@ -51,10 +69,6 @@ const Wrapper = styled.div`
 
     .gallery .col-md-2 {
         cursor: pointer;
-    }
-
-    .text-lighter {
-
     }
 
     .zoom {
@@ -90,6 +104,18 @@ const Wrapper = styled.div`
         width: 100%;
         height: 100%;
         border: none;
+    }
+
+    .gallery .col-md-2 {
+        width: 100%;
+        height: 50%;
+    }
+
+    .gallery {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        overflow-x: scroll;
     }
     
 `
@@ -153,14 +179,14 @@ class Residence extends Component {
                     <div className="container mt-3">
                         <div className="row">
                             <div className="col apartment-info mt-3">
-                                <div className="gallery">
+                                <div className="gallery row">
                                     {images && images.map((image, index) => {
                                         return (
                                             <div className="col-md-2 p-2" onClick={() => this.setState({ 
                                                     lightboxIsOpen: true, 
                                                     lightboxIndex: index
                                                 })}>
-                                                <img className="img-fluid" src={image}/>
+                                                <img alt={index + "img"} className="img-fluid" src={image}/>
                                             </div>
                                         )
                                     })}
@@ -169,7 +195,7 @@ class Residence extends Component {
                                 <p className="text-muted">{unit.type}</p>
                                 <div className="row">
                                     <div className="col">
-                                        <img className="img-fluid" src={Plan3D}></img>
+                                        <img alt={unit.PLAN3D} className="img-fluid" src={plan3ds[unit.PLAN3D]}></img>
                                     </div>
                                 </div>
                                 <div className="row mt-5">
@@ -269,7 +295,7 @@ class Residence extends Component {
                                 <hr />
                                 <div className="iframe-container">
                                     {this.state.virtual_tour_fullscreen&& <div className="close_virtual_tour">&#215;</div>}
-                                    <iframe src={unit.virtual_tour} frameborder='0' allowfullscreen allow='vr'></iframe>
+                                    <iframe title="virtualtour" src={unit.virtual_tour} frameborder='0' allowfullscreen allow='vr'></iframe>
                                 </div>
                             </div>
                         </div>}

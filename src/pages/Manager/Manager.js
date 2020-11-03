@@ -6,12 +6,9 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-import Table from '../../components/Table/Table';
 import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
 
 import API from '../../utils/API';
-
 
 const Wrapper = styled.div`
     hr {
@@ -129,7 +126,7 @@ class Manager extends Component {
                 residents: res.data
             })
         }).catch(err => {
-            if(err.response.status === 401) {
+            if(err.response && err.response.status === 401) {
                 this.setState({
                     isManager: false
                 })
@@ -141,11 +138,11 @@ class Manager extends Component {
         let request = {}
         let {edit_date, edit_price } = this.state;
 
-        if(edit_date != "") {
+        if(edit_date !== "") {
             request.available_date = edit_date
         }
 
-        if(edit_price != "") {
+        if(edit_price !== "") {
             request.price = edit_price
         }
 

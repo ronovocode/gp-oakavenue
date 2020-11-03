@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
 
-import UserIcon from '../../icons/UserIcon'
-import Phone from '../../icons/Phone'
-import Mail from '../../icons/Mail'
-
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 
@@ -87,13 +83,13 @@ class Dashboard extends Component {
         let request = {}
         let {name_input, cell_input, email_input} = this.state;
 
-        if(name_input != "") {
+        if(name_input !== "") {
             request.name = name_input
         }
-        if(cell_input != "") {
+        if(cell_input !== "") {
             request.cell = cell_input
         }
-        if(email_input != "") {
+        if(email_input !== "") {
             request.email = email_input
         }
         API.EDIT_RESIDENT(request).then(res => {
