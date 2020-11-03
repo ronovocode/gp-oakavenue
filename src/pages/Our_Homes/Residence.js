@@ -106,16 +106,18 @@ const Wrapper = styled.div`
         border: none;
     }
 
-    .gallery .col-md-2 {
-        width: 100%;
-        height: 50%;
+    .gallery .wrapper {
+        flex: 0 0 auto;
+    }
+
+    .gallery .img-fluid {
+        max-height: 110px;
     }
 
     .gallery {
         display: flex;
-        align-items: center;
-        padding: 1rem;
-        overflow-x: scroll;
+        flex-wrap: nowrap; 
+        overflow: auto;
     }
     
 `
@@ -179,10 +181,10 @@ class Residence extends Component {
                     <div className="container mt-3">
                         <div className="row">
                             <div className="col apartment-info mt-3">
-                                <div className="gallery row">
+                                <div className="gallery">
                                     {images && images.map((image, index) => {
                                         return (
-                                            <div className="col-md-2 p-2" onClick={() => this.setState({ 
+                                            <div className="wrapper p-2" onClick={() => this.setState({ 
                                                     lightboxIsOpen: true, 
                                                     lightboxIndex: index
                                                 })}>
