@@ -110,7 +110,7 @@ class Dashboard extends Component {
         let { maintenance, unit, email, maintenanceradio } = this.state
         let request = {}
         request.unit = unit;
-        request.property = "Oak Avenue";
+        request.property = "Orchard Valley Townhomes";
         request.email = email;
         request.inUnit = maintenanceradio;
         request.message = maintenance;

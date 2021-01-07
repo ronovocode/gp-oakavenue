@@ -12,7 +12,7 @@ function Navbar(props) {
           <Router />
           <Link className="navbar-brand" to="/">
             <GreenpointLogo className="logo"></GreenpointLogo>
-            <span className="ml-4">Oak Avenue</span>
+            <span className="ml-4">Orchard Valley Townhomes</span>
           </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon">

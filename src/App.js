@@ -8,6 +8,7 @@ import { GlobalStyles } from './utils/globalstyles/global';
 
 /* Pages */
 import Our_Homes from './pages/Our_Homes/Our_Homes';
+import Collections from './pages/Our_Homes/Collections';
 import Neighborhood from './pages/Neighborhood/Neighborhood';
 import Testimonials from './pages/Testimonials/Testimonials';
 
@@ -69,6 +70,7 @@ function App() {
             
             <Switch>
                 <Route exact path="/homes" component={Our_Homes}></Route>
+                <Route exact path="/collections" component={Collections}></Route>
                 <Route exact path="/neighborhood" component={Neighborhood}></Route>
                 <Route exact path="/testimonials" component={Testimonials}></Route>
 
