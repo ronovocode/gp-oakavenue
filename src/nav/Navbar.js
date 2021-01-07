@@ -26,7 +26,7 @@ function Navbar(props) {
                 <Link className="nav-link" to="/">About</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/homes">Our Homes</Link>
+                <Link className="nav-link" to="/collections">Browse Collections</Link>
               </li>
 
               <li className="nav-item dropdown">

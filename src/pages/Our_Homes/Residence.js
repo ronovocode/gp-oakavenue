@@ -332,7 +332,7 @@ class Residence extends Component {
                 <Wrapper>
                     <div className="container">
                         <h1 className="mt-5">No apartment found! </h1>
-                        <a href="/homes">Please click here!</a>
+                        <a href="/collections">Please click here!</a>
                     </div>
                 </Wrapper> }
             </div>

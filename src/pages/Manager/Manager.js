@@ -232,7 +232,7 @@ class Manager extends Component {
                 {isManager ? <div className="row mt-5">
                     <div className="col-md mb-5">
                         <h3 className="mb-5">Manage Orchard Valley Townhomes</h3>
-                        {apartments.length > 0 ? apartments.map((property, index) => {
+                        {apartments ? Object.entries(apartments).map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">

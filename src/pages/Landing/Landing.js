@@ -81,7 +81,7 @@ export default class Landing extends Component {
     scrollDown = () => window.scrollTo(0, this.scrollRef.current.offsetTop - 26);
 
     onInfoButtonClick = () => {
-        window.location.href = "./homes";
+        window.location.href = "./collections";
     }
 
     render() {

@@ -74,7 +74,7 @@ export default class Our_Collections extends Component {
                 <Wrapper className="container">
                     <h1 className="mt-5 text-center">Our collections</h1>
                     <hr style={{backgroundColor: '#fff'}} />
-                    <div data-toggle="collapse" data-target="#grande-collection" className="collection-button">
+                    <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
                         <div className="row">
                             <div className="col">
                                 <h3>The Grande Collection</h3>
@@ -85,10 +85,46 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="collapse" id="grande-collection">
+                        <p className="ml-5 mt-4">This collection offers corner townhomes with ample outdoor recreation space. </p>
                         <div>
                             {collections["The Grande Collection"] ? (
                                 <div className="row">
                                     {collections["The Grande Collection"].map(apartment => (
+                                        <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                            <Card type="apartment" className="border">
+                                                <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                                <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                                <p className="float-left">
+                                                    {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                    <br />
+                                                    {apartments[apartment].number_of_bedrooms} bedrooms
+                                                    <br />
+                                                    {apartments[apartment].number_of_bathrooms} bathrooms
+                                                </p>
+                                            </Card>
+                                        </Link>
+                                    ))}
+                                </div>
+                            ) : (
+                                <h3>No Results to Display</h3>
+                            )}
+                        </div>
+                    </div>
+                    <div data-toggle="collapse" data-target="#vista-collection" className="collection-button mt-5">
+                        <div className="row">
+                            <div className="col">
+                                <h3>The Vista Collection</h3>
+                            </div>
+                            <div className="d-flex col justify-content-end">
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="collapse" id="vista-collection">
+                        <div>
+                            {collections["The Vista Collection"] ? (
+                                <div className="row">
+                                    {collections["The Vista Collection"].map(apartment => (
                                         <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
                                             <Card type="apartment" className="border">
                                                 <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
