@@ -75,13 +75,13 @@ export default class Landing extends Component {
     }
 
     componentDidMount() {
-        document.title = "Oak Avenue"
+        document.title = "Orchard Valley Townhomes"
     }
     // Scroll down with offset for navbar
     scrollDown = () => window.scrollTo(0, this.scrollRef.current.offsetTop - 26);
 
     onInfoButtonClick = () => {
-        window.location.href = "./homes";
+        window.location.href = "./collections";
     }
 
     render() {
@@ -90,7 +90,7 @@ export default class Landing extends Component {
                 <div className="container-fluid">
                     <div className="hero text-center">
                         <div className="hero-text">
-                            <h1>Oak Avenue</h1>
+                            <h1>Orchard Valley Townhomes</h1>
                             <h2 className="mt-4 font-weight-light">Redwood City, CA</h2>
                             <hr />
                         </div>

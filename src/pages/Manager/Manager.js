@@ -115,13 +115,13 @@ class Manager extends Component {
     }
 
     componentDidMount = () => {
-        API.GET_ALL_APARTMENTS("Oak Avenue").then(res => {
+        API.GET_ALL_APARTMENTS("Orchard Valley Townhomes").then(res => {
             this.setState({
                 apartments: res.data
             })
         }).catch(err => console.log(err));
 
-        API.GET_ALL_RESIDENTS("Oak Avenue").then(res => {
+        API.GET_ALL_RESIDENTS("Orchard Valley Townhomes").then(res => {
             this.setState({
                 residents: res.data
             })
@@ -162,7 +162,7 @@ class Manager extends Component {
             cell: add_cell,
             email: add_email,
             unit: selectedApartment,
-            unit_property: "Oak Avenue",
+            unit_property: "Orchard Valley Townhomes",
             type: "resident"
         }).then(res => {
             this.setState({
@@ -213,7 +213,7 @@ class Manager extends Component {
             <Wrapper className="container">
                 <div className="row mt-5">
                     {isManager &&   <div className="col-md">
-                                        <span className="logout">WELCOME, Oak Avenue Manager</span>
+                                        <span className="logout">WELCOME, Orchard Valley Townhomes Manager</span>
                                     </div>
                     }
                     <div className="col-md align-items-end">
@@ -231,8 +231,8 @@ class Manager extends Component {
                 {success && <span className="success">{success}</span>}
                 {isManager ? <div className="row mt-5">
                     <div className="col-md mb-5">
-                        <h3 className="mb-5">Manage Oak Avenue</h3>
-                        {apartments.length > 0 ? apartments.map((property, index) => {
+                        <h3 className="mb-5">Manage Orchard Valley Townhomes</h3>
+                        {apartments ? Object.entries(apartments).map((property, index) => {
                             return(
                                 <div key={index} className="card mb-2">
                                     <div className="card-body">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import Card from '../../components/Card/Card'
 import '../../utils/globalstyles/dropdown.css'
@@ -43,7 +43,6 @@ export default class Our_Homes extends Component {
     render() {
         return (
                 <Wrapper className="container">
-                    <Router />
                     <h1 className="mt-5">Our homes</h1>
                     <hr style={{backgroundColor: '#fff'}} />
                     <div>

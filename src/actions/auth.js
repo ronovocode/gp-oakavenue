@@ -23,7 +23,7 @@ export const loginUser = userData => dispatch => {
                 token
             } = res.data;
 
-            if (res.data.property_managing && res.data.property_managing !== "Oak Avenue") {
+            if (res.data.property_managing && res.data.property_managing !== "Orchard Valley Townhomes") {
                 console.log("WRONG PROPERTY")
                 let err = {
                     unauthorized: "You are not the manager of this property"

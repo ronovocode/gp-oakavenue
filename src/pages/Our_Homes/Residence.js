@@ -141,7 +141,7 @@ class Residence extends Component {
     componentDidMount() {
         let unit_number = window.location.pathname.split("/")[2];
 
-        let currentUnit = apartments.filter(apartment => apartment.unit === unit_number)[0];
+        let currentUnit = apartments[unit_number];
         
         this.setState({
             unit: currentUnit
@@ -332,7 +332,7 @@ class Residence extends Component {
                 <Wrapper>
                     <div className="container">
                         <h1 className="mt-5">No apartment found! </h1>
-                        <a href="/homes">Please click here!</a>
+                        <a href="/collections">Please click here!</a>
                     </div>
                 </Wrapper> }
             </div>
