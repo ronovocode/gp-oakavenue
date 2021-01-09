@@ -4,9 +4,11 @@ import {Link} from 'react-router-dom';
 import Card from '../../components/Card/Card'
 import '../../utils/globalstyles/dropdown.css'
 
-import styled from 'styled-components';
+import styled, { ThemeConsumer } from 'styled-components';
 
 import apartments from '../../static/data';
+
+import API from '../../utils/API';
 
 // 3D Plans
 import plan_293A from '../../static/img/thumbnails/293A.png';
@@ -45,12 +47,6 @@ const collections = {
     "The Vista Collection": ["301B", "301C", "301D", "301E", "297B", "297C", "293B", "293C"]
 }
 
-// @pre: String containing unit number
-// @post: String containing the collection that the unit belongs to
-function findCollection(unit) {
-
-}
-
 export default class Our_Collections extends Component {
 
     constructor(props) {
@@ -63,6 +59,13 @@ export default class Our_Collections extends Component {
 
     componentDidMount() {
         document.title = "Our Collections"
+
+        API.GET_COLLECTION("The Vista Collection").then(res => {
+            console.log(res.data.images);
+            this.setState({
+                vista_images: res.data.images
+            })
+        });
     }
 
     open_collection(button) {
@@ -121,6 +124,42 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="collapse" id="vista-collection">
+                        <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                {this.state.vista_images ? (
+                                    <div>
+                                        <div class="carousel-item active">
+                                            <img src={this.state.vista_images[0]} class="d-block w-100" alt={this.state.vista_images[0]}></img>
+                                        </div>
+                                        {this.state.vista_images.map(image => (
+                                            <div class="carousel-item">
+                                                <img src={image} class="d-block w-100" alt={image}></img>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )
+                                : 
+                                    <h3>NO RESULTS</h3>
+                                
+                                }
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <div className="row mt-5">
+                            <div className="col">
+                                <p>The Vista Collection offers beautiful views of the moutains. Lorem ipsum dolor</p>
+                            </div>
+                            <div className="col"></div>
+                        </div>
+                        <h3 className="mt-5">Floor Plans</h3>
+                        <hr style={{backgroundColor: '#d2cca1'}}/>
                         <div>
                             {collections["The Vista Collection"] ? (
                                 <div className="row">
