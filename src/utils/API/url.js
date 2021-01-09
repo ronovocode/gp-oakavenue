@@ -1,3 +1,3 @@
 module.exports = {
-    apiURL: "https://gp-auth.herokuapp.com"
+    apiURL: "http://localhost:5000"
 }

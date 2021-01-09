@@ -25,6 +25,9 @@ export default {
             }
         });
     },
+    GET_COLLECTION: function(collection) {
+        return axios.get(URL + "/collections/" + collection)
+    },
     GET_ALL_RESIDENTS: function (property) {
         return axios.get(URL + "/users/residents/" + property);
     },
