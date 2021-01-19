@@ -6,6 +6,7 @@ import kitchen_2 from '../../static/img/kitchen-zoomed-out.jpg';
 import loft from '../../static/img/loft.jpg';
 
 import Chevron from '../../icons/Chevron';
+import { Link } from 'react-router-dom';
 
 const LandingWrapper = styled.div`
     .hero {
@@ -65,6 +66,10 @@ const LandingWrapper = styled.div`
         max-height: 100%;
         overflow-y: hidden;
     }
+
+    .text-gold {
+        color: #D2CCA1;
+    }
 `
 
 export default class Landing extends Component {
@@ -87,7 +92,6 @@ export default class Landing extends Component {
     render() {
         return (
             <LandingWrapper>
-                <div className="container-fluid">
                     <div className="hero text-center">
                         <div className="hero-text">
                             <h1>Orchard Valley Townhomes</h1>
@@ -101,15 +105,12 @@ export default class Landing extends Component {
                     <div className="container">
                         <div ref={this.scrollRef} className="row equal-height">
                             <div className="col-md-6 p-5">
-                                <h2>Overview</h2>
-                                <hr />
-                                <p>
-                                    Nulla a eleifend nibh, et pellentesque libero. Vestibulum tortor mi, iaculis at orci a, euismod efficitur ante. Pellentesque condimentum tellus nec nisl maximus, vitae placerat quam sollicitudin. Mauris vel maximus augue, consectetur malesuada dolor. Vestibulum eu diam elit. Donec ut arcu ligula. Quisque vitae consectetur lacus. Sed laoreet dolor mi.
-                                    Etiam feugiat elementum orci. Ut quis vulputate lorem, non eleifend massa. Ut quis enim scelerisque, pellentesque mauris a, placerat quam. Nullam at consequat neque. Aliquam eu dignissim nisl. Phasellus laoreet viverra hendrerit. Duis viverra, nisl et fermentum volutpat, erat magna bibendum nisl, et posuere tellus odio eget sem. Aliquam sagittis augue eget elit mattis varius. Sed at porta sem. In vestibulum fringilla leo nec tempor. Sed vestibulum pellentesque tempor. Aliquam tempus tincidunt tincidunt. Donec aliquet arcu nec ullamcorper sagittis. Aenean ut laoreet dui.
-                                    Integer suscipit dui in enim volutpat, maximus euismod arcu dignissim. 
-                                </p>
+                                <h2 className="text-gold">Welcome to Orchard Valley Townhomes,</h2>
+                                <span>
+                                 your new home in the Bay Area. Orchard Valley is a collection of 14 luxurious townhomes situated among lush greenery in a boutique community. Each of our townhomes offers a warm, modern palette of materials for a contemporary and timeless look. Our interiors are finished with hand selected pieces and fixtures that embody the spirit of a custom residence. Located just a 12 minute walk from downtown Redwood City, Orchard Valley’s living experience is truly one of a kind. 
+                                </span>
                             </div>
-                            <div className="col-md-6 d-flex align-items-center">
+                            {/* <div className="col-md-6 d-flex align-items-center">
                                 <div id="home_carousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
@@ -131,10 +132,37 @@ export default class Landing extends Component {
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </div>
+                            </div> */}
+                        </div>
+                        <div className="row equal-height">
+                            <div className="col-md-6 p-5">
+                                <h2 className="text-gold">Collections</h2>
+                                <p>Explore our different collections of townhomes to find the one that fits your ​​​​preferences.</p>
+                                <Link className="text-gold" to="/collections">Browse collections...</Link>
+                            </div>
+                            <div className="col-md-6 p-5"></div>
+                        </div>
+                        <div className="row equal-height">
+                            <div className="col-md-6 p-5"></div>
+                            <div className="col-md-6 p-5">
+                                <h2 className="text-gold">Location/Neighborhood</h2>
+                                <p>
+                                    Less than a mile away from downtown Redwood City, everything you need is ​​​​within arms reach.
+                                </p>
+                                <Link className="text-gold" to="/collections">Learn about our neighborhood...</Link>
                             </div>
                         </div>
+                        <div className="row equal-height">
+                            <div className="col-md-6 p-5">
+                                <h2 className="text-gold">Amenities</h2>
+                                <p>From luxurious outdoor seating, to cutting edge smart-home technology,
+   ​​our homes offer the best amenities to add comfort to your lifestyle.
+                                </p>
+                                <Link className="text-gold" to="/collections">Browse collections...</Link>
+                            </div>
+                            <div className="col-md-6 p-5"></div>
+                        </div>
                     </div>
-                </div>
             </LandingWrapper>
         )
     }

@@ -71,6 +71,7 @@ function App() {
             <Switch>
                 <Route exact path="/collections" component={Collections}></Route>
                 <Route exact path="/neighborhood" component={Neighborhood}></Route>
+                <Route exact path="/sustainability" component={Neighborhood}></Route>
                 <Route exact path="/testimonials" component={Testimonials}></Route>
 
                 <Route exact path='/resident/login' component={Login}/>

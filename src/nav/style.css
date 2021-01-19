@@ -23,6 +23,7 @@ a {
 
 .navbar-brand span {
     font-weight: regular;
+    margin-left: 1rem;
 }
 
 .navbar-right {
@@ -45,6 +46,19 @@ a {
 @media (max-width: 991px) {
     .navbar-right {
         justify-content: inherit;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-brand span {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 771px) {
+    .navbar-brand {
+        font-size: 0.8rem;
+        margin-left: 0;
     }
 }
 

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Card from '../../components/Card/Card'
 import '../../utils/globalstyles/dropdown.css'
 
-import styled, { ThemeConsumer } from 'styled-components';
+import styled from 'styled-components';
 
 import apartments from '../../static/data';
 
@@ -41,6 +41,10 @@ const Wrapper = styled.div`
         cursor: pointer;
     }
 
+    h3 {
+        color: #D2CCA1;
+    }
+
 `
 const collections = {
     "The Grande Collection": ["301A", "301F", "297A", "297D", "293A", "293D"],
@@ -75,8 +79,69 @@ export default class Our_Collections extends Component {
     render() {
         return (
                 <Wrapper className="container">
-                    <h1 className="mt-5 text-center">Our collections</h1>
+                    <h1 className="mt-5">Our collections</h1>
                     <hr style={{backgroundColor: '#fff'}} />
+                    <p>Our townhomes offer a luxurious living experience with the amenities, space, smart-technology, and privacy that makes the perfect home for a couple.</p>
+                    <div className="row">
+                        <div className="col">
+                            <h3>Kitchen</h3>
+                            <li>Large custom, maple cognac kitchen cabinet and seating island</li>
+                            <li>Calacatta gold Quartz countertop combining with a grayish luminous electric veins and occasional taupe/gold highlights</li>
+                            <li>White Travertine backsplashes</li>
+                            <li>Kohler stainless steel, professional grade pull out kitchen faucet</li>
+                            <li>Luxurious stainless steel Whirlpool appliances</li>
+                            <li>Gas range</li>
+                            <li>French door refrigerator</li>
+                        </div>
+                        <div className="col"></div>
+                    </div>
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col">
+                            <h3>Master Suite</h3>
+                            <li>11’4” x 15” size master bedroom with a balcony</li>
+                            <li>Custom closet system</li>
+                            <li>Master room shower</li>
+                            <li>Luxurious 60” double sink, white vanity</li>
+                            <li>Luxurious white porcelain tiles with grayish luminous veins</li>
+                            <li>Frameless sliding shower door</li>
+                            <li>Rainfall shower head</li>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <h3>2nd Bedroom</h3>
+                            <li>10’ x 15’  size bedroom</li>
+                            <li>Custom closet system</li>
+                        </div>
+                        <div className="col"></div>
+                    </div>
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col">
+                            <h3>Hallway bathroom</h3>
+                            <li>Luxurious 48” single sink, white vanity</li>
+                            <li>White tub with frameless sliding shower door</li>
+                            <li>Linen closet</li>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <h3>Powder room</h3>
+                            <li>Toilet</li>
+                            <li>Luxurious 24” white vanity on the 1st floor</li>
+                        </div>
+                        <div className="col"></div>
+                    </div>
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col">
+                            <h3>Washer and Dryer</h3>
+                            <li>Toilet</li>
+                            <li>Luxurious 24” white vanity on the 1st floor</li>
+                        </div>
+                    </div>
+
                     <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
                         <div className="row">
                             <div className="col">

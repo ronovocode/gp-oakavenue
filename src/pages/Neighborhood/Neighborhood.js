@@ -6,7 +6,26 @@ import Shopping from '../../icons/Neighborhood/Shopping';
 import Dining from '../../icons/Neighborhood/Dining';
 import Schools from '../../icons/Neighborhood/Schools';
 import ParkTrail from '../../icons/Neighborhood/ParkTrail';
-import './style.css';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+
+    .jumbotron {
+        background-color: transparent;
+    }
+
+    .bg {
+        position: fixed;
+        z-index: -500;
+        top: 0;
+        left: 0;
+        height: 100vh;
+    }
+
+    .text-gold {
+        color: #d2cca1;
+    }
+`
 
 export default class Neighborhood extends Component {
 
@@ -16,71 +35,18 @@ export default class Neighborhood extends Component {
 
     render() {
         return (
-            <div>
-                <div className="hero">
-                    <img className="bg" src={neighborhoodImage} alt="kitchen"></img>
-                    
-                    <div className="row py-5 pt-5 pr-5">
-                        <div className="col-md-6"></div>
-                        <div className="col-md-6 align-middle">
-                            <h1>About Redwood City</h1>
-                            <hr />
-                            <p>This is an example of what a content section on a page might look like. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
-                    </div>
+            <Wrapper className="container">
+                <img className="bg" src={neighborhoodImage}></img>
+                <div class="jumbotron">
+                    <h1 class="text-gold display-4">About Redwood City</h1>
+                    <p class="lead">Redwood City is a San Francisco Bay Area community located approximately 27 miles south of San Francisco, and 24 miles northwest of San Jose. It sits in the heart of Silicon Valley, the technology-rich region extending from the San Francisco Peninsula to the foothills of the Santa Cruz Mountains.</p>
+                    <hr class="my-4"></hr>
+                    <p>The city’s vibrant downtown is known as the entertainment hub of the San Francisco Peninsula, and it offers residents a unique entertainment, restaurant, and retail experience. Redwood City is the third largest city in the County of San Mateo, with 85,992 residents. The city enjoys an average of 255 sunny days a year, which it boasts via the city slogan: "Climate Best by Government Test”.</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                    </p>
                 </div>
-                <div className="container">
-
-                    <div className="row py-5">
-                        <div className="col-md-6 text-center">
-                            <Shopping />
-                        </div>
-                        <div className="col-md-6 p-5">
-                            <h2>Shopping</h2>
-                            <hr />
-                            <p>
-                                This is an example of what a content section on a page might look like. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="row py-5">
-                        <div className="col-md-6 p-5">
-                            <h2>Dining</h2>
-                            <hr />
-                            <p>
-                                This is an example of what a content section on a page might look like. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-md-6 text-center">
-                            <Dining />
-                        </div>
-                    </div>
-                    <div className="row py-5">
-                        <div className="col-md-6 text-center">
-                            <Schools />
-                        </div>
-                        <div className="col-md-6 p-5">
-                            <h2>Schools</h2>
-                            <hr />
-                            <p>
-                                This is an example of what a content section on a page might look like. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="row py-5">
-                        <div className="col-md-6">
-                            <h2>Parks & Trails</h2>
-                            <hr />
-                            <p>
-                                This is an example of what a content section on a page might look like. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-md-6 text-center">
-                            <ParkTrail />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </Wrapper>
         )
     }
 }
