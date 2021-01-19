@@ -141,6 +141,37 @@ export default class Our_Collections extends Component {
                             <li>Luxurious 24” white vanity on the 1st floor</li>
                         </div>
                     </div>
+                    <div className="row">
+                        <div className="col">
+                            <h3>Offices</h3>
+                            <li>10’6” x 13’2” size office in the loft above the master suite with a bench and lots of windows and light</li>
+                            <li>8’6” x 5’ size den by the living room</li>
+                            <li>2 separated offices for a couple working from home</li>
+                        </div>
+                        <div className="col"></div>
+                    </div>
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col">
+                            <h3>Design</h3>
+                            <li>Contemporary design with calming theme throughout the townhome</li>
+                            <li>SPC stone-based flooring with wood grain providing beauty and excellent sound and heat insulation</li>
+                            <li>Stainless steel door hardware, kitchen cabinet pulls, light fixtures, and drapery rods</li>
+                            <li>Smart recessed light throughout</li>
+                            <li>Contemporary interior doors</li>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <h3>Smarthome Technology</h3>
+                            <li>Wireless smart Halo recessed lights color temperature adjustment, light dimming, sub-grouping, scheduling and timer</li>
+                            <li>Nest thermostat controlling centralized heating and AC</li>
+                            <li>Schlage Keyless entrance door with unique access codes for tenants and door walkers</li>
+                            <li>Ring video bell for visitors and package delivery notification</li>
+                            <li>WiFi enabled LG front load washer and dryer for remote setting and notifications</li>
+                        </div>
+                        <div className="col"></div>
+                    </div>
 
                     <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
                         <div className="row">
