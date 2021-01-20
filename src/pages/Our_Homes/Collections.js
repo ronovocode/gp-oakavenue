@@ -41,8 +41,14 @@ const Wrapper = styled.div`
         cursor: pointer;
     }
 
-    h3 {
+    h1, h2, h3 {
         color: #D2CCA1;
+    }
+
+    .vcenter {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
     }
 
 `
@@ -79,11 +85,12 @@ export default class Our_Collections extends Component {
     render() {
         return (
                 <Wrapper className="container">
-                    <h1 className="mt-5">Our collections</h1>
+                    <h1 className="mt-5">Our townhome collections</h1>
                     <hr style={{backgroundColor: '#fff'}} />
-                    <p>Our townhomes offer a luxurious living experience with the amenities, space, smart-technology, and privacy that makes the perfect home for a couple.</p>
-                    <div className="row">
-                        <div className="col">
+                    <h2 className="mt-5">Amenities</h2>
+                    <p>Our townhomes offer a luxurious living experience with the amenities, space, smart-technology, and privacy, making the perfect home for a couple or roommates working from home.</p>
+                    <div className="row my-5">
+                        <div className="col vcenter">
                             <h3>Kitchen</h3>
                             <li>Large custom, maple cognac kitchen cabinet and seating island</li>
                             <li>Calacatta gold Quartz countertop combining with a grayish luminous electric veins and occasional taupe/gold highlights</li>
@@ -93,10 +100,14 @@ export default class Our_Collections extends Component {
                             <li>Gas range</li>
                             <li>French door refrigerator</li>
                         </div>
-                        <div className="col"></div>
+                        <div className="col vcenter">
+                            <img className="img-fluid" alt="kitchen" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610185557393_K1000064.jpg"></img>
+                        </div>
                     </div>
-                    <div className="row">
-                        <div className="col"></div>
+                    <div className="row my-5">
+                        <div className="col">
+                            <img className="img-fluid" alt="master-suite" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610184490999_K1000246.jpg"></img>
+                        </div>
                         <div className="col">
                             <h3>Master Suite</h3>
                             <li>11’4” x 15” size master bedroom with a balcony</li>
@@ -108,7 +119,7 @@ export default class Our_Collections extends Component {
                             <li>Rainfall shower head</li>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row my-5">
                         <div className="col">
                             <h3>2nd Bedroom</h3>
                             <li>10’ x 15’  size bedroom</li>
@@ -116,7 +127,7 @@ export default class Our_Collections extends Component {
                         </div>
                         <div className="col"></div>
                     </div>
-                    <div className="row">
+                    <div className="row my-5">
                         <div className="col"></div>
                         <div className="col">
                             <h3>Hallway bathroom</h3>
@@ -125,7 +136,7 @@ export default class Our_Collections extends Component {
                             <li>Linen closet</li>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row my-5">
                         <div className="col">
                             <h3>Powder room</h3>
                             <li>Toilet</li>
@@ -133,7 +144,7 @@ export default class Our_Collections extends Component {
                         </div>
                         <div className="col"></div>
                     </div>
-                    <div className="row">
+                    <div className="row my-5">
                         <div className="col"></div>
                         <div className="col">
                             <h3>Washer and Dryer</h3>
@@ -141,7 +152,7 @@ export default class Our_Collections extends Component {
                             <li>Luxurious 24” white vanity on the 1st floor</li>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row my-5">
                         <div className="col">
                             <h3>Offices</h3>
                             <li>10’6” x 13’2” size office in the loft above the master suite with a bench and lots of windows and light</li>
@@ -150,7 +161,7 @@ export default class Our_Collections extends Component {
                         </div>
                         <div className="col"></div>
                     </div>
-                    <div className="row">
+                    <div className="row my-5">
                         <div className="col"></div>
                         <div className="col">
                             <h3>Design</h3>
@@ -161,7 +172,7 @@ export default class Our_Collections extends Component {
                             <li>Contemporary interior doors</li>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row my-5">
                         <div className="col">
                             <h3>Smarthome Technology</h3>
                             <li>Wireless smart Halo recessed lights color temperature adjustment, light dimming, sub-grouping, scheduling and timer</li>

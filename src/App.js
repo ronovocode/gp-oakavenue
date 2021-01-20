@@ -10,7 +10,7 @@ import { GlobalStyles } from './utils/globalstyles/global';
 // import Our_Homes from './pages/Our_Homes/Our_Homes';
 import Collections from './pages/Our_Homes/Collections';
 import Neighborhood from './pages/Neighborhood/Neighborhood';
-import Testimonials from './pages/Testimonials/Testimonials';
+import Sustainability from './pages/Sustainability/Sustainability';
 
 /* Residents */
 import Dashboard from './pages/Resident/Dashboard';
@@ -71,8 +71,7 @@ function App() {
             <Switch>
                 <Route exact path="/collections" component={Collections}></Route>
                 <Route exact path="/neighborhood" component={Neighborhood}></Route>
-                <Route exact path="/sustainability" component={Neighborhood}></Route>
-                <Route exact path="/testimonials" component={Testimonials}></Route>
+                <Route exact path="/sustainability" component={Sustainability}></Route>
 
                 <Route exact path='/resident/login' component={Login}/>
                 

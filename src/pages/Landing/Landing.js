@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import kitchen from '../../static/img/kitchen.png';
-import kitchen_2 from '../../static/img/kitchen-zoomed-out.jpg';
-import loft from '../../static/img/loft.jpg';
 
 import Chevron from '../../icons/Chevron';
 import { Link } from 'react-router-dom';
