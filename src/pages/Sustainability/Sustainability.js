@@ -37,15 +37,16 @@ export default class Neighborhood extends Component {
                 <img className="bg" src={sustainability_bg} alt="redwood city"></img>
                 <div class="jumbotron">
                     <h1 class="text-gold display-4">Our sustainability mission</h1>
-                    <p class="lead">We built our townhomes with sustainability in mind, because a greener future is all
-                        about accountability. At Orchard Valley Townhomes, we incorporated many different features into
+                    <p class="lead mt-5">We built our townhomes with sustainability in mind, because a greener future is all
+                        about holding ourselves accountable. At Orchard Valley Townhomes, we incorporated many different features into
                         our homes to ensure that we respect our local environment, and do a better job of coexisting
                         with nature.</p>
                     <hr class="my-4">
                     </hr>
                     <p>We use a multitude of different methods to keep our power and water usage down inside our homes.
-                        High efficiency plumbing is used to keep water pressure high with minimal water usage.
-                        All appliances are EnergyStar rated to keep energy use as low as possible. </p>
+                        The townhomes were constructed with high efficiency plumbing to keep water pressure high with minimal water usage.
+                        All appliances are EnergyStar certified for low power consumption. Our walls are painted with Low COV, Greenguard Gold certified, Behr paint 
+                        so you can be certain indoor air quality is optimal. Dual pane windows ensure </p>
                 </div>
             </Wrapper>
         )

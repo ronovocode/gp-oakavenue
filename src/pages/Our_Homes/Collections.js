@@ -125,7 +125,9 @@ export default class Our_Collections extends Component {
                             <li>10’ x 15’  size bedroom</li>
                             <li>Custom closet system</li>
                         </div>
-                        <div className="col"></div>
+                        <div className="col">
+                            {/* TODO Bedroom Image */}
+                        </div>
                     </div>
                     <div className="row my-5">
                         <div className="col"></div>
@@ -142,10 +144,14 @@ export default class Our_Collections extends Component {
                             <li>Toilet</li>
                             <li>Luxurious 24” white vanity on the 1st floor</li>
                         </div>
-                        <div className="col"></div>
+                        <div className="col">
+                            {/* TODO Image */}
+                        </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col"></div>
+                        <div className="col">
+                            {/* TODO Image */}
+                        </div>
                         <div className="col">
                             <h3>Washer and Dryer</h3>
                             <li>Toilet</li>
@@ -159,10 +165,14 @@ export default class Our_Collections extends Component {
                             <li>8’6” x 5’ size den by the living room</li>
                             <li>2 separated offices for a couple working from home</li>
                         </div>
-                        <div className="col"></div>
+                        <div className="col">
+                            {/* TODO Image */}
+                        </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col"></div>
+                        <div className="col">
+                            {/* TODO Image */}
+                        </div>
                         <div className="col">
                             <h3>Design</h3>
                             <li>Contemporary design with calming theme throughout the townhome</li>
@@ -181,7 +191,9 @@ export default class Our_Collections extends Component {
                             <li>Ring video bell for visitors and package delivery notification</li>
                             <li>WiFi enabled LG front load washer and dryer for remote setting and notifications</li>
                         </div>
-                        <div className="col"></div>
+                        <div className="col">
+                            {/* TODO Image */}
+                        </div>
                     </div>
 
                     <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
