@@ -49,6 +49,11 @@ export default class Neighborhood extends Component {
                         so you can be certain indoor air quality is optimal. Dual pane windows ensure your home is kept well insulated. Our homes 
                         were also constructed with ultra low energy AC units, water heaters, and furnaces. 
                     </p>
+                    <p>
+                        Our complex is lush with greenery, such as citrus and other fruit trees. We also have a private vegetable
+                        and herb garden so you can keep your green thumb active. At Orchard Valley Townhomes, you can be sure that 
+                        your lifestyle will be environmentally conscious. 
+                    </p>
                 </div>
             </Wrapper>
         )
