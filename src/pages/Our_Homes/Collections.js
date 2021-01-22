@@ -154,8 +154,7 @@ export default class Our_Collections extends Component {
                         </div>
                         <div className="col">
                             <h3>Washer and Dryer</h3>
-                            <li>Toilet</li>
-                            <li>Luxurious 24” white vanity on the 1st floor</li>
+                            <li>Full size LG Front load Washer and Dryer</li>
                         </div>
                     </div>
                     <div className="row my-5">
@@ -207,7 +206,7 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="collapse" id="grande-collection">
-                        <p className="ml-5 mt-4">This collection offers corner townhomes with ample outdoor recreation space. </p>
+                        <p className="ml-5 mt-4">Our grande collection offers corner townhomes with ample outdoor recreation space. </p>
                         <div>
                             {collections["The Grande Collection"] ? (
                                 <div className="row">

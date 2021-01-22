@@ -38,14 +38,23 @@ export default class Neighborhood extends Component {
                     <p class="lead">Redwood City is a San Francisco Bay Area community located approximately 27 miles south of San Francisco, and 24 miles northwest of San Jose. It sits in the heart of Silicon Valley, the technology-rich region extending from the San Francisco Peninsula to the foothills of the Santa Cruz Mountains.</p>
                     <hr class="my-4"></hr>
                     <p>The city’s vibrant downtown is known as the entertainment hub of the San Francisco Peninsula, and it offers residents a unique entertainment, restaurant, and retail experience. Redwood City is the third largest city in the County of San Mateo, with 85,992 residents. The city enjoys an average of 255 sunny days a year, which it boasts via the city slogan: "Climate Best by Government Test”.</p>
-                    <p>Orchard Valley Townhomes is situated just </p>
+                    <p>Orchard Valley Townhomes is situated a mile away from downtown, bringing you within an arms reach of everything you might need. We have highlighted some important locations for your convenience. </p>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                     <div className="col">
                         <iframe title="map of neighborhood" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6332.480027669312!2d-122.22823164884785!3d37.478662132833406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fa3a42d9560a3%3A0xe0f20d662a34755e!2s301%20Oak%20Ave%2C%20Redwood%20City%2C%20CA%2094061!5e0!3m2!1sen!2sus!4v1611053221913!5m2!1sen!2sus" width="600" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
+                </div> */}
+                <div className="row mt-5">
+                    <div className="col-md-6">
+                        <h2>Dining</h2>
+                    </div>
+                    <div className="col-md-6">
+                        
+                    </div>
                 </div>
                 {/* TODO: Dining */}
+
                 {/* TODO: Parks & Trails */}
                 {/* TODO: Transit */}
                 {/* TODO: Dog Parks */}
