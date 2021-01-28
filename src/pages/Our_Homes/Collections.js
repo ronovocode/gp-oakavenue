@@ -209,13 +209,49 @@ export default class Our_Collections extends Component {
                             <li>Toilet</li>
                             <li>Luxurious 24” white vanity on the 1st floor</li>
                         </div>
-                        <div className="col">
-                            {/* TODO Image */}
+                        <div className="col vcenter">
+                            <div id="powderroom_carousel_controls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    {/* <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611869401145_K1000207-2.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873788991_K1000212-2.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                    </div> */}
+                                </div>
+                                <a class="carousel-control-prev" href="#powderroom_carousel_controls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#powderroom_carousel_controls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className="row my-5">
                         <div className="col">
-                            {/* TODO Image */}
+                            <div className="col vcenter">
+                                <div id="WandD_carousel_controls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#WandD_carousel_controls" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#WandD_carousel_controls" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div className="col">
                             <h3>Washer and Dryer</h3>
@@ -229,14 +265,51 @@ export default class Our_Collections extends Component {
                             <li>8’6” x 5’ size den by the living room</li>
                             <li>2 separated offices for a couple working from home</li>
                         </div>
-                        <div className="col">
-                            {/* TODO Image */}
-                        </div>
+                        <div className="col vcenter">
+                                <div id="offices_carousel_controls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874290487_K1000053.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874383815_K1000381.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874412126_K1000349.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#offices_carousel_controls" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#offices_carousel_controls" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col">
-                            {/* TODO Image */}
-                        </div>
+                    <div className="col vcenter">
+                                <div id="design_carousel_controls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        {/* <div class="carousel-item active">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                        </div> */}
+                                    </div>
+                                    <a class="carousel-control-prev" href="#design_carousel_controls" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#design_carousel_controls" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
                         <div className="col">
                             <h3>Design</h3>
                             <li>Contemporary design with calming theme throughout the townhome</li>
@@ -255,9 +328,26 @@ export default class Our_Collections extends Component {
                             <li>Ring video bell for visitors and package delivery notification</li>
                             <li>WiFi enabled LG front load washer and dryer for remote setting and notifications</li>
                         </div>
-                        <div className="col">
-                            {/* TODO Image */}
-                        </div>
+                        <div className="col vcenter">
+                                <div id="smarthome_carousel_controls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        {/* <div class="carousel-item active">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                        </div> */}
+                                    </div>
+                                    <a class="carousel-control-prev" href="#smarthome_carousel_controls" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#smarthome_carousel_controls" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
                     </div>
 
                     <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
