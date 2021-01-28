@@ -166,7 +166,7 @@ export default class Our_Collections extends Component {
                             <li>Custom closet system</li>
                         </div>
                         <div className="col vcenter">
-                            <div id="2ndbedroom_carousel_controls" class="carousel slide" data-ride="carousel">
+                            <div id="secondbedroom_carousel_controls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611869401145_K1000207-2.jpg" class="d-block w-100" alt="kitchen1"></img>
@@ -175,11 +175,11 @@ export default class Our_Collections extends Component {
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873788991_K1000212-2.jpg" class="d-block w-100" alt="kitchen2"></img>
                                     </div>
                                 </div>
-                                <a class="carousel-control-prev" href="#2ndbedroom_carousel_controls" role="button" data-slide="prev">
+                                <a class="carousel-control-prev" href="#secondbedroom_carousel_controls" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="#2ndbedroom_carousel_controls" role="button" data-slide="next">
+                                <a class="carousel-control-next" href="#secondbedroom_carousel_controls" role="button" data-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
@@ -188,13 +188,7 @@ export default class Our_Collections extends Component {
                     </div>
                     <div className="row my-5">
                         <div className="col vcenter">
-                            <div id="hallwaybathroom_carousel_controls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873928141_K1000223.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                    </div>
-                                </div>
-                            </div>
+                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873928141_K1000223.jpg" class="d-block w-100 img-fluid" alt="kitchen1"></img>
                         </div>
                         <div className="col">
                             <h3>Hallway bathroom</h3>
