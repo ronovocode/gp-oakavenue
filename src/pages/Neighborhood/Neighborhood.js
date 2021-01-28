@@ -31,7 +31,7 @@ export default class Neighborhood extends Component {
 
     render() {
         return (
-            <Wrapper className="container">
+            <Wrapper className="container mb-5">
                 <img className="bg" src={neighborhoodImage} alt="redwood city"></img>
                 <div class="jumbotron">
                     <h1 class="text-gold display-4">About Redwood City</h1>
@@ -41,23 +41,10 @@ export default class Neighborhood extends Component {
                     <p>Orchard Valley Townhomes is situated a mile away from downtown, bringing you within an arms reach of everything you might need. We have highlighted some important locations for your convenience. </p>
                 </div>
                 <div className="row">
-                    <div className="col-md-6 mx-auto">
-                        <iframe title="Map of neighborhood" src="https://www.google.com/maps/d/u/0/embed?mid=1_FlftkUmK6g61a4wyzVKBo6A314CGJj4" width="640" height="480"></iframe>
+                    <div className="col-md-6">
+                        <iframe title="Map of neighborhood" src="https://www.google.com/maps/d/u/0/embed?mid=1_FlftkUmK6g61a4wyzVKBo6A314CGJj4" width="900" height="600"></iframe>
                     </div>
                 </div>
-                {/* <div className="row mt-5">
-                    <div className="col-md-6">
-                        <h2>Dining</h2>
-                    </div>
-                    <div className="col-md-6">
-                        
-                    </div>
-                </div> */}
-                {/* TODO: Dining */}
-
-                {/* TODO: Parks & Trails */}
-                {/* TODO: Transit */}
-                {/* TODO: Dog Parks */}
             </Wrapper>
         )
     }

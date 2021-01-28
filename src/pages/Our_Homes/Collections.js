@@ -101,12 +101,52 @@ export default class Our_Collections extends Component {
                             <li>French door refrigerator</li>
                         </div>
                         <div className="col vcenter">
-                            <img className="img-fluid" alt="kitchen" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610185557393_K1000064.jpg"></img>
+                            <div id="kitchen_carousel_controls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610185557393_K1000064.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611872872111_K1000100.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873093049_K1000110.jpg" class="d-block w-100" alt="kitchen3"></img>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#kitchen_carousel_controls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#kitchen_carousel_controls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col">
-                            <img className="img-fluid" alt="master-suite" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610184490999_K1000246.jpg"></img>
+                        <div className="col vcenter">
+                            <div id="mastersuite_carousel_controls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610184490999_K1000246.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873394428_K1000248.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873662855_K1000269.jpg" class="d-block w-100" alt="kitchen3"></img>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#mastersuite_carousel_controls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#mastersuite_carousel_controls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
                         <div className="col">
                             <h3>Master Suite</h3>
@@ -125,12 +165,37 @@ export default class Our_Collections extends Component {
                             <li>10’ x 15’  size bedroom</li>
                             <li>Custom closet system</li>
                         </div>
-                        <div className="col">
-                            {/* TODO Bedroom Image */}
+                        <div className="col vcenter">
+                            <div id="2ndbedroom_carousel_controls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611869401145_K1000207-2.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873788991_K1000212-2.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#2ndbedroom_carousel_controls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#2ndbedroom_carousel_controls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col"></div>
+                        <div className="col vcenter">
+                            <div id="hallwaybathroom_carousel_controls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873928141_K1000223.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div className="col">
                             <h3>Hallway bathroom</h3>
                             <li>Luxurious 48” single sink, white vanity</li>
