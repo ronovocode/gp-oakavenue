@@ -10,6 +10,10 @@ import apartments from '../../static/data';
 
 import API from '../../utils/API';
 
+// Lightbox
+// import Lightbox from 'react-image-lightbox';
+// import 'react-image-lightbox/style.css';
+
 // 3D Plans
 import plan_293A from '../../static/img/thumbnails/293A.png';
 import plan_293D from '../../static/img/thumbnails/293D.png';
@@ -41,7 +45,7 @@ const Wrapper = styled.div`
         cursor: pointer;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
         color: #D2CCA1;
     }
 
@@ -64,6 +68,8 @@ export default class Our_Collections extends Component {
 
         this.state = {
             collection_open: 0,
+            lightboxIndex: 0,
+            lightboxIsOpen: false
         }
     }
 
@@ -88,7 +94,10 @@ export default class Our_Collections extends Component {
                     <h1 className="mt-5">Our townhome collections</h1>
                     <hr style={{backgroundColor: '#fff'}} />
                     <h2 className="mt-5">Amenities</h2>
-                    <p>Our townhomes offer a luxurious living experience with the amenities, space, smart-technology, and privacy, making the perfect home for a couple or roommates working from home.</p>
+                    <p>
+                        Each of our townhomes features the best amenities, built for luxury and convenience. From outdoor recreation space, to multiple offices, to best-in-class appliances,
+                         you are guaranteed to live the most comfortable lifestyle with everything you need within arms reach. 
+                    </p>
                     <div className="row my-5">
                         <div className="col vcenter">
                             <h3>Kitchen</h3>
@@ -344,42 +353,6 @@ export default class Our_Collections extends Component {
                             </div>
                     </div>
 
-                    <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
-                        <div className="row">
-                            <div className="col">
-                                <h3>The Grande Collection</h3>
-                            </div>
-                            <div className="d-flex col justify-content-end">
-                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="collapse" id="grande-collection">
-                        <p className="ml-5 mt-4">Our grande collection offers corner townhomes with ample outdoor recreation space. </p>
-                        <div>
-                            {collections["The Grande Collection"] ? (
-                                <div className="row">
-                                    {collections["The Grande Collection"].map(apartment => (
-                                        <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
-                                            <Card type="apartment" className="border">
-                                                <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
-                                                <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
-                                                <p className="float-left">
-                                                    {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
-                                                    <br />
-                                                    {apartments[apartment].number_of_bedrooms} bedrooms
-                                                    <br />
-                                                    {apartments[apartment].number_of_bathrooms} bathrooms
-                                                </p>
-                                            </Card>
-                                        </Link>
-                                    ))}
-                                </div>
-                            ) : (
-                                <h3>No Results to Display</h3>
-                            )}
-                        </div>
-                    </div>
                     <div data-toggle="collapse" data-target="#vista-collection" className="collection-button mt-5">
                         <div className="row">
                             <div className="col">
@@ -391,7 +364,7 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="collapse" id="vista-collection">
-                        <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                        {/* <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 {this.state.vista_images ? (
                                     <div>
@@ -418,19 +391,68 @@ export default class Our_Collections extends Component {
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
-                        </div>
+                        </div> */}
                         <div className="row mt-5">
                             <div className="col">
-                                <p>The Vista Collection offers beautiful views of the moutains. Lorem ipsum dolor</p>
+                                <p>
+                                    The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
+                                    beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
+                                </p>
                             </div>
-                            <div className="col"></div>
                         </div>
-                        <h3 className="mt-5">Floor Plans</h3>
+                        <h4 className="mt-5">Floor Plans</h4>
                         <hr style={{backgroundColor: '#d2cca1'}}/>
                         <div>
                             {collections["The Vista Collection"] ? (
                                 <div className="row">
                                     {collections["The Vista Collection"].map(apartment => (
+                                        <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                            <Card type="apartment" className="border">
+                                                <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                                <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                                <p className="float-left">
+                                                    {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                    <br />
+                                                    {apartments[apartment].number_of_bedrooms} bedrooms
+                                                    <br />
+                                                    {apartments[apartment].number_of_bathrooms} bathrooms
+                                                </p>
+                                            </Card>
+                                        </Link>
+                                    ))}
+                                </div>
+                            ) : (
+                                <h3>No Results to Display</h3>
+                            )}
+                        </div>
+                    </div>
+
+                    <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
+                        <div className="row">
+                            <div className="col">
+                                <h3>The Grande Collection</h3>
+                            </div>
+                            <div className="d-flex col justify-content-end">
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="collapse" id="grande-collection">
+                        <div className="row mt-5">
+                            <div className="col">
+                                <p>
+                                    Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
+                                    you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
+                                    each living room. Explore our floor plans below. 
+                                </p>
+                            </div>
+                        </div>
+                        <h4 className="mt-5">Floor Plans</h4>
+                        <hr style={{backgroundColor: '#d2cca1'}}/>
+                        <div>
+                            {collections["The Grande Collection"] ? (
+                                <div className="row">
+                                    {collections["The Grande Collection"].map(apartment => (
                                         <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
                                             <Card type="apartment" className="border">
                                                 <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
