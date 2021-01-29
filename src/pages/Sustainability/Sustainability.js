@@ -10,6 +10,10 @@ const Wrapper = styled.div`
         background-color: transparent;
     }
 
+    .spacer {
+        height: 35vh;
+    }
+
     .bg {
         position: fixed;
         z-index: -500;
@@ -28,7 +32,7 @@ const Wrapper = styled.div`
 export default class Neighborhood extends Component {
 
     componentDidMount() {
-        document.title = "About Redwood City"
+        document.title = "Sustainability"
     }
 
     render() {
@@ -54,6 +58,7 @@ export default class Neighborhood extends Component {
                         and herb garden so you can keep your green thumb active. At Orchard Valley Townhomes, you can be sure that 
                         your lifestyle will be environmentally conscious. 
                     </p>
+                    <div className="spacer"></div>
                 </div>
             </Wrapper>
         )

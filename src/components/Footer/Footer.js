@@ -1,11 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { logoutUser } from '../../actions/auth';
-import { connect } from "react-redux";
-
-import { BrowserRouter as Link} from 'react-router-dom';
-
 const Foot = styled.footer`
     width: 100vw;
     background-color: #d2cca1;
@@ -13,6 +8,7 @@ const Foot = styled.footer`
     height: 5rem;
     margin-top: 3rem;
     bottom: 0;
+    left: 0;
     a {
         color: #151C0D
     }
@@ -32,17 +28,11 @@ const Foot = styled.footer`
 
 function Footer(props) {
     return (
-        <Foot>
+        <Foot className="footer">
             <div className="container">
                 <div className="row">
                     <div className="col-md-4 mt-4 text-center">
                         &#169; 2020 Greenpoint Real Estate
-                    </div>
-                    <div className="col-md-4 mt-4 text-center">
-                        <a className="logout" onClick={props.logoutUser}>LOGOUT</a>
-                    </div>
-                    <div className="col-md-4 mt-4 text-center">
-                        <Link to="/manager">Manager Login</Link>
                     </div>
                 </div>
             </div>
@@ -50,13 +40,4 @@ function Footer(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-    errors: state.errors
-});
-
-export default connect(
-    mapStateToProps, {
-        logoutUser
-    }
-)(Footer);
+export default Footer;

@@ -24,6 +24,7 @@ import ManagerLogin from './pages/Manager/Login';
 
 /* Navbar */
 import Navbar from './nav';
+import Footer from './components/Footer/Footer';
 
 /* React Router Imports */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -62,30 +63,32 @@ function App() {
     <Provider store={store}>
         <Router>
             <ThemeProvider theme={darkTheme}>
-            <GlobalStyles />
+              <GlobalStyles />
 
-            <div className="App"></div>
+              <div className="App"></div>
 
-            <Navbar />
-            
-            <Switch>
-                <Route exact path="/collections" component={Collections}></Route>
-                <Route exact path="/neighborhood" component={Neighborhood}></Route>
-                <Route exact path="/sustainability" component={Sustainability}></Route>
+              <Navbar />
+              
+              <Switch>
+                  <Route exact path="/collections" component={Collections}></Route>
+                  <Route exact path="/neighborhood" component={Neighborhood}></Route>
+                  <Route exact path="/sustainability" component={Sustainability}></Route>
 
-                <Route exact path='/resident/login' component={Login}/>
-                
-                <PrivateRouteResident exact path='/resident/dashboard' component={Dashboard} />
-                
-                <PrivateRouteManager exact path='/manager' component={Manager} />
+                  <Route exact path='/resident/login' component={Login}/>
+                  
+                  <PrivateRouteResident exact path='/resident/dashboard' component={Dashboard} />
+                  
+                  <PrivateRouteManager exact path='/manager' component={Manager} />
 
-                <Route exact path='/manager/login' component={ManagerLogin} />
-                
+                  <Route exact path='/manager/login' component={ManagerLogin} />
+                  
 
-                <Route path="/residence" component={Residence}></Route>
-                <Route exact path="/forgotpassword" component={ForgotPassword}/>
-                <Route path="/" component={Landing}></Route>
-            </Switch>
+                  <Route path="/residence" component={Residence}></Route>
+                  <Route exact path="/forgotpassword" component={ForgotPassword}/>
+                  <Route path="/" component={Landing}></Route>
+              </Switch>
+
+              <Footer />
             </ThemeProvider>
         </Router>
     </Provider>

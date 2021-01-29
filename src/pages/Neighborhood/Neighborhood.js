@@ -41,8 +41,8 @@ export default class Neighborhood extends Component {
                     <p>Orchard Valley Townhomes is situated a mile away from downtown, bringing you within an arms reach of everything you might need. We have highlighted some important locations for your convenience. </p>
                 </div>
                 <div className="row">
-                    <div className="col-md-6">
-                        <iframe title="Map of neighborhood" src="https://www.google.com/maps/d/u/0/embed?mid=1_FlftkUmK6g61a4wyzVKBo6A314CGJj4" width="900" height="600"></iframe>
+                    <div className="col">
+                        <iframe title="Map of neighborhood" src="https://www.google.com/maps/d/u/0/embed?mid=1_FlftkUmK6g61a4wyzVKBo6A314CGJj4" width="1000" height="600"></iframe>
                     </div>
                 </div>
             </Wrapper>
