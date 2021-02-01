@@ -238,7 +238,7 @@ export default class Our_Collections extends Component {
                                             <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612141267316_K1000744.jpg" class="d-block w-100" alt="kitchen2"></img>
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#WandD_carousel_controls" role="button" data-slide="prev">
