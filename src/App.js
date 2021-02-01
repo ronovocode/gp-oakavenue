@@ -6,10 +6,11 @@ import { ThemeProvider } from 'styled-components';
 import {  darkTheme } from './utils/globalstyles/theme.js';
 import { GlobalStyles } from './utils/globalstyles/global';
 
-/* Pages */
-// import Our_Homes from './pages/Our_Homes/Our_Homes';
+/* Homes */
 import Collections from './pages/Our_Homes/Collections';
 import Neighborhood from './pages/Neighborhood/Neighborhood';
+import Amenities from './pages/Our_Homes/Amenities';
+
 import Sustainability from './pages/Sustainability/Sustainability';
 
 /* Residents */
@@ -71,6 +72,7 @@ function App() {
               
               <Switch>
                   <Route exact path="/collections" component={Collections}></Route>
+                  <Route exact path="/amenities" component={Amenities}></Route>
                   <Route exact path="/neighborhood" component={Neighborhood}></Route>
                   <Route exact path="/sustainability" component={Sustainability}></Route>
 

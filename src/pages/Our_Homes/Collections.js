@@ -55,6 +55,46 @@ const Wrapper = styled.div`
         float: none;
     }
 
+    .opencollection {
+        background: none;
+        border: none;
+        position: relative;
+        padding: 0;
+
+        .overlay {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: rgba(0,0,0,0.3);
+            transition: 0.2s;
+            h3 {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
+            p {
+                position: absolute;
+                left: 50%;
+                top: 60%;
+                transform: translateX(-50%);
+            }
+
+            :hover {
+                background-color: rgba(0,0,0,0.6);
+            }
+        }
+
+        :focus {
+            border: none;
+        }
+    }
+
+    .spacer {
+        height: 50vh;
+    }
+
 `
 const collections = {
     "The Grande Collection": ["301A", "301F", "297A", "297D", "293A", "293D"],
@@ -90,391 +130,268 @@ export default class Our_Collections extends Component {
 
     render() {
         return (
-                <Wrapper className="container">
-                    <h1 className="mt-5">Our townhome collections</h1>
-                    <hr style={{backgroundColor: '#fff'}} />
-                    <h2 className="mt-5">Amenities</h2>
-                    <p>
-                        Each of our townhomes features the best amenities, built for luxury and convenience. From outdoor recreation space, to multiple offices, to best-in-class appliances,
-                         you are guaranteed to live the most comfortable lifestyle with everything you need within arms reach. 
-                    </p>
-                    <div className="row my-5">
-                        <div className="col vcenter">
-                            <h3>Kitchen</h3>
-                            <li>Large custom, maple cognac kitchen cabinet and seating island</li>
-                            <li>Calacatta gold Quartz countertop combining with a grayish luminous electric veins and occasional taupe/gold highlights</li>
-                            <li>White Travertine backsplashes</li>
-                            <li>Kohler stainless steel, professional grade pull out kitchen faucet</li>
-                            <li>Luxurious stainless steel Whirlpool appliances</li>
-                            <li>Gas range</li>
-                            <li>French door refrigerator</li>
-                        </div>
-                        <div className="col vcenter">
-                            <div id="kitchen_carousel_controls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610185557393_K1000064.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611872872111_K1000100.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873093049_K1000110.jpg" class="d-block w-100" alt="kitchen3"></img>
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#kitchen_carousel_controls" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#kitchen_carousel_controls" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row my-5">
-                        <div className="col vcenter">
-                            <div id="mastersuite_carousel_controls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610184490999_K1000246.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873394428_K1000248.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873662855_K1000269.jpg" class="d-block w-100" alt="kitchen3"></img>
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#mastersuite_carousel_controls" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#mastersuite_carousel_controls" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <h3>Master Suite</h3>
-                            <li>11’4” x 15” size master bedroom with a balcony</li>
-                            <li>Custom closet system</li>
-                            <li>Master room shower</li>
-                            <li>Luxurious 60” double sink, white vanity</li>
-                            <li>Luxurious white porcelain tiles with grayish luminous veins</li>
-                            <li>Frameless sliding shower door</li>
-                            <li>Rainfall shower head</li>
-                        </div>
-                    </div>
-                    <div className="row my-5">
-                        <div className="col">
-                            <h3>2nd Bedroom</h3>
-                            <li>10’ x 15’  size bedroom</li>
-                            <li>Custom closet system</li>
-                        </div>
-                        <div className="col vcenter">
-                            <div id="secondbedroom_carousel_controls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611869401145_K1000207-2.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873788991_K1000212-2.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#secondbedroom_carousel_controls" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#secondbedroom_carousel_controls" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row my-5">
-                        <div className="col vcenter">
-                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873928141_K1000223.jpg" class="d-block w-100 img-fluid" alt="kitchen1"></img>
-                        </div>
-                        <div className="col">
-                            <h3>Hallway bathroom</h3>
-                            <li>Luxurious 48” single sink, white vanity</li>
-                            <li>White tub with frameless sliding shower door</li>
-                            <li>Linen closet</li>
-                        </div>
-                    </div>
-                    <div className="row my-5">
-                        <div className="col">
-                            <h3>Powder room</h3>
-                            <li>Toilet</li>
-                            <li>Luxurious 24” white vanity on the 1st floor</li>
-                        </div>
-                        <div className="col vcenter">
-                            <div id="powderroom_carousel_controls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    {/* <div class="carousel-item active">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611869401145_K1000207-2.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873788991_K1000212-2.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                    </div> */}
-                                </div>
-                                <a class="carousel-control-prev" href="#powderroom_carousel_controls" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#powderroom_carousel_controls" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row my-5">
-                        <div className="col">
-                            <div className="col vcenter">
-                                <div id="WandD_carousel_controls" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                        </div>
-                                    </div>
-                                    <a class="carousel-control-prev" href="#WandD_carousel_controls" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#WandD_carousel_controls" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <h3>Washer and Dryer</h3>
-                            <li>Full size LG Front load Washer and Dryer</li>
-                        </div>
-                    </div>
-                    <div className="row my-5">
-                        <div className="col">
-                            <h3>Offices</h3>
-                            <li>10’6” x 13’2” size office in the loft above the master suite with a bench and lots of windows and light</li>
-                            <li>8’6” x 5’ size den by the living room</li>
-                            <li>2 separated offices for a couple working from home</li>
-                        </div>
-                        <div className="col vcenter">
-                                <div id="offices_carousel_controls" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874290487_K1000053.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874383815_K1000381.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874412126_K1000349.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                        </div>
-                                    </div>
-                                    <a class="carousel-control-prev" href="#offices_carousel_controls" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#offices_carousel_controls" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-                            </div>
-                    </div>
-                    <div className="row my-5">
-                    <div className="col vcenter">
-                                <div id="design_carousel_controls" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        {/* <div class="carousel-item active">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                        </div> */}
-                                    </div>
-                                    <a class="carousel-control-prev" href="#design_carousel_controls" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#design_carousel_controls" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-                            </div>
-                        <div className="col">
-                            <h3>Design</h3>
-                            <li>Contemporary design with calming theme throughout the townhome</li>
-                            <li>SPC stone-based flooring with wood grain providing beauty and excellent sound and heat insulation</li>
-                            <li>Stainless steel door hardware, kitchen cabinet pulls, light fixtures, and drapery rods</li>
-                            <li>Smart recessed light throughout</li>
-                            <li>Contemporary interior doors</li>
-                        </div>
-                    </div>
-                    <div className="row my-5">
-                        <div className="col">
-                            <h3>Smarthome Technology</h3>
-                            <li>Wireless smart Halo recessed lights color temperature adjustment, light dimming, sub-grouping, scheduling and timer</li>
-                            <li>Nest thermostat controlling centralized heating and AC</li>
-                            <li>Schlage Keyless entrance door with unique access codes for tenants and door walkers</li>
-                            <li>Ring video bell for visitors and package delivery notification</li>
-                            <li>WiFi enabled LG front load washer and dryer for remote setting and notifications</li>
-                        </div>
-                        <div className="col vcenter">
-                                <div id="smarthome_carousel_controls" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        {/* <div class="carousel-item active">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                        </div> */}
-                                    </div>
-                                    <a class="carousel-control-prev" href="#smarthome_carousel_controls" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#smarthome_carousel_controls" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-                            </div>
-                    </div>
+            <Wrapper className="container">
+                {/* <h1 className="mt-5">Our townhome collections</h1>
+                <hr style={{backgroundColor: '#fff'}} />
 
-                    <div data-toggle="collapse" data-target="#vista-collection" className="collection-button mt-5">
-                        <div className="row">
-                            <div className="col">
-                                <h3>The Vista Collection</h3>
-                            </div>
-                            <div className="d-flex col justify-content-end">
-                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                            </div>
+                <div className="row mt-5">
+                    <div className="d-flex align-items-center col-md-6">
+                        <h2>The Vista Collection</h2>
+                    </div>
+                    <div className="col-md-6">
+                        <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg" alt="vista collection"></img>
+                    </div>
+                </div>
+                <div className="row mt-5">
+                    <div className="col">
+                        <p>
+                            The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
+                            beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
+                        </p>
+                    </div>
+                </div>
+                <div data-toggle="collapse" data-target="#vista-collection" className="collection-button mt-5">
+                    <div className="row">
+                        <div className="col">
+                            <h4>Floor Plans</h4>
+                        </div>
+                        <div className="d-flex col justify-content-end">
+                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
                         </div>
                     </div>
-                    <div className="collapse" id="vista-collection">
-                        {/* <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                {this.state.vista_images ? (
-                                    <div>
-                                        <div class="carousel-item active">
-                                            <img src={this.state.vista_images[0]} class="d-block w-100" alt={this.state.vista_images[0]}></img>
+                </div>
+                <div className="collapse" id="vista-collection">
+                    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {this.state.vista_images ? (
+                                <div>
+                                    <div class="carousel-item active">
+                                        <img src={this.state.vista_images[0]} class="d-block w-100" alt={this.state.vista_images[0]}></img>
+                                    </div>
+                                    {this.state.vista_images.map(image => (
+                                        <div class="carousel-item">
+                                            <img src={image} class="d-block w-100" alt={image}></img>
                                         </div>
-                                        {this.state.vista_images.map(image => (
-                                            <div class="carousel-item">
-                                                <img src={image} class="d-block w-100" alt={image}></img>
+                                    ))}
+                                </div>
+                            )
+                            : 
+                                <h3>NO RESULTS</h3>
+                            
+                            }
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <h4 className="mt-5">Floor Plans</h4>
+                    <hr style={{backgroundColor: '#d2cca1'}}/>
+                    <div>
+                        {collections["The Vista Collection"] ? (
+                            <div className="row">
+                                {collections["The Vista Collection"].map(apartment => (
+                                    <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                        <Card type="apartment" className="border">
+                                            <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                            <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                            <p className="float-left">
+                                                {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                <br />
+                                                {apartments[apartment].number_of_bedrooms} bedrooms
+                                                <br />
+                                                {apartments[apartment].number_of_bathrooms} bathrooms
+                                            </p>
+                                        </Card>
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : (
+                            <h3>No Results to Display</h3>
+                        )}
+                    </div>
+                </div>
+
+                <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
+                    <div className="row">
+                        <div className="col">
+                            <h3>The Grande Collection</h3>
+                        </div>
+                        <div className="d-flex col justify-content-end">
+                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div className="collapse" id="grande-collection">
+                    <div className="row mt-5">
+                        <div className="col">
+                            <p>
+                                Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
+                                you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
+                                each living room. Explore our floor plans below. 
+                            </p>
+                        </div>
+                    </div>
+                    <h4 className="mt-5">Floor Plans</h4>
+                    <hr style={{backgroundColor: '#d2cca1'}}/>
+                    <div>
+                        {collections["The Grande Collection"] ? (
+                            <div className="row">
+                                {collections["The Grande Collection"].map(apartment => (
+                                    <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                        <Card type="apartment" className="border">
+                                            <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                            <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                            <p className="float-left">
+                                                {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                <br />
+                                                {apartments[apartment].number_of_bedrooms} bedrooms
+                                                <br />
+                                                {apartments[apartment].number_of_bathrooms} bathrooms
+                                            </p>
+                                        </Card>
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : (
+                            <h3>No Results to Display</h3>
+                        )}
+                    </div>
+                </div> */}
+                <h1 className="mt-5">Our townhome collections</h1>
+                <hr style={{backgroundColor: '#fff'}} />
+
+                <div className="row">
+                    <div className="col">
+                        <button data-toggle="collapse" data-target="#vista-collection" className="opencollection">
+                            <div className="overlay">
+                                <h3>The Vista Collection</h3>
+                                <p>Click for more</p>
+                            </div>
+                            <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg"></img>
+                        </button>
+                    </div>
+                    <div className="col">
+                        <button data-toggle="collapse" data-target="#grande-collection" className="opencollection">
+                            <div className="overlay">
+                                <h3>The Grande Collection</h3>
+                                <p>Click for more</p>
+                            </div>
+                            <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140753583_K1000645-2.jpg"></img>
+                        </button>
+                    </div>
+                </div>
+                <div className="row mt-5">
+                    <div className="col">
+                        <div className="collapse" id="vista-collection">
+                            {/* <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    {this.state.vista_images ? (
+                                        <div>
+                                            <div class="carousel-item active">
+                                                <img src={this.state.vista_images[0]} class="d-block w-100" alt={this.state.vista_images[0]}></img>
                                             </div>
+                                            {this.state.vista_images.map(image => (
+                                                <div class="carousel-item">
+                                                    <img src={image} class="d-block w-100" alt={image}></img>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                                    : 
+                                        <h3>NO RESULTS</h3>
+                                    
+                                    }
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div> */}
+                            <div className="row mt-5">
+                                <div className="col">
+                                    <p>
+                                        The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
+                                        beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
+                                    </p>
+                                </div>
+                            </div>
+                            <h4 className="mt-5">Floor Plans</h4>
+                            <hr style={{backgroundColor: '#d2cca1'}}/>
+                            <div>
+                                {collections["The Vista Collection"] ? (
+                                    <div className="row">
+                                        {collections["The Vista Collection"].map(apartment => (
+                                            <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                                <Card type="apartment" className="border">
+                                                    <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                                    <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                                    <p className="float-left">
+                                                        {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                        <br />
+                                                        {apartments[apartment].number_of_bedrooms} bedrooms
+                                                        <br />
+                                                        {apartments[apartment].number_of_bathrooms} bathrooms
+                                                    </p>
+                                                </Card>
+                                            </Link>
                                         ))}
                                     </div>
-                                )
-                                : 
-                                    <h3>NO RESULTS</h3>
-                                
-                                }
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div> */}
-                        <div className="row mt-5">
-                            <div className="col">
-                                <p>
-                                    The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
-                                    beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
-                                </p>
+                                ) : (
+                                    <h3>No Results to Display</h3>
+                                )}
                             </div>
                         </div>
-                        <h4 className="mt-5">Floor Plans</h4>
-                        <hr style={{backgroundColor: '#d2cca1'}}/>
-                        <div>
-                            {collections["The Vista Collection"] ? (
-                                <div className="row">
-                                    {collections["The Vista Collection"].map(apartment => (
-                                        <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
-                                            <Card type="apartment" className="border">
-                                                <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
-                                                <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
-                                                <p className="float-left">
-                                                    {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
-                                                    <br />
-                                                    {apartments[apartment].number_of_bedrooms} bedrooms
-                                                    <br />
-                                                    {apartments[apartment].number_of_bathrooms} bathrooms
-                                                </p>
-                                            </Card>
-                                        </Link>
-                                    ))}
+                        <div className="collapse" id="grande-collection">
+                            <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140753583_K1000645-2.jpg"></img>
+                            <h2 className="mt-5">The Grande Collection</h2>
+                            <div className="row mt-3">
+                                <div className="col">
+                                    <p>
+                                        Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
+                                        you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
+                                        each living room. Explore our floor plans below. 
+                                    </p>
                                 </div>
-                            ) : (
-                                <h3>No Results to Display</h3>
-                            )}
+                            </div>
+                            <h4 className="mt-5">Floor Plans</h4>
+                            <hr style={{backgroundColor: '#d2cca1'}}/>
+                            <div>
+                                {collections["The Grande Collection"] ? (
+                                    <div className="row">
+                                        {collections["The Grande Collection"].map(apartment => (
+                                            <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                                <Card type="apartment" className="border">
+                                                    <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                                    <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                                    <p className="float-left">
+                                                        {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                        <br />
+                                                        {apartments[apartment].number_of_bedrooms} bedrooms
+                                                        <br />
+                                                        {apartments[apartment].number_of_bathrooms} bathrooms
+                                                    </p>
+                                                </Card>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <h3>No Results to Display</h3>
+                                )}
+                            </div>
                         </div>
                     </div>
-
-                    <div data-toggle="collapse" data-target="#grande-collection" className="collection-button mt-5">
-                        <div className="row">
-                            <div className="col">
-                                <h3>The Grande Collection</h3>
-                            </div>
-                            <div className="d-flex col justify-content-end">
-                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="collapse" id="grande-collection">
-                        <div className="row mt-5">
-                            <div className="col">
-                                <p>
-                                    Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
-                                    you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
-                                    each living room. Explore our floor plans below. 
-                                </p>
-                            </div>
-                        </div>
-                        <h4 className="mt-5">Floor Plans</h4>
-                        <hr style={{backgroundColor: '#d2cca1'}}/>
-                        <div>
-                            {collections["The Grande Collection"] ? (
-                                <div className="row">
-                                    {collections["The Grande Collection"].map(apartment => (
-                                        <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
-                                            <Card type="apartment" className="border">
-                                                <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
-                                                <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
-                                                <p className="float-left">
-                                                    {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
-                                                    <br />
-                                                    {apartments[apartment].number_of_bedrooms} bedrooms
-                                                    <br />
-                                                    {apartments[apartment].number_of_bathrooms} bathrooms
-                                                </p>
-                                            </Card>
-                                        </Link>
-                                    ))}
-                                </div>
-                            ) : (
-                                <h3>No Results to Display</h3>
-                            )}
-                        </div>
-                    </div>
-                    
-                </Wrapper>
+                </div>
+            <div className="spacer"></div>
+            </Wrapper>
         )
     }
 }

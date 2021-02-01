@@ -17,3 +17,7 @@ p {
 .container-fluid {
     padding: 0;
 }
+
+.spacer {
+    height: 50vh;
+}

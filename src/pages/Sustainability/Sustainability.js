@@ -10,10 +10,6 @@ const Wrapper = styled.div`
         background-color: transparent;
     }
 
-    .spacer {
-        height: 35vh;
-    }
-
     .bg {
         position: fixed;
         z-index: -500;
