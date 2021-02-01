@@ -25,9 +25,9 @@ const LandingWrapper = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-
+        opacity: 1;
         h1 {
-            color: #fefefe
+            color: #fff
         }
 
         @media (max-width: 768px) {
