@@ -28,6 +28,9 @@ function Navbar(props) {
               <li className="nav-item">
                 <Link className="nav-link" to="/collections">Browse Collections</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/amenities">Amenities</Link>
+              </li>
 
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
