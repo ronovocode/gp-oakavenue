@@ -51,6 +51,10 @@ const Wrapper = styled.div`
         float: none;
     }
 
+    @media screen and (max-width: 768px) {
+
+    }
+
 `
 const collections = {
     "The Grande Collection": ["301A", "301F", "297A", "297D", "293A", "293D"],
@@ -87,15 +91,14 @@ export default class Our_Collections extends Component {
     render() {
         return (
                 <Wrapper className="container">
-                    <h1 className="mt-5">Townhome features</h1>
+                    <h1 className="mt-5">Amenities</h1>
                     <hr style={{backgroundColor: '#fff'}} />
-                    <h2 className="mt-5">Amenities</h2>
                     <p>
                         Each of our townhomes features the best amenities, built for luxury and convenience. From outdoor recreation space, to multiple offices, to best-in-class appliances,
                          you are guaranteed to live the most comfortable lifestyle with everything you need within arms reach. 
                     </p>
                     <div className="row my-5">
-                        <div className="col vcenter">
+                        <div className="col-md-6 vcenter">
                             <h3>Kitchen</h3>
                             <li>Large custom, maple cognac kitchen cabinet and seating island</li>
                             <li>Calacatta gold Quartz countertop combining with a grayish luminous electric veins and occasional taupe/gold highlights</li>
@@ -105,8 +108,8 @@ export default class Our_Collections extends Component {
                             <li>Gas range</li>
                             <li>French door refrigerator</li>
                         </div>
-                        <div className="col vcenter">
-                            <div id="kitchen_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6 vcenter">
+                            <div id="kitchen_carousel_controls" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610185557393_K1000064.jpg" class="d-block w-100" alt="kitchen1"></img>
@@ -130,8 +133,8 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col vcenter">
-                            <div id="mastersuite_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6 vcenter">
+                            <div id="mastersuite_carousel_controls" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873394428_K1000248.jpg" class="d-block w-100" alt="kitchen2"></img>
@@ -153,7 +156,7 @@ export default class Our_Collections extends Component {
                                 </a>
                             </div>
                         </div>
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>Master Suite</h3>
                             <li>11’4” x 15” size master bedroom with a balcony</li>
                             <li>Custom closet system</li>
@@ -165,13 +168,13 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>2nd Bedroom</h3>
                             <li>10’ x 15’  size bedroom</li>
                             <li>Custom closet system</li>
                         </div>
-                        <div className="col vcenter">
-                            <div id="secondbedroom_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6 vcenter">
+                            <div id="secondbedroom_carousel_controls" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611869401145_K1000207-2.jpg" class="d-block w-100" alt="kitchen1"></img>
@@ -192,10 +195,10 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col vcenter">
+                        <div className="col-md-6 vcenter">
                             <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873928141_K1000223.jpg" class="d-block w-100 img-fluid" alt="kitchen1"></img>
                         </div>
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>Hallway bathroom</h3>
                             <li>Luxurious 48” single sink, white vanity</li>
                             <li>White tub with frameless sliding shower door</li>
@@ -203,13 +206,13 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>Powder room</h3>
                             <li>Toilet</li>
                             <li>Luxurious 24” white vanity on the 1st floor</li>
                         </div>
-                        <div className="col vcenter">
-                            <div id="powderroom_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6 vcenter">
+                            <div id="powderroom_carousel_controls" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612139804031_K1000762.jpg" class="d-block w-100" alt="kitchen1"></img>
@@ -230,9 +233,9 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col">
-                            <div className="col vcenter">
-                                <div id="WandD_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6">
+                            <div className="col-md-6 vcenter">
+                                <div id="WandD_carousel_controls" class="carousel slide">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
@@ -252,20 +255,20 @@ export default class Our_Collections extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>Washer and Dryer</h3>
                             <li>Full size LG Front load Washer and Dryer</li>
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>Offices</h3>
                             <li>10’6” x 13’2” size office in the loft above the master suite with a bench and lots of windows and light</li>
                             <li>8’6” x 5’ size den by the living room</li>
                             <li>2 separated offices for a couple working from home</li>
                         </div>
-                        <div className="col vcenter">
-                                <div id="offices_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6 vcenter">
+                                <div id="offices_carousel_controls" class="carousel slide">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874290487_K1000053.jpg" class="d-block w-100" alt="kitchen1"></img>
@@ -289,8 +292,8 @@ export default class Our_Collections extends Component {
                             </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col vcenter">
-                            <div id="design_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6 vcenter">
+                            <div id="design_carousel_controls" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140944413_K1000819.jpg" class="d-block w-100" alt="kitchen1"></img>
@@ -306,7 +309,7 @@ export default class Our_Collections extends Component {
                                 </a> */}
                             </div>
                         </div>
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>Design</h3>
                             <li>Contemporary design with calming theme throughout the townhome</li>
                             <li>SPC stone-based flooring with wood grain providing beauty and excellent sound and heat insulation</li>
@@ -316,7 +319,7 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col">
+                        <div className="col-md-6">
                             <h3>Smarthome Technology</h3>
                             <li>Wireless smart Halo recessed lights color temperature adjustment, light dimming, sub-grouping, scheduling and timer</li>
                             <li>Nest thermostat controlling centralized heating and AC</li>
@@ -324,8 +327,8 @@ export default class Our_Collections extends Component {
                             <li>Ring video bell for visitors and package delivery notification</li>
                             <li>WiFi enabled LG front load washer and dryer for remote setting and notifications</li>
                         </div>
-                        <div className="col vcenter">
-                            <div id="smarthome_carousel_controls" class="carousel slide" data-ride="carousel">
+                        <div className="col-md-6 vcenter">
+                            <div id="smarthome_carousel_controls" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612141051027_K1000862.jpg" class="d-block w-100" alt="kitchen1"></img>

@@ -317,11 +317,15 @@ export default class Our_Collections extends Component {
                                 </a>
                             </div> */}
                             <div className="row mt-5">
-                                <div className="col">
-                                    <p>
+                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg"></img>
+                                <h2 className="mt-5">The Vista Collection</h2>
+                                <div className="row mt-3">
+                                    <div className="col">
+                                        <p>
                                         The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
-                                        beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
-                                    </p>
+                                            beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <h4 className="mt-5">Floor Plans</h4>

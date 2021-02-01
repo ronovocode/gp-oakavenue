@@ -9,10 +9,11 @@ import { Link } from 'react-router-dom';
 const LandingWrapper = styled.div`
     .hero {
         height: 100vh;
-        background-image: url(${kitchen});
+        background-image: url("https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873394428_K1000248.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
+        opacity: 0.7;
     }
 
     .hero h1 {
@@ -24,6 +25,10 @@ const LandingWrapper = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        h1 {
+            color: #fefefe
+        }
 
         @media (max-width: 768px) {
             h1 {
@@ -93,7 +98,7 @@ export default class Landing extends Component {
                     <div className="hero text-center">
                         <div className="hero-text">
                             <h1>Orchard Valley Townhomes</h1>
-                            <h2 className="mt-4 font-weight-light">Redwood City, CA</h2>
+                            <h2 className="mt-4 font-weight-light">14 Luxury Townhomes situated in the heart of Silicon Valley</h2>
                             <hr />
                         </div>
                         <div className="hero-nav">
@@ -138,10 +143,14 @@ export default class Landing extends Component {
                                 <p>Explore our different collections of townhomes to find the one that fits your ​​​​preferences.</p>
                                 <Link className="text-gold" to="/collections">Browse collections...</Link>
                             </div>
-                            <div className="col-md-6 p-5"></div>
+                            <div className="col-md-6 p-5">
+                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140944413_K1000819.jpg"></img>
+                            </div>
                         </div>
                         <div className="row equal-height">
-                            <div className="col-md-6 p-5"></div>
+                            <div className="col-md-6 p-5">
+                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144559907_park.jpg"></img>
+                            </div>
                             <div className="col-md-6 p-5">
                                 <h2 className="text-gold">Location/Neighborhood</h2>
                                 <p>
@@ -158,7 +167,9 @@ export default class Landing extends Component {
                                 </p>
                                 <Link className="text-gold" to="/collections">Browse collections...</Link>
                             </div>
-                            <div className="col-md-6 p-5"></div>
+                            <div className="col-md-6 p-5">
+                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144661581_K1000100.jpg"></img>
+                            </div>
                         </div>
                     </div>
             </LandingWrapper>

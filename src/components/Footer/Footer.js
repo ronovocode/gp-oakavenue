@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Foot = styled.footer`
-    width: 100vw;
+    width: 100%;
     background-color: #d2cca1;
     color: #151C0D;
     height: 5rem;
