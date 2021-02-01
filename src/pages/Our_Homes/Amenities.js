@@ -292,21 +292,18 @@ export default class Our_Collections extends Component {
                         <div className="col vcenter">
                             <div id="design_carousel_controls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                    {/* <div class="carousel-item active">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                    <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140944413_K1000819.jpg" class="d-block w-100" alt="kitchen1"></img>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                    </div> */}
                                 </div>
-                                <a class="carousel-control-prev" href="#design_carousel_controls" role="button" data-slide="prev">
+                                {/* <a class="carousel-control-prev" href="#design_carousel_controls" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                                 <a class="carousel-control-next" href="#design_carousel_controls" role="button" data-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
-                                </a>
+                                </a> */}
                             </div>
                         </div>
                         <div className="col">
@@ -330,21 +327,21 @@ export default class Our_Collections extends Component {
                         <div className="col vcenter">
                             <div id="smarthome_carousel_controls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                    {/* <div class="carousel-item active">
-                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                    <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612141051027_K1000862.jpg" class="d-block w-100" alt="kitchen1"></img>
                                     </div>
-                                    <div class="carousel-item">
+                                    {/* <div class="carousel-item">
                                         <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874228323_K1000145.jpg" class="d-block w-100" alt="kitchen2"></img>
                                     </div> */}
                                 </div>
-                                <a class="carousel-control-prev" href="#smarthome_carousel_controls" role="button" data-slide="prev">
+                                {/* <a class="carousel-control-prev" href="#smarthome_carousel_controls" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                                 <a class="carousel-control-next" href="#smarthome_carousel_controls" role="button" data-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
-                                </a>
+                                </a> */}
                             </div>
                         </div>
                     </div>
