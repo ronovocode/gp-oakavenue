@@ -95,16 +95,38 @@ export default class Landing extends Component {
     render() {
         return (
             <LandingWrapper>
-                    <div className="hero text-center">
+                    <div id="home_carousel" class="carousel" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663562772_K1000614-HDR-2.jpg"/>
+                            </div>
+                            <div class="carousel-item">
+                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663598034_K1000889.jpg"/>
+                            </div>
+                            <div class="carousel-item">
+                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663645768_K1000986.jpg"/>
+                            </div>
+                            <div class="carousel-item">
+                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663681268_K1000962.jpg"/>
+                            </div>
+                            <div class="carousel-item">
+                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663706240_K1000636.jpg"/>
+                            </div>
+                            <div class="carousel-item">
+                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663739824_K1000776-HDR.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div className="hero text-center">
                         <div className="hero-text">
                             <h1>Orchard Valley Townhomes</h1>
-                            <h2 className="mt-4 font-weight-light">14 Luxury Townhomes situated in the heart of Silicon Valley</h2>
+                            <h2 className="mt-4 font-weight-light">14 Luxury Townhomes situated in the heart of Silicon Valley</h2> 
                             <hr />
                         </div>
                         <div className="hero-nav">
                             <Chevron onClick={this.scrollDown} />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="container">
                         <div ref={this.scrollRef} className="row equal-height">
                             <div className="col-md-6 p-5">

@@ -34,7 +34,7 @@ export default class Neighborhood extends Component {
     render() {
         return (
             <Wrapper className="container">
-                <img className="bg" src={sustainability_bg} alt="redwood city"></img>
+                <img className="bg" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144559907_park.jpg" alt="redwood city"></img>
                 <div class="jumbotron">
                     <h1 class="text-gold display-4">Our sustainability mission</h1>
                     <p class="lead mt-5">We built our townhomes with sustainability in mind, because a greener future is all
