@@ -65,7 +65,7 @@ const Wrapper = styled.div`
             height: 100%;
             width: 100%;
             position: absolute;
-            background-color: rgba(0,0,0,0.3);
+            background-color: rgba(0,0,0,0.6);
             transition: 0.2s;
             h3 {
                 position: absolute;
@@ -109,7 +109,10 @@ export default class Our_Collections extends Component {
         this.state = {
             collection_open: 0,
             lightboxIndex: 0,
-            lightboxIsOpen: false
+            lightboxIsOpen: false,
+            hideOnClick: {
+                display: "flex"
+            }
         }
     }
 
@@ -125,7 +128,9 @@ export default class Our_Collections extends Component {
     }
 
     open_collection(button) {
-        console.log("WORKING");
+        this.setState({hideOnClick: {
+            display: "none"
+        }})
     }
 
     render() {
@@ -265,9 +270,9 @@ export default class Our_Collections extends Component {
                 <h1 className="mt-5">Our townhome collections</h1>
                 <hr style={{backgroundColor: '#fff'}} />
 
-                <div className="row">
+                <div style={this.state.hideOnClick} className="row">
                     <div className="col">
-                        <button data-toggle="collapse" data-target="#vista-collection" className="opencollection">
+                        <button onclick={this.open_collection} data-toggle="collapse" data-target="#vista-collection" className="opencollection">
                             <div className="overlay">
                                 <h3>The Vista Collection</h3>
                                 <p>Click for more</p>
@@ -276,7 +281,7 @@ export default class Our_Collections extends Component {
                         </button>
                     </div>
                     <div className="col">
-                        <button data-toggle="collapse" data-target="#grande-collection" className="opencollection">
+                        <button onclick={this.open_collection} data-toggle="collapse" data-target="#grande-collection" className="opencollection">
                             <div className="overlay">
                                 <h3>The Grande Collection</h3>
                                 <p>Click for more</p>

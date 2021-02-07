@@ -42,7 +42,7 @@ const LandingWrapper = styled.div`
 
     .hero-nav {
         position: absolute;
-        bottom: 8rem;
+        bottom: 25rem;
         left: 50%;
         transform: translate(-50%);
         animation: upDownInfinite 3s ease-in-out 1s infinite alternate;
@@ -115,6 +115,9 @@ export default class Landing extends Component {
                             <div class="carousel-item">
                                 <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663739824_K1000776-HDR.jpg"/>
                             </div>
+                        </div>
+                        <div className="hero-nav">
+                            <Chevron onClick={this.scrollDown} />
                         </div>
                     </div>
                     {/* <div className="hero text-center">

@@ -233,26 +233,24 @@ export default class Our_Collections extends Component {
                         </div>
                     </div>
                     <div className="row my-5">
-                        <div className="col-md-6">
-                            <div className="col-md-6 vcenter">
-                                <div id="WandD_carousel_controls" class="carousel slide">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612141267316_K1000744.jpg" class="d-block w-100" alt="kitchen2"></img>
-                                        </div>
+                        <div className="col-md-6 vcenter">
+                            <div id="WandD_carousel_controls" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611874169118_K1000136.jpg" class="d-block w-100" alt="kitchen1"></img>
                                     </div>
-                                    <a class="carousel-control-prev" href="#WandD_carousel_controls" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#WandD_carousel_controls" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+                                    <div class="carousel-item">
+                                        <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612141267316_K1000744.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                    </div>
                                 </div>
+                                <a class="carousel-control-prev" href="#WandD_carousel_controls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#WandD_carousel_controls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
                         </div>
                         <div className="col-md-6">
