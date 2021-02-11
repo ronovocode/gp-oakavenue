@@ -89,7 +89,9 @@ export default class Gallery extends Component {
                                             )
                                         })}
                                     </Carousel>
-                                    ) : <div>No images loaded</div>
+                                    ) : (<div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>)
                                 }
                             </TabPanel>
                             <TabPanel>
@@ -103,7 +105,9 @@ export default class Gallery extends Component {
                                             )
                                         })}
                                     </Carousel>
-                                    ) : <div>No images loaded</div>
+                                    ) : (<div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>)
                                 }
                             </TabPanel>
                             <TabPanel>
@@ -117,7 +121,9 @@ export default class Gallery extends Component {
                                             )
                                         })}
                                     </Carousel>
-                                    ) : <div>No images loaded</div>
+                                    ) : (<div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>)
                                 }
                             </TabPanel>
                             <TabPanel>
@@ -131,7 +137,9 @@ export default class Gallery extends Component {
                                             )
                                         })}
                                     </Carousel>
-                                    ) : <div>No images loaded</div>
+                                    ) : (<div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>)
                                 }
                             </TabPanel>
                         </Tabs>
