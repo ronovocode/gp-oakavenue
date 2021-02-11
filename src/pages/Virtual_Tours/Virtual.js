@@ -40,16 +40,7 @@ export default class Neighborhood extends Component {
             <Wrapper className="container">
                 <div className="row mt-5">
                     <div className="col">
-                        <h1>Browse our Virtual Tours</h1>
-                    </div>
-                </div>
-                <div className="row mt-5">
-                    <div className="col">
-                        <h3>Vista Collection</h3>
-                    <div className="iframe-container">
-                        <div className="close_virtual_tour">&#215;</div>
-                        <iframe title="virtualtour" src="https://my.matterport.com/show/?m=Rpwy8B7C3eJ" frameborder='0' allowfullscreen allow='vr'></iframe>
-                    </div>
+                        <h1>Virtual Tours</h1>
                     </div>
                 </div>
                 <div className="row mt-5">
@@ -57,8 +48,17 @@ export default class Neighborhood extends Component {
                         <h3>Grande Collection</h3>
                         <div className="iframe-container">
                             <div className="close_virtual_tour">&#215;</div>
-                            <iframe title="virtualtour" src="https://my.matterport.com/show/?m=vQKQZ17hnQp" frameborder='0' allowfullscreen allow='vr'></iframe>
+                            <iframe title="virtualtour" src="https://my.matterport.com/show/?m=Rpwy8B7C3eJ" frameborder='0' allowfullscreen allow='vr'></iframe>
                         </div>
+                    </div>
+                </div>
+                <div className="row mt-5">
+                    <div className="col">
+                        <h3>Vista Collection</h3>
+                    <div className="iframe-container">
+                        <div className="close_virtual_tour">&#215;</div>
+                        <iframe title="virtualtour" src="https://my.matterport.com/show/?m=vQKQZ17hnQp" frameborder='0' allowfullscreen allow='vr'></iframe>
+                    </div>
                     </div>
                 </div>
             </Wrapper>
