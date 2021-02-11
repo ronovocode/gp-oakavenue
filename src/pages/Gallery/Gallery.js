@@ -40,7 +40,7 @@ export default class Gallery extends Component {
                     bed_images.push(image.url);
                 }
 
-                if(current_tag === "Hallway Bathroom" || current_tag === "Master Bathroom") {
+                if(current_tag === "Hallway Bathroom" || current_tag === "Master Bathroom" || current_tag === "Powder Room") {
                     bath_images.push(image.url);
                 }
 
@@ -49,7 +49,7 @@ export default class Gallery extends Component {
                 }
 
                 if(current_tag === "Washer & Dryer" || current_tag === "Offices" ||
-                    current_tag === "Powder Room" || current_tag === "Smarthome Tech" || current_tag === "Kitchen") {
+                     current_tag === "Smarthome Tech" || current_tag === "Kitchen") {
                     living_images.push(image.url);
                 }
             }
