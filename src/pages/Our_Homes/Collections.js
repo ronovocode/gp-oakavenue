@@ -269,132 +269,133 @@ export default class Our_Collections extends Component {
                 </div> */}
                 <h1 className="mt-5">Our townhome collections</h1>
                 <hr style={{backgroundColor: '#fff'}} />
-
-                <div style={this.state.hideOnClick} className="row">
-                    <div className="col">
-                        <button onclick={this.open_collection} data-toggle="collapse" data-target="#vista-collection" className="opencollection">
-                            <div className="overlay">
-                                <h3>The Vista Collection</h3>
-                                <p>Click for more</p>
-                            </div>
-                            <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg"></img>
-                        </button>
+                <div id="collapseGroup" className="accordion">
+                    <div style={this.state.hideOnClick} className="row">
+                        <div className="col">
+                            <button onclick={this.open_collection} data-toggle="collapse" data-target="#vista-collection" className="opencollection">
+                                <div className="overlay">
+                                    <h3>The Vista Collection</h3>
+                                    <p>Click for more</p>
+                                </div>
+                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg"></img>
+                            </button>
+                        </div>
+                        <div className="col">
+                            <button onclick={this.open_collection} data-toggle="collapse" data-target="#grande-collection" className="opencollection">
+                                <div className="overlay">
+                                    <h3>The Grande Collection</h3>
+                                    <p>Click for more</p>
+                                </div>
+                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140753583_K1000645-2.jpg"></img>
+                            </button>
+                        </div>
                     </div>
-                    <div className="col">
-                        <button onclick={this.open_collection} data-toggle="collapse" data-target="#grande-collection" className="opencollection">
-                            <div className="overlay">
-                                <h3>The Grande Collection</h3>
-                                <p>Click for more</p>
-                            </div>
-                            <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140753583_K1000645-2.jpg"></img>
-                        </button>
-                    </div>
-                </div>
-                <div className="row mt-5">
-                    <div className="col">
-                        <div className="collapse" id="vista-collection">
-                            {/* <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    {this.state.vista_images ? (
-                                        <div>
-                                            <div class="carousel-item active">
-                                                <img src={this.state.vista_images[0]} class="d-block w-100" alt={this.state.vista_images[0]}></img>
-                                            </div>
-                                            {this.state.vista_images.map(image => (
-                                                <div class="carousel-item">
-                                                    <img src={image} class="d-block w-100" alt={image}></img>
+                    <div className="row mt-5 accordion-group">
+                        <div className="col">
+                            <div className="collapse" data-parent="#collapseGroup" id="vista-collection">
+                                {/* <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        {this.state.vista_images ? (
+                                            <div>
+                                                <div class="carousel-item active">
+                                                    <img src={this.state.vista_images[0]} class="d-block w-100" alt={this.state.vista_images[0]}></img>
                                                 </div>
+                                                {this.state.vista_images.map(image => (
+                                                    <div class="carousel-item">
+                                                        <img src={image} class="d-block w-100" alt={image}></img>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )
+                                        : 
+                                            <h3>NO RESULTS</h3>
+                                        
+                                        }
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div> */}
+                                <div className="row mt-5">
+                                    <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg"></img>
+                                    <h2 className="mt-5">The Vista Collection</h2>
+                                    <div className="row mt-3">
+                                        <div className="col">
+                                            <p>
+                                            The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
+                                                beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 className="mt-5">Floor Plans</h4>
+                                <hr style={{backgroundColor: '#d2cca1'}}/>
+                                <div>
+                                    {collections["The Vista Collection"] ? (
+                                        <div className="row">
+                                            {collections["The Vista Collection"].map(apartment => (
+                                                <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                                    <Card type="apartment" className="border">
+                                                        <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                                        <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                                        <p className="float-left">
+                                                            {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                            <br />
+                                                            {apartments[apartment].number_of_bedrooms} bedrooms
+                                                            <br />
+                                                            {apartments[apartment].number_of_bathrooms} bathrooms
+                                                        </p>
+                                                    </Card>
+                                                </Link>
                                             ))}
                                         </div>
-                                    )
-                                    : 
-                                        <h3>NO RESULTS</h3>
-                                    
-                                    }
+                                    ) : (
+                                        <h3>No Results to Display</h3>
+                                    )}
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div> */}
-                            <div className="row mt-5">
-                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg"></img>
-                                <h2 className="mt-5">The Vista Collection</h2>
+                            </div>
+                            <div className="collapse" data-parent="#collapseGroup" id="grande-collection">
+                                <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140753583_K1000645-2.jpg"></img>
+                                <h2 className="mt-5">The Grande Collection</h2>
                                 <div className="row mt-3">
                                     <div className="col">
                                         <p>
-                                        The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
-                                            beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
+                                            Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
+                                            you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
+                                            each living room. Explore our floor plans below. 
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                            <h4 className="mt-5">Floor Plans</h4>
-                            <hr style={{backgroundColor: '#d2cca1'}}/>
-                            <div>
-                                {collections["The Vista Collection"] ? (
-                                    <div className="row">
-                                        {collections["The Vista Collection"].map(apartment => (
-                                            <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
-                                                <Card type="apartment" className="border">
-                                                    <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
-                                                    <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
-                                                    <p className="float-left">
-                                                        {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
-                                                        <br />
-                                                        {apartments[apartment].number_of_bedrooms} bedrooms
-                                                        <br />
-                                                        {apartments[apartment].number_of_bathrooms} bathrooms
-                                                    </p>
-                                                </Card>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <h3>No Results to Display</h3>
-                                )}
-                            </div>
-                        </div>
-                        <div className="collapse" id="grande-collection">
-                            <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140753583_K1000645-2.jpg"></img>
-                            <h2 className="mt-5">The Grande Collection</h2>
-                            <div className="row mt-3">
-                                <div className="col">
-                                    <p>
-                                        Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
-                                        you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
-                                        each living room. Explore our floor plans below. 
-                                    </p>
+                                <h4 className="mt-5">Floor Plans</h4>
+                                <hr style={{backgroundColor: '#d2cca1'}}/>
+                                <div>
+                                    {collections["The Grande Collection"] ? (
+                                        <div className="row">
+                                            {collections["The Grande Collection"].map(apartment => (
+                                                <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
+                                                    <Card type="apartment" className="border">
+                                                        <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
+                                                        <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
+                                                        <p className="float-left">
+                                                            {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
+                                                            <br />
+                                                            {apartments[apartment].number_of_bedrooms} bedrooms
+                                                            <br />
+                                                            {apartments[apartment].number_of_bathrooms} bathrooms
+                                                        </p>
+                                                    </Card>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <h3>No Results to Display</h3>
+                                    )}
                                 </div>
-                            </div>
-                            <h4 className="mt-5">Floor Plans</h4>
-                            <hr style={{backgroundColor: '#d2cca1'}}/>
-                            <div>
-                                {collections["The Grande Collection"] ? (
-                                    <div className="row">
-                                        {collections["The Grande Collection"].map(apartment => (
-                                            <Link className="col-md-4 p-3" to={"/residence/" + apartments[apartment].unit}>  
-                                                <Card type="apartment" className="border">
-                                                    <img alt={apartments[apartment].PLAN3D} src={thumbnails[apartments[apartment].PLAN3D]}></img>
-                                                    <h3 className="unitnumber mt-4"><b>{apartments[apartment].unit}</b></h3>
-                                                    <p className="float-left">
-                                                        {apartments[apartment].square_footage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq ft
-                                                        <br />
-                                                        {apartments[apartment].number_of_bedrooms} bedrooms
-                                                        <br />
-                                                        {apartments[apartment].number_of_bathrooms} bathrooms
-                                                    </p>
-                                                </Card>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <h3>No Results to Display</h3>
-                                )}
                             </div>
                         </div>
                     </div>

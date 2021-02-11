@@ -25,6 +25,9 @@ export default {
             }
         });
     },
+    GET_ALL_IMAGES: function() {
+        return axios.get(URL + "/images/all/1");
+    },
     GET_COLLECTION: function(collection) {
         return axios.get(URL + "/collections/" + collection)
     },

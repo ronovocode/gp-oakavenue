@@ -12,6 +12,7 @@ import Neighborhood from './pages/Neighborhood/Neighborhood';
 import Amenities from './pages/Our_Homes/Amenities';
 
 import Sustainability from './pages/Sustainability/Sustainability';
+import Gallery from './pages/Gallery/Gallery';
 import Virtual_Tours from './pages/Virtual_Tours/Virtual';
 
 /* Residents */
@@ -76,6 +77,7 @@ function App() {
                   <Route exact path="/amenities" component={Amenities}></Route>
                   <Route exact path="/neighborhood" component={Neighborhood}></Route>
                   <Route exact path="/sustainability" component={Sustainability}></Route>
+                  <Route exact path="/gallery" component={Gallery}></Route>
                   <Route exact path="/virtual_tours" component={Virtual_Tours}></Route>
 
                   <Route exact path='/resident/login' component={Login}/>

@@ -32,7 +32,7 @@ h1, h2, h3, h4 {
 export default class Neighborhood extends Component {
 
     componentDidMount() {
-        document.title = "Sustainability"
+        document.title = "Virtual Tours"
     }
 
     render() {

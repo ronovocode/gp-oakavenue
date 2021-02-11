@@ -46,6 +46,9 @@ function Navbar(props) {
                 <Link className="nav-link" to="/virtual_tours">Virtual Tours</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/gallery">Gallery</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/neighborhood">The Neighborhood</Link>
               </li>
               <li className="nav-item">
