@@ -130,9 +130,9 @@ const LandingCard = (props) => {
     return(
         <Wrap {...props}>
             <div className="image-wrapper">
-                <Fade top>
+                <Pulse>
                     <img src={props.src}></img>
-                </Fade>
+                </Pulse>
                 <h2>{props.title}</h2>
             </div>
             <Fade bottom>
@@ -198,12 +198,22 @@ export default class Landing extends Component {
                     </span>
                 </div>
 
-                <LandingCard title="Townhomes" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140944413_K1000819.jpg" offset="-60%">
+                <LandingCard title="Townhomes" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140944413_K1000819.jpg" offset="-70%">
                     <p>Explore our different collections of townhomes to find the one that fits your ​​​​preferences.</p>
                     <Link className="text-gold" to="/collections">Browse collections...</Link>
                 </LandingCard>
-                <LandingCard className="mt-5" title="Amenities" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144661581_K1000100.jpg" offset="-70%"/>
-                <LandingCard className="mt-5" title="Neighborhood" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1613600004801_lifestyle.jpg" offset="-50%"/>
+                <LandingCard className="mt-5" title="Amenities" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144661581_K1000100.jpg" offset="-70%">
+                                <p>From luxurious outdoor seating, to cutting edge smart-home technology,
+                                    ​​our homes offer the best amenities to add comfort to your lifestyle.
+                                </p>
+                                <Link className="text-gold" to="/collections">Browse collections...</Link>
+                </LandingCard>
+                <LandingCard className="mt-5" title="Neighborhood" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1613600004801_lifestyle.jpg" offset="-50%">
+                                <p>
+                                    Less than a mile away from downtown Redwood City, everything you need is ​​​​within arms reach.
+                                </p>
+                                <Link className="text-gold" to="/collections">Learn about our neighborhood...</Link>
+                </LandingCard>
 
                     {/* 
                     {/* <div className="hero text-center">
