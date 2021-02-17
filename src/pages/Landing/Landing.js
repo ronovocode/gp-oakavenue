@@ -6,6 +6,9 @@ import kitchen from '../../static/img/kitchen.png';
 import Chevron from '../../icons/Chevron';
 import { Link } from 'react-router-dom';
 
+import {Fade} from 'react-reveal';
+import Pulse from 'react-reveal/Pulse';
+
 const LandingWrapper = styled.div`
     .hero {
         height: 100vh;
@@ -75,6 +78,73 @@ const LandingWrapper = styled.div`
     }
 `
 
+const LandingCard = (props) => {
+    const Wrap = styled.div`
+        height: 50vh;
+        position: relative;
+
+        margin-bottom: 2rem;
+
+        @media only screen and (max-width: 768px) {
+            height: 75vh;
+        }
+
+        .image-wrapper {
+            position: relative;
+            height: 80%;
+            overflow: hidden;
+
+            img {
+                position: absolute;
+                top: ${props.offset};
+                width: 100%;
+    
+                @media only screen and (max-width: 768px) {
+                    top: 0;
+                    height: 100%;
+                    width: auto;
+                }
+            }
+
+            h2 {
+                position: absolute;
+                bottom: -1rem;
+                left: 5rem;
+                padding: 0.5rem 1rem 0.5rem 1rem;
+    
+                background-color: var(--dark);
+                color: var(--gold);
+            }
+        }
+
+        p {
+            width: 75vw;
+            margin: 0 auto;
+
+            @media only screen and (max-width: 768px) {
+                width: 90vw;
+            }
+        }
+    `
+
+    return(
+        <Wrap {...props}>
+            <div className="image-wrapper">
+                <Fade top>
+                    <img src={props.src}></img>
+                </Fade>
+                <h2>{props.title}</h2>
+            </div>
+            <Fade bottom>
+                <p className="mt-5">
+                    {props.children}
+                </p>
+            </Fade>
+        </Wrap>
+    )
+
+}
+
 export default class Landing extends Component {
 
     constructor(props) {
@@ -95,31 +165,47 @@ export default class Landing extends Component {
     render() {
         return (
             <LandingWrapper>
-                    <div id="home_carousel" class="carousel" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663562772_K1000614-HDR-2.jpg"/>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663598034_K1000889.jpg"/>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663645768_K1000986.jpg"/>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663681268_K1000962.jpg"/>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663706240_K1000636.jpg"/>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663739824_K1000776-HDR.jpg"/>
-                            </div>
+                <div id="home_carousel" class="carousel" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663562772_K1000614-HDR-2.jpg"/>
                         </div>
-                        <div className="hero-nav">
-                            <Chevron onClick={this.scrollDown} />
+                        <div class="carousel-item">
+                            <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663598034_K1000889.jpg"/>
+                        </div>
+                        <div class="carousel-item">
+                            <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663645768_K1000986.jpg"/>
+                        </div>
+                        <div class="carousel-item">
+                            <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663681268_K1000962.jpg"/>
+                        </div>
+                        <div class="carousel-item">
+                            <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663706240_K1000636.jpg"/>
+                        </div>
+                        <div class="carousel-item">
+                            <img alt="house" class="img-fluid d-block w-100" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612663739824_K1000776-HDR.jpg"/>
                         </div>
                     </div>
+                    <div className="hero-nav">
+                        <Chevron onClick={this.scrollDown} />
+                    </div>
+                </div>
+
+                <div className="container my-5">
+                    <h2 className="text-gold">Welcome to Orchard Valley Townhomes,</h2>
+                    <span>
+                        your new home in the Bay Area. Orchard Valley is a collection of 14 luxurious townhomes situated among lush greenery in a boutique community. Each of our townhomes offers a warm, modern palette of materials for a contemporary and timeless look. Our interiors are finished with hand selected pieces and fixtures that embody the spirit of a custom residence. Located just a 12 minute walk from downtown Redwood City, Orchard Valley’s living experience is truly one of a kind. 
+                    </span>
+                </div>
+
+                <LandingCard title="Townhomes" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140944413_K1000819.jpg" offset="-60%">
+                    <p>Explore our different collections of townhomes to find the one that fits your ​​​​preferences.</p>
+                    <Link className="text-gold" to="/collections">Browse collections...</Link>
+                </LandingCard>
+                <LandingCard className="mt-5" title="Amenities" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144661581_K1000100.jpg" offset="-70%"/>
+                <LandingCard className="mt-5" title="Neighborhood" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1613600004801_lifestyle.jpg" offset="-50%"/>
+
+                    {/* 
                     {/* <div className="hero text-center">
                         <div className="hero-text">
                             <h1>Orchard Valley Townhomes</h1>
@@ -129,7 +215,7 @@ export default class Landing extends Component {
                         <div className="hero-nav">
                             <Chevron onClick={this.scrollDown} />
                         </div>
-                    </div> */}
+                    </div> 
                     <div className="container">
                         <div ref={this.scrollRef} className="row equal-height">
                             <div className="col-md-6 p-5">
@@ -160,7 +246,7 @@ export default class Landing extends Component {
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </div>
-                            </div> */}
+                            </div> 
                         </div>
                         <div className="row equal-height">
                             <div className="col-md-6 p-5">
@@ -196,7 +282,7 @@ export default class Landing extends Component {
                                 <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144661581_K1000100.jpg"></img>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
             </LandingWrapper>
         )
     }
