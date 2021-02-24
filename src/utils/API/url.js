@@ -1,3 +1,3 @@
 module.exports = {
-    apiURL: "http://gp-psql.herokuapp.com/"
+    apiURL: "https://gp-auth.herokuapp.com/"
 }
