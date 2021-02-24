@@ -29,7 +29,7 @@ export default {
         return axios.get(URL + "/images/all/1");
     },
     GET_COLLECTION: function(collection) {
-        return axios.get(URL + "/collections/" + collection)
+        return axios.get(URL + "apartment/availability/" + collection)
     },
     GET_ALL_RESIDENTS: function (property) {
         return axios.get(URL + "/users/residents/" + property);
