@@ -206,9 +206,9 @@ export default class Landing extends Component {
                                 <p>From luxurious outdoor seating, to cutting edge smart-home technology,
                                     ​​our homes offer the best amenities to add comfort to your lifestyle.
                                 </p>
-                                <Link className="text-gold" to="/collections">Browse collections...</Link>
+                                <Link className="text-gold" to="/collections">Browse amenities...</Link>
                 </LandingCard>
-                <LandingCard className="mt-5" title="Neighborhood" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1613600004801_lifestyle.jpg" offset="-50%">
+                <LandingCard className="mt-5" title="Neighborhood" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1614105838244_lifestyle.jpg" offset="-50%">
                                 <p>
                                     Less than a mile away from downtown Redwood City, everything you need is ​​​​within arms reach.
                                 </p>

@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState, setState } from 'react'
 import {Link} from 'react-router-dom';
 
-import Card from '../../components/Card/Card'
+import Card from '../../components/Card/Card';
+import Grande from '../../components/Draw/Grande';
+
 import '../../utils/globalstyles/dropdown.css'
 
 import styled from 'styled-components';
@@ -34,71 +36,135 @@ const thumbnails = {
     "301F297A.png": plan_301F297A
 }
 
+// const Wrapper = styled.div`
+//     .unitnumber {
+//         color: #D2CCA1
+//     }
+
+//     .collection-button {
+//         padding: 0rem 3rem 0.5rem 0;
+//         border-bottom: 1px solid #D2CCA1;
+//         cursor: pointer;
+//     }
+
+//     h1, h2, h3, h4 {
+//         color: #D2CCA1;
+//     }
+
+//     .vcenter {
+//         display: inline-block;
+//         vertical-align: middle;
+//         float: none;
+//     }
+
+//     .opencollection {
+//         background: none;
+//         border: none;
+//         position: relative;
+//         padding: 0;
+
+//         .overlay {
+//             height: 100%;
+//             width: 100%;
+//             position: absolute;
+//             background-color: rgba(0,0,0,0.6);
+//             transition: 0.2s;
+//             h3 {
+//                 position: absolute;
+//                 left: 50%;
+//                 top: 50%;
+//                 transform: translate(-50%, -50%);
+//             }
+            
+//             p {
+//                 position: absolute;
+//                 left: 50%;
+//                 top: 60%;
+//                 transform: translateX(-50%);
+//             }
+
+//             :hover {
+//                 background-color: rgba(0,0,0,0.6);
+//             }
+//         }
+
+//         :focus {
+//             border: none;
+//         }
+//     }
+
+//     .spacer {
+//         height: 50vh;
+//     }
+
+// `
+
 const Wrapper = styled.div`
-    .unitnumber {
-        color: #D2CCA1
+    .collection {
+
     }
 
-    .collection-button {
-        padding: 0rem 3rem 0.5rem 0;
-        border-bottom: 1px solid #D2CCA1;
-        cursor: pointer;
-    }
-
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5 {
         color: #D2CCA1;
     }
 
-    .vcenter {
-        display: inline-block;
-        vertical-align: middle;
-        float: none;
-    }
-
-    .opencollection {
-        background: none;
-        border: none;
-        position: relative;
-        padding: 0;
-
-        .overlay {
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            background-color: rgba(0,0,0,0.6);
-            transition: 0.2s;
-            h3 {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-            }
-            
-            p {
-                position: absolute;
-                left: 50%;
-                top: 60%;
-                transform: translateX(-50%);
-            }
-
-            :hover {
-                background-color: rgba(0,0,0,0.6);
-            }
+    .floor-card {
+        h4 {
+            font-size: 2rem;
+            font-weight: 600;
         }
 
-        :focus {
-            border: none;
+        :hover {
+            cursor: pointer;
         }
     }
-
-    .spacer {
-        height: 50vh;
-    }
-
 `
 const collections = {
     "The Grande Collection": ["301A", "301F", "297A", "297D", "293A", "293D"],
     "The Vista Collection": ["301B", "301C", "301D", "301E", "297B", "297C", "293B", "293C"]
+}
+
+function Collection(props) {
+    return(
+        <div className="collection">
+            <div className="row mt-4">
+                <div className="col-md-6 p-5 v-center">
+                    <Grande />
+                    <div className="row mt-3">
+                        <div className="col">
+                            <p>
+                                Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
+                                you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
+                                each living room. Explore our floor plans below.  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg" className="img-fluid"></img>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function FloorCard(props) {
+    let apartment = props.apartment;
+    var [focused, toggleFocus] = React.useState(false);
+    
+    return(
+        <div onClick={() => toggleFocus(!focused)} className="col-md-6 p-3 floor-card" {...props}>
+            <div className="row">
+                <div className="col-8">
+                    <img className="mx-auto" alt={apartment.PLAN3D} src={thumbnails[apartment.PLAN3D]}></img>
+                </div>
+                <div className="col-4">
+                    <h4 className="mt-5">{apartment.unit}</h4>
+                    {focused && <h3>test</h3>}
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default class Our_Collections extends Component {
@@ -131,8 +197,32 @@ export default class Our_Collections extends Component {
 
     render() {
         return (
-            <Wrapper className="container">
-                <h1 className="mt-5">Our townhome collections</h1>
+            <Wrapper className="container mt-3">
+                <h1 className="mt-5 text-gold">Availability</h1>
+                <hr style={{backgroundColor: '#fff'}} />
+                <Collection />
+                <h4 className="mt-5">Available townhomes</h4>
+                <hr style={{backgroundColor: '#d2cca1'}}/>
+                <div>
+                    {collections["The Grande Collection"] ? (
+                        <div className="row">
+                            {collections["The Grande Collection"].map(index => {
+                                        let apartment = apartments[index];
+                                        
+                                        return(
+                                            <FloorCard apartment={apartment}>
+
+                                            </FloorCard>
+                                        )
+                                    }
+                                )
+                            }
+                        </div>
+                    ) : (
+                        <h3>No Results to Display</h3>
+                    )}
+                </div>
+                {/* <h1 className="mt-5">Our townhome collections</h1>
                 <hr style={{backgroundColor: '#fff'}} />
                 <div id="collapseGroup" className="accordion">
                     <div className="row">
@@ -158,7 +248,7 @@ export default class Our_Collections extends Component {
                     <div ref={this.scrollRef} className="row mt-5 accordion-group">
                         <div className="col">
                             <div className="collapse" data-parent="#collapseGroup" id="vista-collection">
-                                {/* <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                                <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         {this.state.vista_images ? (
                                             <div>
@@ -185,7 +275,7 @@ export default class Our_Collections extends Component {
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
-                                </div> */}
+                                </div>
                                 <div className="row mt-5">
                                     <div className="col">
                                         <img className="img-fluid" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612138534198_K1000889.jpg"></img>
@@ -193,8 +283,9 @@ export default class Our_Collections extends Component {
                                         <div className="row mt-3">
                                             <div className="col">
                                                 <p>
-                                                The Vista Collection offers each resident a lifestyle of true luxury, with the amenities, space, smart technology, and privacy for two. With 
-                                                    beautiful views of the mountains, and ample outdoor recreation space, you're guaranteed to feel right at home with any Vista Collection townhome. 
+                                                Our grande collection offers all the quality amenities of the Vista collection, and more! In this collection, 
+                                            you will find townhomes with a 350 sq ft private patio that is connected to the main patio, as well as fireplaces in 
+                                            each living room. Explore our floor plans below.  
                                                 </p>
                                             </div>
                                         </div>
@@ -266,7 +357,7 @@ export default class Our_Collections extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             <div className="spacer"></div>
             </Wrapper>
         )
