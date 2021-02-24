@@ -33,7 +33,7 @@ export default class Neighborhood extends Component {
 
     render() {
         return (
-            <Wrapper className="container">
+            <Wrapper className="container mt-5">
                 <img className="bg" src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612144559907_park.jpg" alt="redwood city"></img>
                 <div class="jumbotron">
                     <h1 class="text-gold display-4">Our sustainability mission</h1>

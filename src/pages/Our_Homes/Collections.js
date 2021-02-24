@@ -178,7 +178,7 @@ function FloorCard(props) {
                 <div className="modal-dialog modal-lg modal-dialog-centered">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 className="modal-title" id="exampleModalLabel">{apartment.unit}</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -237,6 +237,65 @@ export default class Our_Collections extends Component {
                 <h1 className="mt-5 text-gold">Availability</h1>
                 <hr style={{backgroundColor: '#fff'}} />
                 <Collection />
+                <div className="row my-5 p-3">
+                    <div className="col-md-6 vcenter">
+                        <h3>Tranquility</h3>
+                        <p>With luxurious outdoor seating, and a cozy fireplace, any home in our <b>Grande Collection</b> is guaranteed to make you feel right at home</p>
+                        
+                    </div>
+                    <div className="col-md-6 vcenter">
+                        <div id="kitchen_carousel_controls" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1612140753583_K1000645-2.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                </div>
+                                {/* <div class="carousel-item">
+                                    <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611872872111_K1000100.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873093049_K1000110.jpg" class="d-block w-100" alt="kitchen3"></img>
+                                </div> */}
+                            </div>
+                            <a class="carousel-control-prev" href="#kitchen_carousel_controls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#kitchen_carousel_controls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="row my-5">
+                    <div className="col-md-6 vcenter">
+                        <div id="mastersuite_carousel_controls" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1613441240627_K1000922-HDR.jpg" class="d-block w-100" alt="kitchen2"></img>
+                                </div>
+                                {/* <div class="carousel-item">
+                                    <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1610184490999_K1000246.jpg" class="d-block w-100" alt="kitchen1"></img>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://greenpoints3.s3.us-west-1.amazonaws.com/Images/1611873662855_K1000269.jpg" class="d-block w-100" alt="kitchen3"></img>
+                                </div> */}
+                            </div>
+                            <a class="carousel-control-prev" href="#mastersuite_carousel_controls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#mastersuite_carousel_controls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <h3>Outdoor Area</h3>
+                        <p>From entertainin friends and family, to flexing your green thumb with a private garden, the possibilities are endless with your very own patio area. </p>
+                    </div>
+                </div>
                 <h4 className="mt-5">Available townhomes</h4>
                 <hr style={{backgroundColor: '#d2cca1'}}/>
                 <div>
