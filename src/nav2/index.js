@@ -29,6 +29,19 @@ const Nav = styled.nav`
     .t-brand {
         margin-left: 0.4rem;
     }
+
+    .dropdown-item {
+        text-transform: none;
+        letter-spacing: normal;
+    }
+
+    .dropdown-menu {
+        background-color: var(--gold);
+    }
+
+    .dropdown-item {
+        color: #151C0D;
+    }
     
 `
 
@@ -52,7 +65,7 @@ function Navbar(props) {
                             <Link className="nav-link" to="/">About</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/collections">Browse Collections</Link>
+                            <Link className="nav-link" to="/collections">Availability</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/amenities">Amenities</Link>

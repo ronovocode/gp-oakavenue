@@ -109,6 +109,9 @@ const Wrapper = styled.div`
     }
 
     .floor-card {
+        background-color: transparent;
+        border: none;
+
         h4 {
             font-size: 2rem;
             font-weight: 600;
@@ -117,6 +120,14 @@ const Wrapper = styled.div`
         :hover {
             cursor: pointer;
         }
+    }
+
+    .modal-header, .modal-footer {
+        border: none;
+    }
+
+    .modal-body {
+        border: none;
     }
 `
 const collections = {
@@ -151,16 +162,41 @@ function Collection(props) {
 function FloorCard(props) {
     let apartment = props.apartment;
     var [focused, toggleFocus] = React.useState(false);
-    
+    console.log(apartment);
+
     return(
-        <div onClick={() => toggleFocus(!focused)} className="col-md-6 p-3 floor-card" {...props}>
+        <div onClick={() => toggleFocus(!focused)} data-bs-toggle="modal" data-bs-target={"#apartment-" + props.id} className="col-md-6 p-3 floor-card" {...props}>
             <div className="row">
-                <div className="col-8">
+                <div className="col-9">
                     <img className="mx-auto" alt={apartment.PLAN3D} src={thumbnails[apartment.PLAN3D]}></img>
                 </div>
-                <div className="col-4">
+                <div className="col-3">
                     <h4 className="mt-5">{apartment.unit}</h4>
-                    {focused && <h3>test</h3>}
+                </div>
+            </div>
+            <div className="modal fade" id={"apartment-" + props.id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg modal-dialog-centered">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        <img className="ml-5 img-fluid mb-5" alt={apartment.PLAN3D} src={thumbnails[apartment.PLAN3D]}></img>
+                        <p>
+                            {apartment.square_footage} sq ft.
+                        </p>
+                        <p>
+                            {apartment.number_of_bedrooms} bedrooms
+                        </p>
+                        <p>
+                            {apartment.number_of_bathrooms} bathrooms
+                        </p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -185,12 +221,12 @@ export default class Our_Collections extends Component {
     componentDidMount() {
         document.title = "Our Collections"
 
-        API.GET_COLLECTION("The Vista Collection").then(res => {
-            console.log(res.data.images);
-            this.setState({
-                vista_images: res.data.images
-            })
-        });
+        // API.GET_COLLECTION("The Vista Collection").then(res => {
+        //     console.log(res.data.images);
+        //     this.setState({
+        //         vista_images: res.data.images
+        //     })
+        // });
     }
 
     open_collection = ()  => window.scrollTo(0, this.scrollRef.current.offsetTop - 26)
