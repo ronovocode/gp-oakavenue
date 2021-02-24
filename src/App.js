@@ -26,7 +26,7 @@ import Manager from './pages/Manager/Manager';
 import ManagerLogin from './pages/Manager/Login';
 
 /* Navbar */
-import Navbar from './nav';
+import Navbar from './nav2';
 import Footer from './components/Footer/Footer';
 
 /* React Router Imports */

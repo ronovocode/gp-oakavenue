@@ -206,11 +206,11 @@ export default class Our_Collections extends Component {
                 <div>
                     {collections["The Grande Collection"] ? (
                         <div className="row">
-                            {collections["The Grande Collection"].map(index => {
+                            {collections["The Grande Collection"].map((index, tick) => {
                                         let apartment = apartments[index];
                                         
                                         return(
-                                            <FloorCard apartment={apartment}>
+                                            <FloorCard id={tick} apartment={apartment}>
 
                                             </FloorCard>
                                         )
@@ -222,6 +222,7 @@ export default class Our_Collections extends Component {
                         <h3>No Results to Display</h3>
                     )}
                 </div>
+
                 {/* <h1 className="mt-5">Our townhome collections</h1>
                 <hr style={{backgroundColor: '#fff'}} />
                 <div id="collapseGroup" className="accordion">

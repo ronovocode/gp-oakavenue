@@ -31,7 +31,7 @@ export default class Neighborhood extends Component {
 
     render() {
         return (
-            <Wrapper className="container mb-5">
+            <Wrapper className="container mt-5 mb-5">
                 <img className="bg" src={neighborhoodImage} alt="redwood city"></img>
                 <div class="jumbotron">
                     <h1 class="text-gold display-4">About Redwood City</h1>
