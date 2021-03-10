@@ -27,7 +27,7 @@ export default class Gallery extends Component {
         document.title = "Gallery"
 
         API.GET_ALL_IMAGES().then(res => {
-
+            console.log(res)
             let bed_images = []
             let bath_images = []
             let living_images = []
@@ -35,7 +35,7 @@ export default class Gallery extends Component {
 
             for(const image of res.data) {
                 let current_tag = image.tag;
-
+                console.log(image);
                 if(current_tag === "2nd Bedroom" || current_tag === "Master Suite") {
                     bed_images.push(image.url);
                 }
