@@ -11,7 +11,16 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 const Wrapper = styled.div`
+    .react-tabs__tab {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        border-radius: 0px;
+        border: none;
+        font-weight: lighter;
+    }
 
+    .react-tabs__tab--selected {
+        background-color: var(--gold);
+    }
     
 `
 
